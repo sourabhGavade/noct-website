@@ -1,0 +1,37 @@
+{
+  "name": "noct-website",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "NODE_OPTIONS=--openssl-legacy-provider next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@formspark/use-formspark": "^0.1.39",
+    "@sanity/block-content-to-react": "^2.0.7",
+    "@sanity/client": "^2.7.1",
+    "@sanity/image-url": "^0.140.22",
+    "dat.gui": "^0.7.7",
+    "gsap": "file:gsap-bonus.tgz",
+    "in-view": "^0.6.1",
+    "load-asset": "^1.2.0",
+    "lottie-web": "^5.7.1",
+    "next": "^11.0.0",
+    "react": "17.0.2",
+    "react-cool-inview": "^1.1.2",
+    "react-curtains": "^1.0.6",
+    "react-dom": "17.0.2",
+    "react-gl-transition-image": "0.0.9",
+    "react-icons": "^4.7.1",
+    "react-image-comparison-slider": "^1.8.4",
+    "react-owl-carousel": "^2.3.3",
+    "react-spring": "^8.0.27",
+    "react-swipeable": "^6.0.1",
+    "recoil": "^0.7.6",
+    "styled-components": "^5.3.6"
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "^2.0.7"
+  }
+}
