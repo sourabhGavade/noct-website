@@ -1,63 +1,62 @@
-import { useState, useEffect } from 'react'
-import Head from 'next/head'
-import Link from 'next/link'
-import dynamic from 'next/dynamic'
-import Button from '../components/Button'
-import WorkItem from '../components/WorkItem'
-import Service from '../components/Service'
-import BlogItem from '../components/BlogItem'
-import FooterCTA from '../components/FooterCTA'
-import ButtonLink from '../components/ButtonLink'
-import initFadeUp from '../utils/initFadeUp'
-import sanityClient from '../client'
-import urlFor from '../utils/urlFor'
-import AwardsPopUp from '../components/AwardsPopUp'
+import { useState, useEffect } from "react";
+import Head from "next/head";
+import Link from "next/link";
+import dynamic from "next/dynamic";
+import Button from "../components/Button";
+import WorkItem from "../components/WorkItem";
+import Service from "../components/Service";
+import BlogItem from "../components/BlogItem";
+import FooterCTA from "../components/FooterCTA";
+import ButtonLink from "../components/ButtonLink";
+import initFadeUp from "../utils/initFadeUp";
+import sanityClient from "../client";
+import urlFor from "../utils/urlFor";
+import AwardsPopUp from "../components/AwardsPopUp";
 
+const HomeHero = dynamic(() => import("../components/HomeHero"), {
+  ssr: false,
+});
 
-const HomeHero = dynamic(
-  () => import('../components/HomeHero'),
-  { ssr: false }
-)
-
-const ImageCarousel = dynamic(
-  () => import('../components/ImageCarousel'),
-  { ssr: false }
-)
+const ImageCarousel = dynamic(() => import("../components/ImageCarousel"), {
+  ssr: false,
+});
 
 export async function getStaticProps() {
-  const content = await sanityClient.fetch(`*[_type=="home"][0]`)
-  const featuredProjects = await sanityClient.fetch(`*[_type=="projects" && isFeatured == true] | order(priority asc) {_id, projectTitle, slug, projectCaption, previewImage, previewImageBg}`)
+  const content = await sanityClient.fetch(`*[_type=="home"][0]`);
+  const featuredProjects = await sanityClient.fetch(
+    `*[_type=="projects" && isFeatured == true] | order(priority asc) {_id, projectTitle, slug, projectCaption, previewImage, previewImageBg}`
+  );
 
   return {
-      revalidate: 60,
-      props: {
-          content,
-          featuredProjects
-      },
-  }
+    revalidate: 60,
+    props: {
+      content,
+      featuredProjects,
+    },
+  };
 }
 
 export default function Home({ content, featuredProjects }) {
-  const [imageCarouselArray, setImageCarouselArray] = useState([])
-  const [activeIndex, setActiveIndex] = useState(0)
+  const [imageCarouselArray, setImageCarouselArray] = useState([]);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-    initScrollTrigger()
-    initFadeUp()
-    initImageCarousel()
+    initScrollTrigger();
+    initFadeUp();
+    initImageCarousel();
 
     return () => {
-      ScrollTrigger.getAll().forEach(st => st.kill())
-    }
-  }, [])
+      ScrollTrigger.getAll().forEach((st) => st.kill());
+    };
+  }, []);
 
   const initClientLogoAnimation = () => {
-    let tl = new TimelineMax({ repeat: -1 })
-    tl.staggerTo('.logo-1', 1.2, { opacity: 0, delay: 1 }, 0.2)
-    tl.staggerTo('.logo-2', 1.2, { opacity: 1 }, 0.2, '-=1')
-    tl.staggerTo('.logo-2', 1.2, { opacity: 0, delay: 1 }, 0.2)
-    tl.staggerTo('.logo-1', 1.2, { opacity: 1 }, 0.2, '-=1')
-  }
+    let tl = new TimelineMax({ repeat: -1 });
+    tl.staggerTo(".logo-1", 1.2, { opacity: 0, delay: 1 }, 0.2);
+    tl.staggerTo(".logo-2", 1.2, { opacity: 1 }, 0.2, "-=1");
+    tl.staggerTo(".logo-2", 1.2, { opacity: 0, delay: 1 }, 0.2);
+    tl.staggerTo(".logo-1", 1.2, { opacity: 1 }, 0.2, "-=1");
+  };
 
   const countToNumber = (id, start, end, duration) => {
     if (process.browser) {
@@ -68,115 +67,120 @@ export default function Home({ content, featuredProjects }) {
       let obj = document.getElementById(id);
       let timer = setInterval(function () {
         current += increment;
-        obj ? obj.innerHTML = current : ''
+        obj ? (obj.innerHTML = current) : "";
         if (current == end) {
           clearInterval(timer);
         }
       }, stepTime);
     }
-  }
+  };
 
   const initScrollTrigger = () => {
-    gsap.from('.work-item-see-all', {
+    gsap.from(".work-item-see-all", {
       scrollTrigger: {
-        id: 'workItem',
-        trigger: '.work-item-see-all',
-        start: '-5% bottom',
+        id: "workItem",
+        trigger: ".work-item-see-all",
+        start: "-5% bottom",
       },
       opacity: 0,
       y: 100,
       scale: 0.75,
-      duration: 0.5
+      duration: 0.5,
     });
 
-    gsap.from('.services-container', {
+    gsap.from(".services-container", {
       scrollTrigger: {
-        trigger: '.services-container',
-        start: 'top 80%',
+        trigger: ".services-container",
+        start: "top 80%",
         onEnter: () => {
-          TweenMax.staggerFrom('.service-trigger', 0.4, { opacity: 0, y: 40 }, 0.06)
-        }
+          TweenMax.staggerFrom(
+            ".service-trigger",
+            0.4,
+            { opacity: 0, y: 40 },
+            0.06
+          );
+        },
       },
       opacity: 0,
       y: 40,
       duration: 0.4,
       delay: 0.1,
-      ease: 'ease',
-      id: 'serviceScrollTrigger'
+      ease: "ease",
+      id: "serviceScrollTrigger",
     });
 
-    gsap.to('.client-logos-container', {
+    gsap.to(".client-logos-container", {
       scrollTrigger: {
-        trigger: '.client-logos-container',
-        start: '-=800',
+        trigger: ".client-logos-container",
+        start: "-=800",
         onEnter: () => {
           setTimeout(() => {
-            initClientLogoAnimation()
-          }, 1000)
-        }
-      }
-    })
+            initClientLogoAnimation();
+          }, 1000);
+        },
+      },
+    });
 
-    gsap.from('#projects', {
+    gsap.from("#projects", {
       scrollTrigger: {
-        trigger: '#projects',
+        trigger: "#projects",
         once: true,
         onEnter: () => {
           setTimeout(() => {
-            countToNumber('projects', 95, content.projectsExecuted, 500)
+            countToNumber("projects", 95, content.projectsExecuted, 500);
           }, 250);
-        }
-      }
+        },
+      },
     });
 
-    gsap.from('#years', {
+    gsap.from("#years", {
       scrollTrigger: {
-        trigger: '#years',
+        trigger: "#years",
         once: true,
         onEnter: () => {
           setTimeout(() => {
-            countToNumber('years', 0, content.yearsOld, 500)
+            countToNumber("years", 0, content.yearsOld, 500);
           }, 250);
-        }
-      }
+        },
+      },
     });
 
-    gsap.from('#sectors', {
+    gsap.from("#sectors", {
       scrollTrigger: {
-        trigger: '#sectors',
+        trigger: "#sectors",
         once: true,
         onEnter: () => {
           setTimeout(() => {
-            countToNumber('sectors', 9, content.sectorsServiced, 500)
+            countToNumber("sectors", 9, content.sectorsServiced, 500);
           }, 250);
-        }
-      }
-    })
-  }
+        },
+      },
+    });
+  };
 
   const initImageCarousel = () => {
-    const arr = []
-    content.imageCarousel?.map(img => {
-      arr.push({ 
-        url: `${urlFor(img.image).url()}`, 
+    const arr = [];
+    content.imageCarousel?.map((img) => {
+      arr.push({
+        url: `${urlFor(img.image).url()}`,
         width: img.width,
-        ...(img.caption ? { caption: img.caption } : {} )
-      })
-    })
-    setImageCarouselArray(arr)
-  }
-  
+        ...(img.caption ? { caption: img.caption } : {}),
+      });
+    });
+    setImageCarouselArray(arr);
+  };
+
   useEffect(() => {
     const awardsInterval = setInterval(() => {
       if (activeIndex < content.awards.length - 1) {
-        setActiveIndex(activeIndex + 1)
+        setActiveIndex(activeIndex + 1);
       } else {
-        setActiveIndex(0)
+        setActiveIndex(0);
       }
-    }, 5000)
+    }, 5000);
 
-    return () => clearInterval(awardsInterval)
-  }, [activeIndex])
+    return () => clearInterval(awardsInterval);
+  }, [activeIndex]);
 
   return (
     <>
@@ -192,27 +196,29 @@ export default function Home({ content, featuredProjects }) {
       <section className="padded-section">
         <div className="container">
           <div className="work-grid">
-            {
-              featuredProjects.map(project => (
-                <WorkItem
-                  key={project._id}
-                  uid={project._id}
-                  url={`/work/${project.slug.current}`}
-                  img={urlFor(project.previewImage).url()}
-                  imgBg={project.previewImageBg}
-                  title={project.projectTitle}
-                  desc={project.projectCaption}
-                />
-              ))
-            }
+            {featuredProjects.map((project) => (
+              <WorkItem
+                key={project._id}
+                uid={project._id}
+                url={`/work/${project.slug.current}`}
+                img={urlFor(project.previewImage).url()}
+                imgBg={project.previewImageBg}
+                title={project.projectTitle}
+                desc={project.projectCaption}
+              />
+            ))}
             <div className="work-item work-item-sm work-item-see-all">
               <div className="work-item-see-all-inner">
                 <div className="work-title mt-0 mb-5 pr-5">
-                  Join us further down the rabbit hole to see some more fascinating projects
-                  <br/><br/>
+                  Join us further down the rabbit hole to see some more
+                  fascinating projects
+                  <br />
+                  <br />
                 </div>
                 <Link href="/work">
-                  <a><ButtonLink text="View All Work" /></a>
+                  <a>
+                    <ButtonLink text="View All Work" />
+                  </a>
                 </Link>
               </div>
             </div>
@@ -231,16 +237,11 @@ export default function Home({ content, featuredProjects }) {
               <div className="h2">{content.servicesTitle}</div>
             </div>
             <div className="col-lg-5 ml-auto">
-              {
-                content.services.map(service => (
-                  <div className="service-trigger" key={service._key}>
-                    <Service
-                      title={service.title}
-                      desc={service.description}
-                    />
-                  </div>
-                ))
-              }
+              {content.services.map((service) => (
+                <div className="service-trigger" key={service._key}>
+                  <Service title={service.title} desc={service.description} />
+                </div>
+              ))}
               <Link href="/services">
                 <a className="view-all-service-btn">
                   <Button text="View All Services" style="normal" />
@@ -261,25 +262,33 @@ export default function Home({ content, featuredProjects }) {
             <div className="col-lg-5 ml-auto">
               <p className="mb-5">{content.clientsDescription}</p>
               <div className="row clients-services">
-                {
-                  content.clientsIndustries.map(industry => (
-                    <div className="col-6 mb-2" key={industry._key}>
-                      <div className="h5 font-weight-regular">{industry}</div>
-                    </div>
-                  ))
-                }
+                {content.clientsIndustries.map((industry) => (
+                  <div className="col-6 mb-2" key={industry._key}>
+                    <div className="h5 font-weight-regular">{industry}</div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
           <div className="client-logos-container">
-            {
-              new Array(10).fill('').map((_, i) => (
-                <div className={`client-logo-set ${i === 9 ? 'd-none d-lg-block' : ''}`} key={i}>
-                  <div className="logo-1"><img src={urlFor(content.clientLogos[i]).url()} alt="" /></div>
-                  <div className="logo-2"><img src={urlFor(content.clientLogosSecondary[i]).url()} alt="" /></div>
+            {new Array(10).fill("").map((_, i) => (
+              <div
+                className={`client-logo-set ${
+                  i === 9 ? "d-none d-lg-block" : ""
+                }`}
+                key={i}
+              >
+                <div className="logo-1">
+                  <img src={urlFor(content.clientLogos[i]).url()} alt="" />
                 </div>
-              ))
-            }
+                <div className="logo-2">
+                  <img
+                    src={urlFor(content.clientLogosSecondary[i]).url()}
+                    alt=""
+                  />
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -300,7 +309,9 @@ export default function Home({ content, featuredProjects }) {
             <div className="about-stats-container col-lg-2 ml-auto">
               <div className="about-stat mb-4">
                 <div className="d-flex flex-row justify-content-start">
-                  <div className="h2 about-count" id="projects">{content.projectsExecuted}</div>
+                  <div className="h2 about-count" id="projects">
+                    {content.projectsExecuted}
+                  </div>
                   <div className="h2">+</div>
                 </div>
                 <div className="h5">Projects executed</div>
@@ -308,13 +319,17 @@ export default function Home({ content, featuredProjects }) {
               <div className="about-stat mb-4">
                 <div className="d-flex flex-row justify-content-start">
                   <div className="h2">0</div>
-                  <div className="h2 about-count" id="years">{content.yearsOld}</div>
+                  <div className="h2 about-count" id="years">
+                    {content.yearsOld}
+                  </div>
                 </div>
                 <div className="h5">Years old</div>
               </div>
               <div className="about-stat">
                 <div className="d-flex flex-row justify-content-start">
-                  <div className="h2 about-count" id="sectors">{content.sectorsServiced}</div>
+                  <div className="h2 about-count" id="sectors">
+                    {content.sectorsServiced}
+                  </div>
                   <div className="h2">+</div>
                 </div>
                 <div className="h5">Sectors serviced</div>
@@ -325,17 +340,13 @@ export default function Home({ content, featuredProjects }) {
       </section>
 
       {/* Home - Image Carousel Desktop */}
-      {
-        content.imageCarousel?.length > 0 &&
+      {content.imageCarousel?.length > 0 && (
         <section className="py-3">
           <div>
-            <ImageCarousel
-              animateScroll={true}
-              imgs={imageCarouselArray}
-            />
+            <ImageCarousel animateScroll={true} imgs={imageCarouselArray} />
           </div>
         </section>
-      }
+      )}
 
       {/* Home - Blog Section */}
       <section className="padded-section">
@@ -366,45 +377,97 @@ export default function Home({ content, featuredProjects }) {
       {/* Home - Award Section */}
       <section className="home-award-section bg-grey">
         <div className="container">
-            <div className="row align-items-stretch justify-content-between">
-              <div className="col-8 col-lg-4 mb-4 mb-lg-0 flex-center">
-                <img src="/images/award-image-2022.webp" alt="Award for India's Best Brand Design Studio 2022"/>
+          <div className="row align-items-stretch justify-content-between">
+            <div className="col-8 col-lg-4 mb-4 mb-lg-0 flex-center">
+              <img
+                src="/images/award_main.svg"
+                alt="Award for India's Best Brand Design Studio 2022"
+              />
+            </div>
+            <div className="col-12 col-lg-7 pb-5 mb-0 mb-md-5">
+              <div className="h2 mb-4 d-none d-sm-block">
+                {content.awardsTitle}
               </div>
-              <div className="col-12 col-lg-7 pb-5 mb-0 mb-md-5">
-                <div className="h2 mb-4 d-none d-sm-block">{content.awardsTitle}</div>
-                {/* <p className='mb-4'>{content.awardsDescription}</p> */}
-                <div className="d-flex flex-wrap">
-                  <div className="design-award d-flex mr-4">
-                    <img className="mr-2" src="/images/icons/award.svg" alt="Award Icon" />
-                    <div className="h6 mb-0">
-                      India’s Best<br/>Brand Design Studio<br/>
-                      <span className="font-weight-light">IBDA 2022</span>
-                    </div>
+              {/* <p className='mb-4'>{content.awardsDescription}</p> */}
+              <div className="d-flex flex-wrap">
+                <div className="design-award d-flex mr-4">
+                  <img
+                    className="mr-2"
+                    src="/images/icons/award.svg"
+                    alt="Award Icon"
+                  />
+                  <div className="h6 mb-0">
+                    India’s Best
+                    <br />
+                    Digital Design Studio
+                    <br />
+                    <span className="font-weight-light">IBDA 2025-26</span>
                   </div>
-                  <div className="design-award d-flex mr-4">
-                    <img className="mr-2" src="/images/icons/award.svg" alt="Award Icon" />
-                    <div className="h6 mb-0">
-                      India’s Best<br/>Brand Design Project<br/>
-                      <span className="font-weight-light">IBDA 2021</span>
-                    </div>
+                </div>
+                <div className="design-award d-flex mr-4">
+                  <img
+                    className="mr-2"
+                    src="/images/icons/award.svg"
+                    alt="Award Icon"
+                  />
+                  <div className="h6 mb-0">
+                    India’s Best
+                    <br />
+                    Digital Design Project
+                    <br />
+                    <span className="font-weight-light">IBDA 2023-24</span>
                   </div>
-                  <div className="design-award d-flex">
-                    <img className="mr-2" src="/images/icons/award.svg" alt="Award Icon" />
-                    <div className="h6 mb-0">
-                      India’s Best<br/> Design Studio<br/>
-                      <span className="font-weight-light">IBDA 2020</span>
-                    </div>
+                </div>
+                <div className="design-award d-flex">
+                  <img
+                    className="mr-2"
+                    src="/images/icons/award.svg"
+                    alt="Award Icon"
+                  />
+                  <div className="h6 mb-0">
+                    India’s Best
+                    <br />
+                    Digital Design Studio
+                    <br />
+                    <span className="font-weight-light">IBDA 2020-21</span>
+                  </div>
+                </div>
+                <div className="design-award d-flex">
+                  <img
+                    className="mr-2"
+                    src="/images/icons/award.svg"
+                    alt="Award Icon"
+                  />
+                  <div className="h6 mb-0">
+                    India’s Best
+                    <br />
+                    Brand Design Studio
+                    <br />
+                    <span className="font-weight-light">IBDA 2022-23</span>
+                  </div>
+                </div>
+                <div className="design-award d-flex">
+                  <img
+                    className="mr-2"
+                    src="/images/icons/award_2.svg"
+                    alt="Award Icon"
+                  />
+                  <div className="h6 mb-0">
+                    India’s Best
+                    <br /> Design Project
+                    <br />
+                    <span className="font-weight-light">IBDA 2021-22</span>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
         </div>
       </section>
 
       <FooterCTA />
 
       <style jsx>{`
-      
         .view-all-service-btn {
           display: inline-block;
           margin-top: 25px;
@@ -416,8 +479,61 @@ export default function Home({ content, featuredProjects }) {
           overflow: hidden;
         }
 
-        @media screen and (max-width: 992px) {
+        /* Main award image - remove extra space */
+        .home-award-section .flex-center {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0;
+        }
 
+        .home-award-section .flex-center img {
+          max-width: 100%;
+          height: auto;
+          display: block;
+        }
+
+        /* Awards section - clean grid layout */
+        .home-award-section .d-flex.flex-wrap {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-gap: 40px 80px;
+          margin: 0;
+        }
+
+        .home-award-section .design-award {
+          display: flex !important;
+          flex-direction: column;
+
+          background: transparent;
+          border: none;
+          padding: 0;
+          margin: 0 !important;
+          gap: 10px;
+        }
+
+        /* Target only the last award item image */
+        .home-award-section .design-award:last-child img {
+          width: 45px !important;
+          height: 45px !important;
+          margin: 0 !important;
+          object-fit: contain;
+        }
+
+        .home-award-section .design-award .h6 {
+          line-height: 1.4;
+          margin: 0;
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 768px) {
+          .home-award-section .d-flex.flex-wrap {
+            grid-template-columns: 1fr;
+            grid-gap: 10px;
+          }
+        }
+
+        @media screen and (max-width: 992px) {
           .about-stats-container {
             display: flex;
           }
@@ -435,18 +551,14 @@ export default function Home({ content, featuredProjects }) {
             font-size: 14px;
             font-weight: 400;
           }
-
         }
 
         @media screen and (max-width: 550px) {
-
           .home-award-section {
             padding-top: 42px;
           }
         }
-      
       `}</style>
-    
     </>
-  )
+  );
 }
