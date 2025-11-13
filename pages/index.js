@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import { gsap, ScrollTrigger, TweenMax, TimelineMax } from "gsap/dist/gsap";
 import Button from "../components/Button";
 import WorkItem from "../components/WorkItem";
 import Service from "../components/Service";

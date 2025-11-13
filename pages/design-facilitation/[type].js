@@ -187,21 +187,15 @@ export default function DesignFacilitationInner({ content }) {
       )}
 
       {/* Past Workshops */}
-      {content.pastWorkshopsItems?.length > 0 &&
+      {content.pastWorkshopsItems?.length > 0 && (
         <section className="padded-section">
           <div className="container">
             <div className="h2 mb-80">{content.pastWorkshopsTitle}</div>
             <div className="row align-items-center justify-content-center">
               {content.pastWorkshopsItems.map((item, index) => (
-                <div
-                  className="facilitation-grid mb-6"
-                  key={item._key}
-                >
+                <div className="facilitation-grid mb-6" key={item._key}>
                   <div className={`${index % 2 === 0 ? "" : "order-md-2"}`}>
-                    <img
-                      src={urlFor(item.image).url()}
-                      alt={item.title}
-                    />
+                    <img src={urlFor(item.image).url()} alt={item.title} />
                   </div>
                   <div>
                     <div className="h3 mb-4">{item.title}</div>
@@ -212,7 +206,7 @@ export default function DesignFacilitationInner({ content }) {
             </div>
           </div>
         </section>
-      }
+      )}
 
       {/* Footer CTA */}
       <section className="padded-section bg-grey">
