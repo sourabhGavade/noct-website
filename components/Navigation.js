@@ -456,40 +456,30 @@ export default function Navigation({ awards }) {
             </Link>
           </div>
         </div>
-        {/* {awards && (
-          <div className="awards-slider-container">
-            {awards.map((award, index) => (
-              <div
-                key={index}
-                className={index === activeIndex ? "slide active" : "slide"}
-                style={{
-                  transform:
-                    index === activeIndex
-                      ? "translateY(0)"
-                      : "translateY(20px)",
-                  opacity: index === activeIndex ? 1 : 0,
-                  transition:
-                    "transform 0.6s ease-in-out, opacity 0.6s ease-in-out",
-                }}
-              >
-                <img src={urlFor(award).url()} alt="" className="invert" />
-              </div>
-            ))}
-          </div>
-        )} */}
+
         <div className="fs-nav-footer">
-          <div className="fs-nav-award">
-            <img
-              className="mr-2"
-              src="/images/icons/award.svg"
-              alt="Award Icon"
-            />
-            <div className="h6 mb-0">
-              India’s Best Brand Design Studio
-              <br />
-              <span className="font-weight-light">IBDA 2022</span>
+          {awards && (
+            <div className="awards-slider-container fs-nav-award">
+              {awards.map((award, index) => (
+                <div
+                  key={index}
+                  className={index === activeIndex ? "slide active" : "slide"}
+                  style={{
+                    transform:
+                      index === activeIndex
+                        ? "translateY(0)"
+                        : "translateY(20px)",
+                    opacity: index === activeIndex ? 1 : 0,
+                    transition:
+                      "transform 0.6s ease-in-out, opacity 0.6s ease-in-out",
+                  }}
+                >
+                  <img src={urlFor(award).url()} alt="" className="invert" />
+                </div>
+              ))}
             </div>
-          </div>
+          )}
+
           <div className="fs-nav-social">
             <a
               className="footer-link-social instagram"
@@ -600,7 +590,7 @@ export default function Navigation({ awards }) {
         }
 
         .fs-nav-award img {
-          width: 70px;
+          width: 280px;
         }
       `}</style>
     </>

@@ -14,8 +14,8 @@ import "owl.carousel/dist/assets/owl.theme.default.css";
 import { RecoilRoot } from "recoil";
 
 MyApp.getInitialProps = async () => {
-  const content = await sanityClient.fetch(`*[_type=="home"][0]{ awards }`);
-  return { awards: content?.awards || [] };
+  const content = await sanityClient.fetch(`*[_type=="home"][0]{ awardsNavigation }`);
+  return { awards: content?.awardsNavigation || [] };
 };
 
 function MyApp({ Component, pageProps, awards }) {
