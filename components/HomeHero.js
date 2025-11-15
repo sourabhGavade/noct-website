@@ -110,7 +110,15 @@ export default function HomeHero({ awards }) {
               <div className="awards-slider-container">
                 {
                   awards.map((award, index) => (
-                    <div className={index === activeIndex ? 'slide active' : 'slide'}>
+                    <div 
+                      key={index}
+                      className={index === activeIndex ? 'slide active' : 'slide'}
+                      style={{
+                        transform: index === activeIndex ? 'translateY(0)' : 'translateY(20px)',
+                        opacity: index === activeIndex ? 1 : 0,
+                        transition: 'transform 0.6s ease-in-out, opacity 0.6s ease-in-out'
+                      }}
+                    >
                       <img src={urlFor(award).url()} alt="" />
                     </div>
                   ))

@@ -4,5 +4,5 @@ export default sanityClient({
     projectId: "gaq4tq7o",
     dataset: "production",
     useCdn: true,
-    apiVersion: '2021-04-20'
+    apiVersion: '2023-05-03' // Updated to newer API version
 })
