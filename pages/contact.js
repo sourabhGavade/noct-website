@@ -45,7 +45,7 @@ export default function Contact() {
                 <div className="h5 mb-2">Mumbai</div>
                 <p>
                   Gokuldham Society,<br/>
-                  Mumbai, Maharashtra - 400023
+                  Mumbai, Maharashtra - 400063
                 </p>
               </div>
             </div>
