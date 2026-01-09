@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
+import { gsap, ScrollTrigger } from "gsap/dist/gsap"
 import Button from '../components/Button'
 import LetteringTitle from '../components/LetteringTitle'
 import DropdownCard from '../components/DropdownCard'

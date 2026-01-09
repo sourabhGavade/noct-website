@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Head from "next/head";
+import { gsap, ScrollTrigger, TweenMax } from "gsap/dist/gsap";
 import FooterCTA from "../components/FooterCTA";
 import LetteringTitle from "../components/LetteringTitle";
 import Service from "../components/Service";
 import TestimonialCard from "../components/TestimonialCard";
 import ButtonLink from "../components/ButtonLink";
 import initFadeUp from "../utils/initFadeUp";
-import sanityClient from '../client'
-import urlFor from '../utils/urlFor'
+import sanityClient from "../client";
+import urlFor from "../utils/urlFor";
 
 export async function getStaticProps() {
   const content = await sanityClient.fetch(`*[_type=="services"][0]`);
@@ -44,10 +45,14 @@ export default function Services({ content }) {
       .querySelector(".mobile-carousel")
       .addEventListener("scroll", () => {
         const index = Math.round(
-          (scroller.scrollLeft / scroller.scrollWidth) * content.collaboration.length
+          (scroller.scrollLeft / scroller.scrollWidth) *
+            content.collaboration.length
         );
         const itemWidth = scroller.scrollWidth / content.collaboration.length;
-        if (scroller.scrollLeft <= itemWidth * (content.collaboration.length - 2) + 40) {
+        if (
+          scroller.scrollLeft <=
+          itemWidth * (content.collaboration.length - 2) + 40
+        ) {
           setMcIndex(index);
         } else {
           setMcIndex(content.collaboration.length - 1);
@@ -207,16 +212,11 @@ export default function Services({ content }) {
                   meaningful design.
                 </p>
               </div>
-              {
-                content.researchStrategy.map(item => (
-                  <div className='service-trigger-1' key={item._key}>
-                    <Service
-                      title={item.title}
-                      desc={item.description}
-                    />
-                  </div>
-                ))
-              }
+              {content.researchStrategy.map((item) => (
+                <div className="service-trigger-1" key={item._key}>
+                  <Service title={item.title} desc={item.description} />
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -246,16 +246,11 @@ export default function Services({ content }) {
                   them.
                 </p>
               </div>
-              {
-                content.productDesign.map(item => (
-                  <div className='service-trigger-2' key={item._key}>
-                    <Service
-                      title={item.title}
-                      desc={item.description}
-                    />
-                  </div>
-                ))
-              }
+              {content.productDesign.map((item) => (
+                <div className="service-trigger-2" key={item._key}>
+                  <Service title={item.title} desc={item.description} />
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -287,16 +282,11 @@ export default function Services({ content }) {
                   a brand is like being true to its nature.
                 </p>
               </div>
-              {
-                content.brandCommunication.map(item => (
-                  <div className='service-trigger-3' key={item._key}>
-                    <Service
-                      title={item.title}
-                      desc={item.description}
-                    />
-                  </div>
-                ))
-              }
+              {content.brandCommunication.map((item) => (
+                <div className="service-trigger-3" key={item._key}>
+                  <Service title={item.title} desc={item.description} />
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -414,25 +404,25 @@ export default function Services({ content }) {
         <div className="container" data-fade-up>
           <div className="h2 mb-100">Here's how we collaborate with you</div>
           <div className="grid-3 mobile-carousel">
-            {
-              content.collaboration.map(item => (
-                <div className="services-collaborate" key={item._key}>
-                  <div className="icon services-collaborate__icon mb-4">
-                    <img src={urlFor(item.image).url()} alt="" />
-                  </div>
-                  <div className="h4 mb-4">{item.title}</div>
-                  <p>{item.description}</p>
+            {content.collaboration.map((item) => (
+              <div className="services-collaborate" key={item._key}>
+                <div className="icon services-collaborate__icon mb-4">
+                  <img src={urlFor(item.image).url()} alt="" />
                 </div>
-              ))
-            }
+                <div className="h4 mb-4">{item.title}</div>
+                <p>{item.description}</p>
+              </div>
+            ))}
           </div>
           <div className="mc-dots d-flex d-md-none">
-            {new Array(content.collaboration.length).fill("0").map((item, index) => (
-              <span
-                className={`mc-dot ${mcIndex === index ? "active" : ""}`}
-                key={`mc${index}`}
-              ></span>
-            ))}
+            {new Array(content.collaboration.length)
+              .fill("0")
+              .map((item, index) => (
+                <span
+                  className={`mc-dot ${mcIndex === index ? "active" : ""}`}
+                  key={`mc${index}`}
+                ></span>
+              ))}
           </div>
         </div>
       </section>
