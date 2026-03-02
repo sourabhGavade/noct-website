@@ -25,7 +25,7 @@ const ImageCarousel = dynamic(() => import("../components/ImageCarousel"), {
 export async function getStaticProps() {
   const content = await sanityClient.fetch(`*[_type=="home"][0]`);
   const featuredProjects = await sanityClient.fetch(
-    `*[_type=="projects" && isFeatured == true] | order(priority asc) {_id, projectTitle, slug, projectCaption, previewImage, previewImageBg}`
+    `*[_type=="projects" && isFeatured == true] | order(priority asc) {_id, projectTitle, slug, projectCaption, previewImage, previewImageBg}`,
   );
 
   return {
@@ -46,7 +46,13 @@ export default function Home({ content, featuredProjects }) {
     initFadeUp();
     initImageCarousel();
 
+    // Start client logo crossfade animation after a short delay
+    const logoTimer = setTimeout(() => {
+      initClientLogoAnimation();
+    }, 2000);
+
     return () => {
+      clearTimeout(logoTimer);
       ScrollTrigger.getAll().forEach((st) => st.kill());
     };
   }, []);
@@ -98,7 +104,7 @@ export default function Home({ content, featuredProjects }) {
             ".service-trigger",
             0.4,
             { opacity: 0, y: 40 },
-            0.06
+            0.06,
           );
         },
       },
@@ -108,18 +114,6 @@ export default function Home({ content, featuredProjects }) {
       delay: 0.1,
       ease: "ease",
       id: "serviceScrollTrigger",
-    });
-
-    gsap.to(".client-logos-container", {
-      scrollTrigger: {
-        trigger: ".client-logos-container",
-        start: "-=800",
-        onEnter: () => {
-          setTimeout(() => {
-            initClientLogoAnimation();
-          }, 1000);
-        },
-      },
     });
 
     gsap.from("#projects", {
