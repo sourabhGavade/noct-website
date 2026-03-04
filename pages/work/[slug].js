@@ -67,15 +67,6 @@ export default function ProjectPage({ project, allProjects }) {
     // Check if project requires password protection
     if (project.password && project.password.trim() !== "") {
       setIsPasswordProtected(true);
-
-      // Check if already authenticated for this project in session storage
-      const sessionKey = `project_auth_${project.slug.current}`;
-      const isSessionAuthenticated =
-        sessionStorage.getItem(sessionKey) === "true";
-
-      if (isSessionAuthenticated) {
-        setIsAuthenticated(true);
-      }
     } else {
       setIsAuthenticated(true);
     }
@@ -121,10 +112,6 @@ export default function ProjectPage({ project, allProjects }) {
 
     // Simple password comparison (you can enhance this with hashing if needed)
     if (enteredPassword === project.password) {
-      // Store authentication in session storage
-      const sessionKey = `project_auth_${project.slug.current}`;
-      sessionStorage.setItem(sessionKey, "true");
-
       setIsAuthenticated(true);
       setPasswordError(null);
     } else {
