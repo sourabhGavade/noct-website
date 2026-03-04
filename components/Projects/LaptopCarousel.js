@@ -26,8 +26,12 @@ export default function LaptopCarousel({ data }) {
           loop={true}
           center={true}
           items={1}
-          margin={200}
-          stagePadding={document.querySelector(".container").offsetLeft + 240}
+          margin={windowSize.width > 769 ? 200 : 30}
+          stagePadding={
+            windowSize.width > 769
+              ? document.querySelector(".container").offsetLeft + 240
+              : 20
+          }
           nav={true}
           slidetransition={"ease-in-out"}
           navSpeed={700}
