@@ -21,21 +21,21 @@ import PasswordProtection from "../../components/PasswordProtection";
 // No SSR Components | Owl Carousel
 const ImagesCarousel = dynamic(
   () => import("../../components/Projects/ImagesCarousel"),
-  { ssr: false }
+  { ssr: false },
 );
 const SectionalCarousel = dynamic(
   () => import("../../components/Projects/SectionalCarousel"),
-  { ssr: false }
+  { ssr: false },
 );
 
 const LaptopCarousel = dynamic(
   () => import("../../components/Projects/LaptopCarousel"),
-  { ssr: false }
+  { ssr: false },
 );
 
 const PhoneCarousel = dynamic(
   () => import("../../components/Projects/PhoneCarousel"),
-  { ssr: false }
+  { ssr: false },
 );
 
 export default function ProjectPage({ project, allProjects }) {
@@ -501,10 +501,10 @@ export default function ProjectPage({ project, allProjects }) {
 
 export async function getStaticProps(context) {
   const project = await sanityClient.fetch(
-    `*[_type=="projects" && slug.current=="${context.params.slug}"]`
+    `*[_type=="projects" && slug.current=="${context.params.slug}"]`,
   );
   const allProjects = await sanityClient.fetch(
-    `*[_type=="projects"] | order(priority asc) {_id, projectTitle, slug, previewImage, previewImageBg}`
+    `*[_type=="projects"] | order(priority asc) {_id, projectTitle, slug, previewImage, previewImageBg}`,
   );
 
   return {
