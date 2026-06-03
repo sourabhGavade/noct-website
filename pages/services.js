@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Head from "next/head";
-import { gsap, ScrollTrigger, TweenMax } from "gsap/dist/gsap";
+import gsap, { TweenMax } from "gsap/dist/gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 import FooterCTA from "../components/FooterCTA";
 import LetteringTitle from "../components/LetteringTitle";
 import Service from "../components/Service";
