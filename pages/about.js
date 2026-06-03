@@ -2,7 +2,10 @@ import { useState, useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { gsap, ScrollTrigger } from "gsap/dist/gsap";
+import gsap from "gsap/dist/gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 import Button from "../components/Button";
 import LetteringTitle from "../components/LetteringTitle";
 import Slider from "../components/Slider";
