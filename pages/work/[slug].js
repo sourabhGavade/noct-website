@@ -243,7 +243,7 @@ export default function ProjectPage({ project, allProjects }) {
             </div>
           </section>
 
-          {project.projectSections.map((section, index) => (
+          {project.projectSections.map((section) => (
             <div key={section._key}>
               {section._type === "paraWithHeading" && (
                 <ParaWithHeading data={section} />
