@@ -418,6 +418,7 @@ export default function ProjectPage({ project, allProjects }) {
         .project-hero-tagline {
           max-width: 992px;
           margin: 0 auto;
+          text-transform: capitalize;
         }
 
         .project-hero-img-desktop {
