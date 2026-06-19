@@ -15,7 +15,7 @@ export default function Embed({ data }) {
         }}
       >
         <div className={width === "contained" ? "container" : ""}>
-          <video className="embed-video" controls playsInline>
+          <video className="embed-video" autoPlay muted loop playsInline>
             <source src={embedUrl} type="video/mp4" />
           </video>
           {caption && <div className="img-caption">{caption}</div>}
