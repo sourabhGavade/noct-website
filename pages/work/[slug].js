@@ -241,6 +241,14 @@ export default function ProjectPage({ project, allProjects }) {
                 </div>
               </div>
             </div>
+
+            {/* Featured Image */}
+            <section className="project-featured-image">
+              <img
+                src={urlFor(project.featuredImage).url()}
+                alt={project.featuredImageAlt}
+              />
+            </section>
           </section>
 
           {project.projectSections.map((section) => (
