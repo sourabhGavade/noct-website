@@ -46,6 +46,7 @@ export default function Footer() {
             <div className="footer-links">
               <Link href="/work"><a><div className="footer-link">Work</div></a></Link>
               <Link href="/services"><a><div className="footer-link">Services</div></a></Link>
+              <Link href="/industries"><a><div className="footer-link">Industries</div></a></Link>
               <Link href="/about"><a><div className="footer-link">About</div></a></Link>
               <Link href="/process/ux"><a><div className="footer-link">Process</div></a></Link>
             </div>
