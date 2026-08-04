@@ -60,15 +60,17 @@ export default function Navigation({ awards }) {
   const router = useRouter();
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       clearNavActive();
       const page = getActiveNavPage(router.pathname);
-      if (page) {
-        document.querySelector(".navbar-active").classList.add(page);
+      const activeEl = document.querySelector(".navbar-active");
+      if (page && activeEl) {
+        activeEl.classList.add(page);
         positionNavDot(page);
       }
     }, 500);
     initScrollDirection();
+    return () => clearTimeout(timer);
   }, [router]);
 
   useEffect(() => {
@@ -162,25 +164,28 @@ export default function Navigation({ awards }) {
   };
 
   const navbarHover = (page) => {
-    document.querySelector(".navbar-active").classList.remove("animate");
+    const activeEl = document.querySelector(".navbar-active");
+    if (!activeEl) return;
+    activeEl.classList.remove("animate");
     if (active === page) {
       return;
     }
     clearNavActive();
-    document.querySelector(".navbar-active").classList.add("animate", page);
+    activeEl.classList.add("animate", page);
     positionNavDot(page);
     setActive(page);
   };
 
   const navbarReset = () => {
     clearNavActive();
+    const activeEl = document.querySelector(".navbar-active");
+    if (!activeEl) return;
     const page = getActiveNavPage(router.pathname);
     if (page) {
-      document.querySelector(".navbar-active").classList.add(page);
+      activeEl.classList.add(page);
       positionNavDot(page);
     } else {
-      document.querySelector(".navbar-active").style.transform =
-        "translate3D(0, 0, 0)";
+      activeEl.style.transform = "translate3D(0, 0, 0)";
     }
   };
 
@@ -350,6 +355,19 @@ export default function Navigation({ awards }) {
             <div className="fs-nav-gooey" />
             <Link href="/services">
               <a className="fs-nav-link">Services</a>
+            </Link>
+          </div>
+          <div
+            className={`fs-nav-inner ${
+              router.pathname === "/industries" ||
+              router.pathname.startsWith("/industries/")
+                ? "active"
+                : ""
+            }`}
+          >
+            <div className="fs-nav-gooey" />
+            <Link href="/industries">
+              <a className="fs-nav-link">Industries</a>
             </Link>
           </div>
           <div
