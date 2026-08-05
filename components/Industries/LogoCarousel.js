@@ -16,7 +16,7 @@ export default function LogoCarousel({ heading, logos = [] }) {
   return (
     <section className="logo-carousel tw-overflow-hidden tw-py-10 md:tw-py-16">
       {heading && (
-        <p className="tw-mb-8 md:tw-mb-10 tw-text-center tw-text-[11px] md:tw-text-[12px] tw-font-normal tw-uppercase tw-tracking-[0.14em] tw-leading-none tw-text-noct-muted">
+        <p className="tw-mb-8 md:tw-mb-[45px] tw-text-center tw-text-[11px] md:tw-text-[12px] tw-font-light tw-uppercase tw-tracking-[7%] tw-leading-[140%] tw-text-noct-muted">
           {heading}
         </p>
       )}
@@ -29,12 +29,12 @@ export default function LogoCarousel({ heading, logos = [] }) {
             return (
               <div
                 key={`${logo._key || logo.asset?._ref || "logo"}-${index}`}
-                className="logo-carousel__item tw-flex tw-shrink-0 tw-items-center tw-justify-center tw-px-6 md:tw-px-10"
+                className="logo-carousel__item tw-flex tw-shrink-0 tw-items-center tw-justify-center tw-px-6 md:tw-px-[72px]"
               >
                 <img
                   src={src}
                   alt={logo.alt || ""}
-                  className="tw-h-[28px] md:tw-h-[36px] tw-w-auto tw-max-w-[140px] md:tw-max-w-[180px] tw-object-contain tw-opacity-70"
+                  className="tw-h-[28px] md:tw-h-[36px] tw-w-auto tw-max-w-[140px] md:tw-max-w-[120px] tw-object-contain"
                 />
               </div>
             );

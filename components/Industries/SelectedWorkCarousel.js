@@ -45,9 +45,9 @@ export default function SelectedWorkCarousel({ heading, items = [] }) {
   if (!items?.length) return null;
 
   return (
-    <section className="selected-work-carousel tw-pb-16 md:tw-pb-24">
+    <section className="selected-work-carousel tw-py-16 md:tw-py-[120px]">
       <div className="container">
-        <div className="tw-mb-6 md:tw-mb-8 tw-flex tw-items-center tw-justify-between tw-gap-4">
+        <div className="tw-mb-6 md:tw-mb-[64px] tw-flex tw-items-center tw-justify-between tw-gap-4">
           {heading && (
             <h2 className="tw-mb-0 tw-text-[24px] md:tw-text-[40px] lg:tw-text-[48px] tw-font-bold tw-leading-[1.15] tw-tracking-[-0.02em] tw-text-white">
               {heading}
@@ -66,7 +66,7 @@ export default function SelectedWorkCarousel({ heading, items = [] }) {
                   : "tw-cursor-default tw-text-noct-muted tw-opacity-40"
               }`}
             >
-              <HiChevronLeft size={28} />
+              <HiChevronLeft size={40} />
             </button>
             <button
               type="button"
@@ -79,7 +79,7 @@ export default function SelectedWorkCarousel({ heading, items = [] }) {
                   : "tw-cursor-default tw-text-noct-muted tw-opacity-40"
               }`}
             >
-              <HiChevronRight size={28} />
+              <HiChevronRight size={40} />
             </button>
           </div>
         </div>
@@ -90,10 +90,7 @@ export default function SelectedWorkCarousel({ heading, items = [] }) {
           className="selected-work-carousel__scroller tw-flex tw-gap-4 md:tw-gap-5 tw-overflow-x-auto tw-scroll-smooth tw-pb-2"
         >
           {items.map((item, index) => (
-            <SelectedWorkCard
-              key={item._key || `work-${index}`}
-              item={item}
-            />
+            <SelectedWorkCard key={item._key || `work-${index}`} item={item} />
           ))}
         </div>
       </div>

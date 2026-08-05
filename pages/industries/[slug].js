@@ -187,14 +187,14 @@ export default function IndustryPage({ industry }) {
           />
 
           <div className="container tw-relative tw-z-10">
-            <div className="tw-max-w-[720px]">
-              <p className="tw-mb-4 md:tw-mb-5 tw-text-[12px] md:tw-text-[14px] tw-font-normal tw-uppercase tw-tracking-[0.12em] tw-leading-none tw-text-noct-muted">
+            <div className="tw-max-w-[720px] tw-space-y-[12px]">
+              <p className="tw-text-[12px] md:tw-text-[14px] tw-font-light tw-uppercase tw-tracking-[7%] tw-leading-[160%] tw-text-noct-muted">
                 {industry.industryTitle}
               </p>
-              <h1 className="tw-mb-5 md:tw-mb-6 tw-max-w-[640px] tw-text-[32px] md:tw-text-[56px] lg:tw-text-[64px] tw-font-bold tw-leading-[1.15] tw-tracking-[-0.02em] tw-text-white">
+              <h1 className="tw-text-[32px] mb-0 md:tw-text-[56px] lg:tw-text-[64px] tw-leading-[130%] tw-tracking-[0.28%] tw-text-white">
                 {details.mainSubtitle}
               </h1>
-              <p className="tw-max-w-[560px] tw-text-[14px] md:tw-text-[18px] lg:tw-text-[20px] tw-font-light tw-leading-[1.6] tw-tracking-[0.02em] tw-text-noct-muted">
+              <p className="tw-text-[14px] md:tw-text-[18px] lg:tw-text-[22px] tw-font-light tw-leading-[170%] tw-tracking-[2%] tw-text-noct-muted">
                 {details.mainDescription}
               </p>
             </div>
