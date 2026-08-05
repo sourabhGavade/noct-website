@@ -61,7 +61,7 @@ export default function TestimonialSection({ heading, items = [] }) {
   if (!items?.length) return null;
 
   return (
-    <section className="testimonial-section tw-bg-noct-dark tw-pt-16 md:tw-pt-[250px] tw-text-white">
+    <section className="testimonial-section tw-bg-noct-dark tw-pt-[130px] md:tw-pt-[250px] tw-text-white">
       <div className="container">
         <div className="tw-mb-6 md:tw-mb-8 lg:tw-mb-[64px] tw-flex tw-items-center tw-justify-between tw-gap-4">
           {heading && (
@@ -139,7 +139,7 @@ function TestimonialCard({ item }) {
     <div
       className={
         imageSrc
-          ? "testimonial-card tw-grid tw-shrink-0 tw-w-[min(753px,85vw)] tw-grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] tw-gap-4 md:tw-gap-6 lg:tw-gap-8 tw-items-stretch"
+          ? "testimonial-card tw-grid tw-shrink-0 tw-w-[min(753px,140vw)] tw-grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] tw-gap-4 md:tw-gap-6 lg:tw-gap-8 tw-items-stretch"
           : "testimonial-card tw-flex tw-shrink-0 tw-w-[min(240px,72vw)] md:tw-w-[425px] tw-flex-col"
       }
     >
@@ -164,7 +164,7 @@ function TestimonialCard({ item }) {
           </div>
         )}
 
-        <p className="tw-mb-6 md:tw-mb-8 tw-text-[13px] md:tw-max-w-[360px] md:tw-text-[16px] lg:tw-text-[22px] tw-font-light tw-leading-[1.55] tw-tracking-[0.01em] tw-text-noct-muted">
+        <p className="tw-mb-6 md:tw-mb-8 tw-text-[14px] md:tw-max-w-[360px] md:tw-text-[16px] lg:tw-text-[22px] tw-font-light tw-leading-[1.55] tw-tracking-[0.01em] tw-text-noct-muted">
           {item.quote}
         </p>
 

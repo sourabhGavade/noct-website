@@ -171,7 +171,7 @@ export default function IndustryPage({ industry }) {
 
       <div className="tw-relative tw-bg-noct-dark tw-text-white">
         {/* Hero */}
-        <section className="tw-relative tw-flex tw-items-center tw-min-h-[70vh] md:tw-min-h-[80vh] md:tw-pt-[160px] tw-pb-20 md:tw-pb-[100px]">
+        <section className="tw-relative tw-flex tw-items-center tw-min-h-[50vh] md:tw-min-h-[80vh] md:tw-pt-[160px] tw-pt-[150px] tw-pb-20 md:tw-pb-[100px]">
           {/* Anchored to section top so it bleeds behind the transparent navbar */}
           <img
             src="/graphic.svg"
@@ -191,7 +191,7 @@ export default function IndustryPage({ industry }) {
               <p className="tw-text-[12px] md:tw-text-[14px] tw-font-light tw-uppercase tw-tracking-[7%] tw-leading-[160%] tw-text-noct-muted">
                 {industry.industryTitle}
               </p>
-              <h1 className="tw-text-[32px] mb-0 md:tw-text-[56px] lg:tw-text-[64px] tw-leading-[130%] tw-tracking-[0.28%] tw-text-white">
+              <h1 className="tw-text-[28px] mb-0 md:tw-text-[56px] lg:tw-text-[64px] tw-leading-[130%] tw-tracking-[0.28%] tw-text-white">
                 {details.mainSubtitle}
               </h1>
               <p className="tw-text-[14px] md:tw-text-[18px] lg:tw-text-[22px] tw-font-light tw-leading-[170%] tw-tracking-[2%] tw-text-noct-muted">

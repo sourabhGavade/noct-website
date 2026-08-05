@@ -15,7 +15,7 @@ export default function ChallengeSection({ heading, items = [] }) {
   });
 
   return (
-    <section className="challenge-section tw-bg-noct-dark tw-pt-16 md:tw-pt-[200px] tw-text-white">
+    <section className="challenge-section tw-bg-noct-dark tw-pt-[100px] md:tw-pt-[200px] tw-text-white">
       <div className="container">
         {heading && (
           <h2 className="tw-mb-8 md:tw-mb-12 tw-text-[24px] md:tw-text-[40px] lg:tw-text-[48px] tw-font-bold tw-leading-[1.15] tw-tracking-[-0.02em] tw-text-white">

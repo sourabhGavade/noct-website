@@ -18,11 +18,11 @@ export default function SelectedWorkCard({ item }) {
   const hasLink = Boolean(link);
 
   const titleContent = (
-    <span className="tw-inline tw-text-[14px] md:tw-text-[16px] tw-font-medium tw-leading-[1.4] tw-tracking-[0.01em] tw-text-white">
+    <span className="tw-inline tw-text-[14px] md:tw-text-[22px] tw-font-medium tw-leading-[160%] tw-tracking-[0.01em] tw-text-white">
       {title}
       {hasLink && (
         <HiArrowRight
-          className="selected-work-card__arrow tw-ml-1.5 tw-inline-block tw-align-middle tw-shrink-0 tw-opacity-100 md:tw-opacity-0 md:tw-transition-opacity md:tw-duration-200 md:group-hover:tw-opacity-100"
+          className="selected-work-card__arrow tw-ml-3 tw-inline-block tw-align-middle tw-shrink-0 tw-opacity-100 md:tw-opacity-0 md:tw-transition-opacity md:tw-duration-200 md:group-hover:tw-opacity-100"
           size={16}
           aria-hidden="true"
         />
@@ -35,7 +35,7 @@ export default function SelectedWorkCard({ item }) {
       <div
         role="img"
         aria-label={title}
-        className="selected-work-card__media tw-relative tw-aspect-[3/4] tw-w-full tw-overflow-hidden tw-bg-cover tw-bg-center"
+        className="selected-work-card__media tw-relative tw-h-[320px] md:tw-h-[520px] tw-w-full tw-overflow-hidden tw-bg-cover tw-bg-center"
         style={{
           backgroundColor: accent,
           backgroundImage: imageSrc ? `url(${imageSrc})` : undefined,
@@ -53,7 +53,7 @@ export default function SelectedWorkCard({ item }) {
 
         {/* Accent gradient from Sanity — transparent → solid color from bottom */}
         <div
-          className="tw-absolute tw-inset-x-0 tw-bottom-0 tw-z-[2] tw-flex tw-flex-col tw-justify-end tw-gap-3 tw-px-4 tw-pb-5 tw-pt-16 md:tw-gap-3 md:tw-px-6 md:tw-pb-7 md:tw-pt-[116px]"
+          className="tw-absolute tw-inset-x-0 tw-bottom-0 tw-z-[2] tw-flex tw-flex-col tw-justify-end tw-gap-3 tw-px-4 tw-pb-5 tw-pt-16 md:tw-gap-3 md:tw-px-6 md:tw-pb-7 md:tw-pt-[100px]"
           style={{
             background: `linear-gradient(180deg, transparent 0%, ${accent} 50%, ${accent} 100%)`,
           }}
@@ -64,9 +64,9 @@ export default function SelectedWorkCard({ item }) {
             </span>
           )}
           {hasLink ? (
-            <h4 className="">{titleContent}</h4>
+            <span className="tw-inline tw-font-bold">{titleContent}</span>
           ) : (
-            <h4 className="">{titleContent}</h4>
+            <p className="tw-inline tw-font-bold">{titleContent}</p>
           )}
         </div>
       </div>
@@ -74,7 +74,7 @@ export default function SelectedWorkCard({ item }) {
   );
 
   const className =
-    "selected-work-card tw-group tw-block tw-shrink-0 tw-w-[78vw] sm:tw-w-[340px] md:tw-w-[360px] lg:tw-w-[384px] tw-no-underline";
+    "selected-work-card tw-group tw-block tw-shrink-0 tw-w-[240px] md:tw-w-[384px] tw-no-underline";
 
   if (hasLink) {
     const isExternal = /^https?:\/\//i.test(link);

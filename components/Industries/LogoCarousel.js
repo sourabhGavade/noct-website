@@ -14,9 +14,9 @@ export default function LogoCarousel({ heading, logos = [] }) {
   if (!logos?.length) return null;
 
   return (
-    <section className="logo-carousel tw-overflow-hidden tw-py-10 md:tw-py-16">
+    <section className="logo-carousel tw-overflow-hidden tw-py-8 md:tw-py-16">
       {heading && (
-        <p className="tw-mb-8 md:tw-mb-[45px] tw-text-center tw-text-[11px] md:tw-text-[12px] tw-font-light tw-uppercase tw-tracking-[7%] tw-leading-[140%] tw-text-noct-muted">
+        <p className="tw-mb-8 md:tw-mb-[45px] max-sm:tw-max-w-[170px] mx-auto tw-text-center tw-text-[12px] tw-font-light tw-uppercase tw-tracking-[7%] tw-leading-[140%] tw-text-noct-muted">
           {heading}
         </p>
       )}
@@ -34,7 +34,7 @@ export default function LogoCarousel({ heading, logos = [] }) {
                 <img
                   src={src}
                   alt={logo.alt || ""}
-                  className="tw-h-[28px] md:tw-h-[36px] tw-w-auto tw-max-w-[140px] md:tw-max-w-[120px] tw-object-contain"
+                  className="tw-h-[15px] md:tw-h-[36px] tw-w-auto tw-max-w-[70px] md:tw-max-w-[120px] tw-object-contain"
                 />
               </div>
             );
