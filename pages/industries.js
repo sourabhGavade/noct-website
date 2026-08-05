@@ -214,7 +214,7 @@ export default function Industries({ content }) {
           <section className="padded-section">
             <div className="container md:tw-space-y-[64px] tw-space-y-[40px] max-sm:tw-px-[24px]">
               <h2 className="text-white">{content.moreIndustries.title}</h2>
-              <div className="tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-gap-y-8 lg:tw-gap-y-12 tw-gap-x-20">
+              <div className="tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-gap-y-8 lg:tw-gap-y-12 tw-gap-x-[116px]">
                 {content.moreIndustries.items.map((entry, i) => (
                   <div key={`${entry.title}-${i}`} className="tw-space-y-[8px]">
                     <h4 className="md:tw-text-[24px] tw-text-[14px] tw-font-bold text-white tw-leading-[130%]">
