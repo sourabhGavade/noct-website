@@ -5,17 +5,9 @@ import sanityClient from "../../client";
 import LogoCarousel from "../../components/Industries/LogoCarousel";
 import ChallengeSection from "../../components/Industries/ChallengeSection";
 import ConnectSection from "../../components/Industries/ConnectSection";
-
-const SelectedWorkCarousel = dynamic(
-  () => import("../../components/Industries/SelectedWorkCarousel"),
-);
-const HelpSection = dynamic(
-  () => import("../../components/Industries/HelpSection"),
-);
-
-const TestimonialSection = dynamic(
-  () => import("../../components/Industries/TestimonialSection"),
-);
+import SelectedWorkCarousel from "../../components/Industries/SelectedWorkCarousel";
+import HelpSection from "../../components/Industries/HelpSection";
+import TestimonialSection from "../../components/Industries/TestimonialSection";
 
 // ExpertiseSection is client-only
 const ExpertiseSection = dynamic(
