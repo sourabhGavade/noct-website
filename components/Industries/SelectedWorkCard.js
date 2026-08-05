@@ -35,7 +35,7 @@ export default function SelectedWorkCard({ item }) {
       <div
         role="img"
         aria-label={title}
-        className="selected-work-card__media tw-relative tw-aspect-[3/4] tw-w-full tw-overflow-hidden tw-rounded-[4px] tw-bg-cover tw-bg-center"
+        className="selected-work-card__media tw-relative tw-aspect-[3/4] tw-w-full tw-overflow-hidden tw-bg-cover tw-bg-center"
         style={{
           backgroundColor: accent,
           backgroundImage: imageSrc ? `url(${imageSrc})` : undefined,
@@ -46,7 +46,7 @@ export default function SelectedWorkCard({ item }) {
             <img
               src={logoSrc}
               alt={logo.alt || ""}
-              className="tw-h-[22px] md:tw-h-[28px] tw-w-auto tw-max-w-[120px] tw-object-contain"
+              className="tw-h-[22px] md:tw-h-[29px] tw-w-auto tw-max-w-[160px] tw-object-contain"
             />
           </div>
         )}
@@ -59,14 +59,14 @@ export default function SelectedWorkCard({ item }) {
           }}
         >
           {comingSoon && (
-            <span className="tw-inline-block tw-w-fit tw-rounded-full tw-bg-white/15 tw-px-2.5 tw-py-1 tw-text-[9px] md:tw-text-[10px] tw-font-medium tw-uppercase tw-tracking-[0.12em] tw-text-white/90 tw-backdrop-blur-sm">
+            <span className="tw-inline-block tw-w-fit tw-rounded-full tw-bg-white/15 tw-px-3 tw-py-1.5 tw-text-[9px] md:tw-text-[12px] tw-font-medium tw-uppercase tw-tracking-[7%] tw-backdrop-blur-sm">
               Coming Soon
             </span>
           )}
           {hasLink ? (
-            <span className="tw-block">{titleContent}</span>
+            <h4 className="">{titleContent}</h4>
           ) : (
-            <p className="tw-mb-0">{titleContent}</p>
+            <h4 className="">{titleContent}</h4>
           )}
         </div>
       </div>

@@ -45,7 +45,7 @@ export default function SelectedWorkCarousel({ heading, items = [] }) {
   if (!items?.length) return null;
 
   return (
-    <section className="selected-work-carousel tw-py-16 md:tw-py-[120px]">
+    <section className="selected-work-carousel tw-pt-16 md:tw-pt-[120px]">
       <div className="container">
         <div className="tw-mb-6 md:tw-mb-[64px] tw-flex tw-items-center tw-justify-between tw-gap-4">
           {heading && (
@@ -87,7 +87,7 @@ export default function SelectedWorkCarousel({ heading, items = [] }) {
         {/* Bleed right so cards can scroll past the container edge */}
         <div
           ref={scrollerRef}
-          className="selected-work-carousel__scroller tw-flex tw-gap-4 md:tw-gap-5 tw-overflow-x-auto tw-scroll-smooth tw-pb-2"
+          className="selected-work-carousel__scroller tw-flex tw-gap-4 md:tw-gap-[60px] tw-overflow-x-auto tw-scroll-smooth tw-pb-2"
         >
           {items.map((item, index) => (
             <SelectedWorkCard key={item._key || `work-${index}`} item={item} />

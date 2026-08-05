@@ -40,31 +40,30 @@ export default function TestimonialSection({ heading, items = [] }) {
     const cards = Array.from(el.querySelectorAll(".testimonial-card"));
     if (!cards.length) return;
 
+    // offsetLeft is relative to the offset parent, so rebase on the first card
+    // to get positions comparable with the scroller's scrollLeft.
+    const origin = cards[0].offsetLeft;
+    const positions = cards.map((card) => card.offsetLeft - origin);
     const scrollLeft = el.scrollLeft;
-    let target = null;
 
+    let target;
     if (direction > 0) {
-      target = cards.find((card) => card.offsetLeft > scrollLeft + 8);
+      target = positions.find((pos) => pos > scrollLeft + 8);
+      if (target === undefined) target = el.scrollWidth - el.clientWidth;
     } else {
-      for (let i = cards.length - 1; i >= 0; i -= 1) {
-        if (cards[i].offsetLeft < scrollLeft - 8) {
-          target = cards[i];
-          break;
-        }
-      }
+      target = [...positions].reverse().find((pos) => pos < scrollLeft - 8);
+      if (target === undefined) target = 0;
     }
 
-    if (target) {
-      el.scrollTo({ left: target.offsetLeft, behavior: "smooth" });
-    }
+    el.scrollTo({ left: target, behavior: "smooth" });
   };
 
   if (!items?.length) return null;
 
   return (
-    <section className="testimonial-section tw-bg-noct-dark tw-py-16 md:tw-py-24 lg:tw-py-28 tw-text-white">
+    <section className="testimonial-section tw-bg-noct-dark tw-pt-16 md:tw-pt-[250px] tw-text-white">
       <div className="container">
-        <div className="tw-mb-6 md:tw-mb-8 lg:tw-mb-10 tw-flex tw-items-center tw-justify-between tw-gap-4">
+        <div className="tw-mb-6 md:tw-mb-8 lg:tw-mb-[64px] tw-flex tw-items-center tw-justify-between tw-gap-4">
           {heading && (
             <h2 className="tw-mb-0 tw-text-[24px] md:tw-text-[40px] lg:tw-text-[48px] tw-font-bold tw-leading-[1.15] tw-tracking-[-0.02em] tw-text-white">
               {heading}
@@ -83,7 +82,7 @@ export default function TestimonialSection({ heading, items = [] }) {
                   : "tw-cursor-default tw-text-noct-muted tw-opacity-40"
               }`}
             >
-              <HiChevronLeft size={28} />
+              <HiChevronLeft size={40} />
             </button>
             <button
               type="button"
@@ -96,7 +95,7 @@ export default function TestimonialSection({ heading, items = [] }) {
                   : "tw-cursor-default tw-text-noct-muted tw-opacity-40"
               }`}
             >
-              <HiChevronRight size={28} />
+              <HiChevronRight size={40} />
             </button>
           </div>
         </div>
@@ -140,7 +139,7 @@ function TestimonialCard({ item }) {
     <div
       className={
         imageSrc
-          ? "testimonial-card tw-grid tw-shrink-0 tw-w-[min(753px,85vw)] tw-grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] tw-gap-4 md:tw-gap-6 lg:tw-gap-8 tw-items-start"
+          ? "testimonial-card tw-grid tw-shrink-0 tw-w-[min(753px,85vw)] tw-grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] tw-gap-4 md:tw-gap-6 lg:tw-gap-8 tw-items-stretch"
           : "testimonial-card tw-flex tw-shrink-0 tw-w-[min(240px,72vw)] md:tw-w-[425px] tw-flex-col"
       }
     >
@@ -149,14 +148,14 @@ function TestimonialCard({ item }) {
           <img
             src={imageSrc}
             alt={item.image?.alt || item.name || ""}
-            className="tw-h-full tw-w-full tw-object-cover"
+            className="tw-h-full tw-w-full tw-object-contain"
           />
         </div>
       )}
 
-      <div className="tw-flex tw-h-full tw-min-h-0 tw-flex-col">
+      <div className="tw-flex tw-h-full tw-min-h-0 tw-flex-col tw-justify-center">
         {logoSrc && (
-          <div className="tw-mb-4 md:tw-mb-6 lg:tw-mb-8">
+          <div className="tw-mb-4 md:tw-mb-6 lg:tw-mb-[40px]">
             <img
               src={logoSrc}
               alt={item.logo?.alt || ""}
@@ -165,18 +164,18 @@ function TestimonialCard({ item }) {
           </div>
         )}
 
-        <p className="tw-mb-0 tw-flex-1 tw-text-[13px] md:tw-text-[16px] lg:tw-text-[18px] tw-font-light tw-leading-[1.55] tw-tracking-[0.01em] tw-text-noct-muted">
+        <p className="tw-mb-6 md:tw-mb-8 tw-text-[13px] md:tw-max-w-[360px] md:tw-text-[16px] lg:tw-text-[22px] tw-font-light tw-leading-[1.55] tw-tracking-[0.01em] tw-text-noct-muted">
           {item.quote}
         </p>
 
-        <div className="tw-mt-6 md:tw-mt-10 lg:tw-mt-14 tw-pt-4 md:tw-pt-5">
+        <div>
           <div
             aria-hidden="true"
-            className="tw-mb-4 md:tw-mb-5 tw-h-px tw-w-10 md:tw-w-12 tw-bg-white/25"
+            className="tw-mb-4 md:tw-mb-7 tw-h-px tw-w-10 md:tw-w-12 tw-bg-white/25"
           />
-          <p className="tw-mb-1 tw-text-[14px] md:tw-text-[16px] tw-font-bold tw-leading-tight tw-text-white">
+          <h5 className="tw-mb-1 tw-text-[14px] md:tw-text-[20px] tw-font-bold tw-leading-tight tw-text-white">
             {item.name}
-          </p>
+          </h5>
           <p className="tw-mb-0 tw-text-[12px] md:tw-text-[14px] tw-font-light tw-leading-snug tw-text-noct-muted">
             {item.designation}
           </p>

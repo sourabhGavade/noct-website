@@ -64,7 +64,7 @@ export default function HelpSection({ heading, items = [] }) {
     >
       <div className="container tw-flex tw-min-h-screen tw-flex-col tw-py-16 md:tw-py-24 lg:tw-justify-center">
         {heading && (
-          <h2 className="tw-mb-8 md:tw-mb-12 lg:tw-mb-16 tw-text-[24px] md:tw-text-[40px] lg:tw-text-[48px] tw-font-bold tw-leading-[1.15] tw-tracking-[-0.02em] tw-text-white">
+          <h2 className="tw-text-[24px] md:tw-text-[40px] lg:tw-text-[48px] tw-font-bold tw-leading-[1.15] tw-tracking-[-0.02em] tw-text-white">
             {heading}
           </h2>
         )}
@@ -98,7 +98,7 @@ export default function HelpSection({ heading, items = [] }) {
           </div>
 
           {/* Titles + scroll-revealed descriptions */}
-          <div className="help-section__list lg:tw-order-1 tw-flex tw-flex-col tw-gap-5 md:tw-gap-7 lg:tw-gap-8">
+          <div className="help-section__list lg:tw-order-1 tw-flex tw-flex-col tw-gap-5 md:tw-gap-[120px]">
             {items.map((item, index) => {
               const isActive = index === activeIndex;
               // Soft fade for items further from active (matches mobile mock)
