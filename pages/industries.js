@@ -47,7 +47,7 @@ export default function Industries({ content }) {
     const industriesLink = links?.querySelector('a[href="/industries"]');
 
     if (navbarActive) {
-      navbarActive.classList.remove("work", "services", "about", "process");
+      navbarActive.classList.remove("work", "services", "about", "clients");
       navbarActive.classList.add("industries", "active-page");
 
       if (links && industriesLink) {

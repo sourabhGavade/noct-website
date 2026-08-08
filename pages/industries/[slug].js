@@ -122,7 +122,7 @@ export default function IndustryPage({ industry }) {
     }
 
     if (navbarActive) {
-      navbarActive.classList.remove("work", "services", "about", "process");
+      navbarActive.classList.remove("work", "services", "about", "clients");
       navbarActive.classList.add("industries", "active-page");
 
       if (links && industriesLink) {

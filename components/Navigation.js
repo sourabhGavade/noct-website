@@ -9,8 +9,7 @@ const getActiveNavPage = (pathname) => {
   if (pathname === "/industries" || pathname.startsWith("/industries/"))
     return "industries";
   if (pathname === "/about") return "about";
-  if (pathname === "/process/ux" || pathname === "/process/branding")
-    return "process";
+  if (pathname === "/clients") return "clients";
   return "";
 };
 
@@ -25,7 +24,7 @@ const positionNavDot = (page) => {
     if (page === "services") return href === "/services";
     if (page === "industries") return href.startsWith("/industries");
     if (page === "about") return href === "/about";
-    if (page === "process") return href.startsWith("/process");
+    if (page === "clients") return href === "/clients";
     return false;
   });
   if (!link) return;
@@ -49,7 +48,7 @@ const clearNavActive = () => {
     "services",
     "industries",
     "about",
-    "process",
+    "clients",
   );
 };
 
@@ -272,6 +271,17 @@ export default function Navigation({ awards }) {
                     Industries
                   </a>
                 </Link>
+                <Link href="/clients">
+                  <a
+                    className={`navbar-link ${
+                      router.pathname === "/clients" ? "font-weight-bold" : ""
+                    }`}
+                    onMouseEnter={() => navbarHover("clients")}
+                    onMouseLeave={() => navbarReset()}
+                  >
+                    Clients
+                  </a>
+                </Link>
                 <Link href="/about">
                   <a
                     className={`navbar-link ${
@@ -281,20 +291,6 @@ export default function Navigation({ awards }) {
                     onMouseLeave={() => navbarReset()}
                   >
                     About
-                  </a>
-                </Link>
-                <Link href="/process/ux">
-                  <a
-                    className={`navbar-link ${
-                      router.pathname === "/process/ux" ||
-                      router.pathname === "/process/branding"
-                        ? "font-weight-bold"
-                        : ""
-                    }`}
-                    onMouseEnter={() => navbarHover("process")}
-                    onMouseLeave={() => navbarReset()}
-                  >
-                    Process
                   </a>
                 </Link>
               </div>
@@ -372,25 +368,22 @@ export default function Navigation({ awards }) {
           </div>
           <div
             className={`fs-nav-inner ${
+              router.pathname === "/clients" ? "active" : ""
+            }`}
+          >
+            <div className="fs-nav-gooey" />
+            <Link href="/clients">
+              <a className="fs-nav-link">Clients</a>
+            </Link>
+          </div>
+          <div
+            className={`fs-nav-inner ${
               router.pathname === "/about" ? "active" : ""
             }`}
           >
             <div className="fs-nav-gooey" />
             <Link href="/about">
               <a className="fs-nav-link">About</a>
-            </Link>
-          </div>
-          <div
-            className={`fs-nav-inner ${
-              router.pathname === "/process/ux" ||
-              router.pathname === "/process/branding"
-                ? "active"
-                : ""
-            }`}
-          >
-            <div className="fs-nav-gooey" />
-            <Link href="/process/ux">
-              <a className="fs-nav-link">Process</a>
             </Link>
           </div>
         </div>
