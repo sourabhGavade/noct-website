@@ -1,9 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import { MdClose } from 'react-icons/md';
+import React, { useState } from "react";
+import styled from "styled-components";
+import { MdClose } from "react-icons/md";
 
-export default function PasswordProtection({ onSubmit, onClose, isLoading = false, error = null }) {
-  const [password, setPassword] = useState('');
+export default function PasswordProtection({
+  onSubmit,
+  onClose,
+  isLoading = false,
+  error = null,
+}) {
+  const [password, setPassword] = useState("");
   const [showModal, setShowModal] = useState(true);
 
   const handleSubmit = (e) => {
@@ -25,11 +30,13 @@ export default function PasswordProtection({ onSubmit, onClose, isLoading = fals
         <div className="close-icon" onClick={handleClose}>
           <MdClose size="24" color="#1A1A1A" />
         </div>
-        
+
         <div className="content">
           <h3 className="mb-4">This project is password protected</h3>
-          <p className="mb-4">Please enter the password to view this project:</p>
-          
+          <p className="mb-4">
+            Please enter the password to view this project:
+          </p>
+
           <form onSubmit={handleSubmit}>
             <div className="form-group mb-4">
               <input
@@ -42,24 +49,24 @@ export default function PasswordProtection({ onSubmit, onClose, isLoading = fals
                 autoFocus
               />
             </div>
-            
+
             {error && (
               <div className="error-message mb-3">
                 <p>{error}</p>
               </div>
             )}
-            
+
             <div className="buttons">
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 className="submit-btn"
                 disabled={isLoading || !password.trim()}
               >
-                {isLoading ? 'Verifying...' : 'Access Project'}
+                {isLoading ? "Verifying..." : "Access Project"}
               </button>
-              <button 
-                type="button" 
-                className="cancel-btn" 
+              <button
+                type="button"
+                className="cancel-btn"
                 onClick={handleClose}
                 disabled={isLoading}
               >
@@ -79,8 +86,8 @@ const PasswordModal = styled.div`
   height: 100vh;
   inset: 0;
   z-index: 999;
-  opacity: ${props => props.show ? 1 : 0};
-  visibility: ${props => props.show ? 'visible' : 'hidden'};
+  opacity: ${(props) => (props.show ? 1 : 0)};
+  visibility: ${(props) => (props.show ? "visible" : "hidden")};
   display: grid;
   place-items: center;
   overflow: hidden;
@@ -106,7 +113,7 @@ const PasswordModalInner = styled.div`
   border-radius: 12px;
   padding: 40px;
   margin: 20px;
-  scale: ${props => props.show ? 1 : 0.9};
+  scale: ${(props) => (props.show ? 1 : 0.9)};
   transition: scale 0.15s ease 0.05s;
 
   .close-icon {
@@ -128,7 +135,7 @@ const PasswordModalInner = styled.div`
 
     h3 {
       font-weight: 600;
-      color: #1A1A1A;
+      color: #1a1a1a;
       margin-bottom: 16px;
     }
 
@@ -147,7 +154,7 @@ const PasswordModalInner = styled.div`
     width: 100%;
     height: 50px;
     padding: 0 16px;
-    border: 2px solid #E5E5E5;
+    border: 2px solid #e5e5e5;
     border-radius: 8px;
     font-size: 16px;
     transition: border-color 0.2s ease;
@@ -155,7 +162,7 @@ const PasswordModalInner = styled.div`
 
     &:focus {
       outline: none;
-      border-color: #1A1A1A;
+      border-color: #1a1a1a;
     }
 
     &:disabled {
@@ -169,14 +176,14 @@ const PasswordModalInner = styled.div`
   }
 
   .error-message {
-    background: #FEF2F2;
-    border: 1px solid #FECACA;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
     border-radius: 6px;
     padding: 12px 16px;
     text-align: center;
 
     p {
-      color: #DC2626;
+      color: #dc2626;
       font-size: 14px;
       margin: 0;
     }
@@ -207,7 +214,7 @@ const PasswordModalInner = styled.div`
   }
 
   .submit-btn {
-    background: #1A1A1A;
+    background: #1a1a1a;
     color: #fff;
 
     &:hover:not(:disabled) {
@@ -218,11 +225,11 @@ const PasswordModalInner = styled.div`
   .cancel-btn {
     background: transparent;
     color: #666;
-    border: 1px solid #E5E5E5;
+    border: 1px solid #e5e5e5;
 
     &:hover:not(:disabled) {
       background: #f5f5f5;
-      color: #1A1A1A;
+      color: #1a1a1a;
     }
   }
 

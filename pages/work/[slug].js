@@ -241,9 +241,17 @@ export default function ProjectPage({ project, allProjects }) {
                 </div>
               </div>
             </div>
+
+            {/* Featured Image */}
+            <section className="project-featured-image">
+              <img
+                src={urlFor(project.featuredImage).url()}
+                alt={project.featuredImageAlt}
+              />
+            </section>
           </section>
 
-          {project.projectSections.map((section, index) => (
+          {project.projectSections.map((section) => (
             <div key={section._key}>
               {section._type === "paraWithHeading" && (
                 <ParaWithHeading data={section} />
@@ -418,6 +426,7 @@ export default function ProjectPage({ project, allProjects }) {
         .project-hero-tagline {
           max-width: 992px;
           margin: 0 auto;
+          text-transform: capitalize;
         }
 
         .project-hero-img-desktop {
