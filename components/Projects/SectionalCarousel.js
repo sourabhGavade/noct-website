@@ -5,7 +5,8 @@ import useWindowSize from '../../utils/useWindowSize'
 
 export default function SectionalCarousel({ data }) {
     const windowSize = useWindowSize()
-    let { slides, marginBottom, marginBottomMobile } = data
+    let { slides, marginBottom, marginBottomMobile, layout = 'sideBySide' } = data
+    const isStacked = layout === 'stacked'
     marginBottomMobile = marginBottomMobile ? marginBottomMobile : marginBottom/2
     return (
         <section className="project-section" style={{marginBottom: `${windowSize.width > 769 ? marginBottom : marginBottomMobile}px`}}>
@@ -22,14 +23,21 @@ export default function SectionalCarousel({ data }) {
                 {
                     slides.map(slide => (
                         <div className="item sectional-carousel-item" style={{ backgroundColor: slide.bgColor }} key={slide._key}>
-                            <div className="sectional-carousel-grid">
+                            <div className={`sectional-carousel-grid ${isStacked ? 'sectional-carousel-grid--stacked' : ''}`}>
+                                {isStacked && (
+                                    <div className="sectional-carousel__media">
+                                        <img src={urlFor(slide.image).url()} />
+                                    </div>
+                                )}
                                 <div className="sectional-carousel__info">
                                     <div className="h4 mb-3">{slide.title}</div>
                                     <BlockContent blocks={slide.text} />
                                 </div>
-                                <div>
-                                    <img src={urlFor(slide.image).url()} />
-                                </div>
+                                {!isStacked && (
+                                    <div className="sectional-carousel__media">
+                                        <img src={urlFor(slide.image).url()} />
+                                    </div>
+                                )}
                             </div>
                         </div>
                     ))
@@ -47,8 +55,23 @@ export default function SectionalCarousel({ data }) {
                     grid-gap: 60px;
                 }
 
+                .sectional-carousel-grid--stacked {
+                    grid-template-columns: 1fr;
+                    grid-gap: 32px;
+                }
+
                 .sectional-carousel__info {
                     margin-top: 80px;
+                }
+
+                .sectional-carousel-grid--stacked .sectional-carousel__info {
+                    margin-top: 0;
+                }
+
+                .sectional-carousel__media img {
+                    width: 100%;
+                    height: auto;
+                    display: block;
                 }
 
                 @media screen and (max-width: 1025px) {
@@ -76,7 +99,7 @@ export default function SectionalCarousel({ data }) {
                         margin: 0 20px;
                     }
 
-                    .sectional-carousel__info {
+                    .sectional-carousel-grid:not(.sectional-carousel-grid--stacked) .sectional-carousel__info {
                         order: 2;
                     }
 
