@@ -257,7 +257,7 @@ export default function Navigation({ awards }) {
                     Services
                   </a>
                 </Link>
-                <Link href="/industries">
+                {/* <Link href="/industries">
                   <a
                     className={`navbar-link ${
                       router.pathname === "/industries" ||
@@ -281,7 +281,7 @@ export default function Navigation({ awards }) {
                   >
                     Clients
                   </a>
-                </Link>
+                </Link> */}
                 <Link href="/about">
                   <a
                     className={`navbar-link ${
@@ -353,7 +353,7 @@ export default function Navigation({ awards }) {
               <a className="fs-nav-link">Services</a>
             </Link>
           </div>
-          <div
+          {/* <div
             className={`fs-nav-inner ${
               router.pathname === "/industries" ||
               router.pathname.startsWith("/industries/")
@@ -375,7 +375,7 @@ export default function Navigation({ awards }) {
             <Link href="/clients">
               <a className="fs-nav-link">Clients</a>
             </Link>
-          </div>
+          </div> */}
           <div
             className={`fs-nav-inner ${
               router.pathname === "/about" ? "active" : ""
