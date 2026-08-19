@@ -75,14 +75,13 @@ export default function Clients({ content }) {
 
   const logos = content?.logosWithText || [];
 
-
   if (!content) {
     return (
       <>
         <Head>
           <title>NOCT | Clients</title>
         </Head>
-        <section className="tw-bg-white tw-pt-[160px] tw-pb-20 tw-text-noct-dark">
+        <section className="tw-bg-white tw-pt-[160px] tw-pb-20 tw-text-noct-dark tw-min-h-screen">
           <div className="container tw-text-center">
             <h1 className="tw-mb-4 tw-text-[32px] md:tw-text-[64px] tw-font-black tw-leading-[1.2]">
               Clients

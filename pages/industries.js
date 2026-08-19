@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import LetteringTitle from "../components/LetteringTitle";
+import Button from "../components/Button";
 // import initFadeUp from "../utils/initFadeUp";
 import sanityClient from "../client";
 import urlFor from "../utils/urlFor";
@@ -60,7 +61,7 @@ export default function Industries({ content }) {
         <Head>
           <title>NOCT | Industries</title>
         </Head>
-        <section className="tw-bg-noct-dark tw-text-white padded-section">
+        <section className="tw-bg-noct-dark tw-text-white padded-section tw-min-h-screen">
           <div className="container tw-text-center">
             <h1>Industries</h1>
             <p>Content coming soon.</p>
@@ -176,14 +177,12 @@ export default function Industries({ content }) {
                     )}
                     {slug ? (
                       <Link href={`/industries/${slug}`}>
-                        <button className="tw-uppercase md:tw-text-[14px] tw-text-[12px] tw-bg-transparent tw-text-white tw-tracking-[1.58px] tw-leading-[18px] tw-border-white tw-border-[0.5px] md:tw-px-[40px] md:tw-py-[16px] tw-px-[32px] tw-py-[11px]">
-                          {item.ctaText}
-                        </button>
+                        <a>
+                          <Button text={item.ctaText} style="alt" />
+                        </a>
                       </Link>
                     ) : (
-                      <button className="tw-uppercase md:tw-text-[14px] tw-text-[12px] tw-bg-transparent tw-text-white tw-tracking-[1.58px] tw-leading-[18px] tw-border-white tw-border-[0.5px] md:tw-px-[40px] md:tw-py-[16px] tw-px-[32px] tw-py-[11px]">
-                        {item.ctaText}
-                      </button>
+                      <Button text={item.ctaText} style="alt" />
                     )}
                   </div>
                 </div>
