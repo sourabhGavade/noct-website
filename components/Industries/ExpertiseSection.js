@@ -52,9 +52,9 @@ export default function ExpertiseSection({ heading, items = [] }) {
 
     const tweens = [];
     const configs = [
-      { reverse: true, duration: 35 },
-      { reverse: false, duration: 35 },
-      { reverse: true, duration: 35 },
+      { reverse: true, duration: 80 },
+      { reverse: false, duration: 80 },
+      { reverse: true, duration: 80 },
     ];
 
     const setupRow = (trackEl, { reverse, duration }) => {
@@ -96,7 +96,7 @@ export default function ExpertiseSection({ heading, items = [] }) {
   return (
     <section className="expertise-section tw-relative tw-w-full tw-overflow-hidden tw-bg-noct-dark tw-pt-[50px] md:tw-pt-[120px]">
       {heading && (
-        <h2 className="tw-mb-10 md:tw-mb-14 lg:tw-mb-16 tw-text-center tw-text-[24px] md:tw-text-[40px] lg:tw-text-[48px] tw-font-bold tw-leading-[1.15] tw-tracking-[-0.02em] tw-text-white">
+        <h2 className="tw-mb-10 md:tw-mb-14 lg:tw-mb-16 tw-text-center tw-text-[22px] md:tw-text-[40px] lg:tw-text-[48px] tw-font-bold tw-leading-[130%] tw-tracking-[0.27%] tw-text-white">
           {heading}
         </h2>
       )}
@@ -117,14 +117,14 @@ export default function ExpertiseSection({ heading, items = [] }) {
               {track.map((label, index) => (
                 <span
                   key={`expertise-${rowIndex}-${index}`}
-                  className="expertise-section__item tw-inline-flex tw-shrink-0 tw-items-center tw-gap-4 md:tw-gap-6 lg:tw-gap-8 tw-px-4 md:tw-px-6 lg:tw-px-8"
+                  className="expertise-section__item tw-inline-flex tw-shrink-0 tw-items-center"
                 >
-                  <span className="tw-whitespace-nowrap tw-text-[14px] md:tw-text-[20px] lg:tw-text-[24px] tw-font-normal tw-leading-none tw-tracking-[0.01em] tw-text-noct-muted">
+                  <h4 className="tw-whitespace-nowrap tw-px-4 md:tw-px-6 lg:tw-px-8 tw-text-[14px] md:tw-text-[20px] lg:tw-text-[24px] tw-font-normal tw-leading-none tw-tracking-[0.01em] tw-text-noct-muted">
                     {label}
-                  </span>
+                  </h4>
                   <span
                     aria-hidden="true"
-                    className="tw-block tw-h-[5px] tw-w-[5px] md:tw-h-[6px] md:tw-w-[6px] tw-shrink-0 tw-rounded-full tw-bg-noct-muted/60"
+                    className="tw-block tw-h-[5px] tw-w-[5px] md:tw-h-[8px] md:tw-w-[8px] tw-shrink-0 tw-rounded-full tw-bg-noct-muted/30"
                   />
                 </span>
               ))}
