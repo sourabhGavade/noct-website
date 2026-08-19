@@ -101,15 +101,15 @@ export default function Clients({ content }) {
         <title>NOCT | Clients</title>
       </Head>
 
-      <div className="tw-bg-white tw-text-noct-dark tw-space-y-[140px]">
-        <section className="tw-flex tw-items-center tw-justify-center tw-pt-[140px] md:tw-pt-[160px] lg:tw-pt-[180px]">
-          <div className="container md:tw-text-center">
+      <div className="tw-bg-white tw-text-noct-dark md:tw-space-y-[144px] tw-space-y-[110px] md:tw-pb-[160px] tw-pb-[40px]">
+        <section className="tw-flex tw-items-center tw-justify-center tw-pt-[152px] md:tw-pt-[240px]">
+          <div className="container md:tw-text-center max-sm:tw-text-left">
             <div className="tw-mx-auto">
-              <h1 className="tw-mx-auto md:tw-mb-4 tw-mb-[12px] tw-text-[28px] md:tw-text-[48px] lg:tw-text-[64px] tw-font-black tw-leading-[1.2] tw-text-noct-dark">
+              <h1 className="tw-mx-auto md:tw-mb-4 tw-mb-[12px] tw-text-[28px] md:tw-text-[64px] tw-font-black tw-leading-[1.2] tw-text-noct-dark">
                 <LetteringTitle text={content.title} />
               </h1>
               {content.description && (
-                <p className="tw-mx-auto tw-mb-0 tw-max-w-[650px] tw-text-[14px] md:tw-text-[22px] tw-font-normal tw-leading-relaxed tw-text-noct-muted">
+                <p className="tw-mx-auto tw-mb-0 tw-max-w-[500px] tw-text-[14px] md:tw-text-[22px] tw-font-normal tw-leading-relaxed tw-text-noct-muted">
                   {content.description}
                 </p>
               )}
@@ -118,7 +118,7 @@ export default function Clients({ content }) {
         </section>
 
         <section className="container">
-          <div className="tw-flex tw-flex-col tw-gap-4 md:tw-gap-[32px]">
+          <div className="tw-flex tw-flex-col tw-gap-[24px] md:tw-gap-[32px]">
             {rows.map((row, index) => {
               if (row.type === "featured") {
                 return (
@@ -140,7 +140,7 @@ export default function Clients({ content }) {
                   className={
                     row.items.length === 1
                       ? "tw-grid tw-grid-cols-1 md:tw-max-w-[calc(50%-12px)]"
-                      : "tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-4 md:tw-gap-[32px]"
+                      : "tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-[24px] md:tw-gap-[32px]"
                   }
                 >
                   {row.items.map((item, itemIndex) => (
@@ -157,7 +157,7 @@ export default function Clients({ content }) {
         </section>
 
         {logos.length > 0 && (
-          <section className="tw-pb-16 md:tw-pb-20 md:tw-pt-12 lg:tw-pb-24 lg:tw-pt-16">
+          <section className="md:tw-pt-[24px]">
             <div className="container">
               <div className="tw-grid tw-grid-cols-2 lg:tw-grid-cols-4 md:tw-gap-[64px] tw-gap-[32px] max-sm:tw-gap-y-[50px]">
                 {logos.map((logo, index) => {
@@ -177,7 +177,7 @@ export default function Clients({ content }) {
                         />
                       </div>
                       {logo.alt && (
-                        <h5 className="tw-mb-1.5 tw-text-[16px] md:tw-text-[20px] tw-font-bold tw-leading-tight tw-text-noct-dark">
+                        <h5 className="tw-mb-[6px] tw-text-[14px] md:tw-text-[20px] tw-font-bold tw-leading-tight tw-text-noct-dark">
                           {logo.alt}
                         </h5>
                       )}

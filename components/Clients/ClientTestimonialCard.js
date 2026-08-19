@@ -43,7 +43,7 @@ export default function ClientTestimonialCard({
           <div>
             <div
               aria-hidden="true"
-              className="tw-mb-4 md:tw-mb-5 tw-h-px tw-w-12 tw-bg-noct-dark/20"
+              className="tw-mb-5 md:tw-mb-[24px] tw-h-px tw-w-[56px] tw-bg-noct-dark/20"
             />
             <h5 className="tw-mb-1 tw-text-[14px] md:tw-text-[20px] tw-font-bold tw-leading-tight tw-text-noct-dark">
               {item.name}
@@ -56,7 +56,7 @@ export default function ClientTestimonialCard({
 
         {isFeatured && imageSrc && (
           <div className="tw-w-full">
-            <div className="tw-relative tw-mx-auto tw-aspect-square tw-w-full tw-overflow-hidden tw-bg-[#e8e8e8] md:tw-size-[372px]">
+            <div className="tw-relative tw-mx-auto tw-aspect-square tw-w-full tw-overflow-hidden md:tw-size-[372px]">
               <img
                 src={imageSrc}
                 alt={item.image?.alt || item.name || ""}
