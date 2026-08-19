@@ -140,7 +140,7 @@ export default function Clients({ content }) {
         <section className="tw-flex tw-items-center tw-justify-center tw-pt-[140px] md:tw-pt-[160px] lg:tw-pt-[180px]">
           <div className="container md:tw-text-center">
             <div className="tw-mx-auto">
-              <h1 className="tw-mx-auto md:tw-mb-4 tw-mb-[12px] tw-text-[18px] md:tw-text-[48px] lg:tw-text-[64px] tw-font-black tw-leading-[1.2] tw-text-noct-dark">
+              <h1 className="tw-mx-auto md:tw-mb-4 tw-mb-[12px] tw-text-[28px] md:tw-text-[48px] lg:tw-text-[64px] tw-font-black tw-leading-[1.2] tw-text-noct-dark">
                 <LetteringTitle text={content.title} />
               </h1>
               {content.description && (

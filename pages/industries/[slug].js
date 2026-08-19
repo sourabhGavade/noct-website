@@ -137,14 +137,8 @@ export default function IndustryPage({ industry }) {
       }
     }
 
-    const keepNavbarTransparent = () => {
-      if (navbar) navbar.style.backgroundColor = "transparent";
-    };
-    window.addEventListener("scroll", keepNavbarTransparent, false);
-
     return () => {
       document.body.classList.remove("industries-page", "industry-detail-page");
-      window.removeEventListener("scroll", keepNavbarTransparent, false);
       if (navbar) navbar.style.backgroundColor = "";
       if (navbarActive) {
         navbarActive.classList.remove("industries", "active-page");
@@ -244,6 +238,10 @@ export default function IndustryPage({ industry }) {
       </div>
 
       <style jsx global>{`
+        .industry-detail-page .navbar {
+          background-color: transparent !important;
+        }
+
         .industry-detail-page #navLogoSVG,
         .industry-detail-page #navLogoSVG path {
           fill: #fff;

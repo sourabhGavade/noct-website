@@ -42,9 +42,14 @@ export async function getStaticProps() {
 export default function Industries({ content }) {
   useEffect(() => {
     document.body.classList.add("industries-page");
+    const navbar = document.querySelector(".navbar");
     const navbarActive = document.querySelector(".navbar-active");
     const links = document.querySelector(".navbar-links");
     const industriesLink = links?.querySelector('a[href="/industries"]');
+
+    if (navbar) {
+      navbar.style.backgroundColor = "transparent";
+    }
 
     if (navbarActive) {
       navbarActive.classList.remove("work", "services", "about", "clients");
@@ -64,6 +69,7 @@ export default function Industries({ content }) {
 
     return () => {
       document.body.classList.remove("industries-page");
+      if (navbar) navbar.style.backgroundColor = "";
       if (navbarActive) {
         navbarActive.classList.remove("industries", "active-page");
         navbarActive.style.transform = "";
@@ -234,6 +240,10 @@ export default function Industries({ content }) {
       </div>
 
       <style jsx global>{`
+        .industries-page .navbar {
+          background-color: transparent !important;
+        }
+
         .industries-page #navLogoSVG,
         .industries-page #navLogoSVG path {
           fill: #fff;

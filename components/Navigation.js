@@ -103,11 +103,20 @@ export default function Navigation({ awards }) {
         }
         lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
 
-        if (st < 400) {
-          document.querySelector(".navbar").style.backgroundColor =
-            "transparent";
+        const navbar = document.querySelector(".navbar");
+        if (!navbar) return;
+
+        // Dark pages keep a transparent navbar so it never flashes white on scroll-up
+        const path = window.location.pathname;
+        const isDarkNavbarPage =
+          document.body.classList.contains("industries-page") ||
+          path === "/industries" ||
+          path.startsWith("/industries/");
+
+        if (st < 400 || isDarkNavbarPage) {
+          navbar.style.backgroundColor = "transparent";
         } else {
-          document.querySelector(".navbar").style.backgroundColor = "#FCFCFC";
+          navbar.style.backgroundColor = "#FCFCFC";
         }
       },
       false,
