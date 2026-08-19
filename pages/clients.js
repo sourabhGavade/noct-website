@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import Head from "next/head";
 import LetteringTitle from "../components/LetteringTitle";
 import FooterCTA from "../components/FooterCTA";
@@ -75,40 +75,6 @@ export default function Clients({ content }) {
 
   const logos = content?.logosWithText || [];
 
-  useEffect(() => {
-    const navbarActive = document.querySelector(".navbar-active");
-    const links = document.querySelector(".navbar-links");
-    const clientsLink = links?.querySelector('a[href="/clients"]');
-
-    if (navbarActive) {
-      navbarActive.classList.remove(
-        "work",
-        "services",
-        "industries",
-        "about",
-        "clients",
-      );
-      navbarActive.classList.add("clients", "active-page");
-
-      if (links && clientsLink) {
-        const linksRect = links.getBoundingClientRect();
-        const linkRect = clientsLink.getBoundingClientRect();
-        const x =
-          linkRect.left -
-          linksRect.left +
-          linkRect.width / 2 -
-          navbarActive.offsetWidth / 2;
-        navbarActive.style.transform = `translate3D(${x}px, 0, 0)`;
-      }
-    }
-
-    return () => {
-      if (navbarActive) {
-        navbarActive.classList.remove("clients", "active-page");
-        navbarActive.style.transform = "";
-      }
-    };
-  }, []);
 
   if (!content) {
     return (

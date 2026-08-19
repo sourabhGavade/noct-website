@@ -28,11 +28,6 @@ export default function Work({ projects }) {
 
   useEffect(() => {
     initNav()
-    document.querySelector('.navbar-active').classList.add('active-page')
-
-    return () => {
-      document.querySelector('.navbar-active').classList.remove('active-page')
-    }
   }, [filter])
 
   const initNav = () => {

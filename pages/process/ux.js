@@ -14,14 +14,9 @@ export default function Process() {
   const switcherHeightRef = useRef()
 
   useEffect(() => {
-    document.querySelector('.navbar-active').classList.add('active-page')
     initFadeUp()
     initScrollTrigger()
     initSwitcherHeight()
-
-    return () => {
-      document.querySelector('.navbar-active').classList.remove('active-page')
-    }
   }, [])
 
   const initSwitcherHeight = () => {

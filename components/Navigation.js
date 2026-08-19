@@ -3,16 +3,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import urlFor from "../utils/urlFor";
 
-const getActiveNavPage = (pathname) => {
-  if (pathname === "/work") return "work";
-  if (pathname === "/services") return "services";
-  if (pathname === "/industries" || pathname.startsWith("/industries/"))
-    return "industries";
-  if (pathname === "/about") return "about";
-  if (pathname === "/clients") return "clients";
-  return "";
-};
-
 const positionNavDot = (page) => {
   const links = document.querySelector(".navbar-links");
   const activeEl = document.querySelector(".navbar-active");
@@ -59,17 +49,7 @@ export default function Navigation({ awards }) {
   const router = useRouter();
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      clearNavActive();
-      const page = getActiveNavPage(router.pathname);
-      const activeEl = document.querySelector(".navbar-active");
-      if (page && activeEl) {
-        activeEl.classList.add(page);
-        positionNavDot(page);
-      }
-    }, 500);
     initScrollDirection();
-    return () => clearTimeout(timer);
   }, [router]);
 
   useEffect(() => {
@@ -186,15 +166,7 @@ export default function Navigation({ awards }) {
 
   const navbarReset = () => {
     clearNavActive();
-    const activeEl = document.querySelector(".navbar-active");
-    if (!activeEl) return;
-    const page = getActiveNavPage(router.pathname);
-    if (page) {
-      activeEl.classList.add(page);
-      positionNavDot(page);
-    } else {
-      activeEl.style.transform = "translate3D(0, 0, 0)";
-    }
+    setActive("");
   };
 
   const isIndustriesPage =
@@ -251,7 +223,7 @@ export default function Navigation({ awards }) {
                     Services
                   </a>
                 </Link>
-                {/* <Link href="/industries">
+                <Link href="/industries">
                   <a
                     className={`navbar-link ${
                       router.pathname === "/industries" ||
@@ -275,7 +247,7 @@ export default function Navigation({ awards }) {
                   >
                     Clients
                   </a>
-                </Link> */}
+                </Link>
                 <Link href="/about">
                   <a
                     className={`navbar-link ${
@@ -347,7 +319,7 @@ export default function Navigation({ awards }) {
               <a className="fs-nav-link">Services</a>
             </Link>
           </div>
-          {/* <div
+          <div
             className={`fs-nav-inner ${
               router.pathname === "/industries" ||
               router.pathname.startsWith("/industries/")
@@ -369,7 +341,7 @@ export default function Navigation({ awards }) {
             <Link href="/clients">
               <a className="fs-nav-link">Clients</a>
             </Link>
-          </div> */}
+          </div>
           <div
             className={`fs-nav-inner ${
               router.pathname === "/about" ? "active" : ""
@@ -405,6 +377,16 @@ export default function Navigation({ awards }) {
               Learn with NOCT
               <span className="badge badge-pill badge-secondary">NEW</span>
             </a>
+          </div>
+          <div
+            className={`fs-nav-inner ${
+              router.pathname.startsWith("/process") ? "active" : ""
+            }`}
+          >
+            <div className="fs-nav-gooey fs-nav-gooey__secondary" />
+            <Link href="/process/ux">
+              <a className="fs-nav-link secondary">Process</a>
+            </Link>
           </div>
           <div
             className={`fs-nav-inner ${
@@ -529,10 +511,6 @@ export default function Navigation({ awards }) {
         }
 
         .navbar-links:hover .navbar-active {
-          opacity: 1;
-        }
-
-        .navbar-active.active-page {
           opacity: 1;
         }
 

@@ -30,14 +30,12 @@ export default function Services({ content }) {
   const [mcIndex, setMcIndex] = useState(0);
 
   useEffect(() => {
-    document.querySelector(".navbar-active").classList.add("active-page");
     initFadeUp();
     initParallax();
     initServiceFadeIn();
     initMobileCarousel();
 
     return () => {
-      document.querySelector(".navbar-active").classList.remove("active-page");
       ScrollTrigger.getAll("serviceScrollTrigger").forEach((st) => st.kill());
     };
   }, []);
