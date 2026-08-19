@@ -244,12 +244,6 @@ export default function Industries({ content }) {
           background-color: transparent !important;
         }
 
-        .industries-page #navLogoSVG,
-        .industries-page #navLogoSVG path {
-          fill: #fff;
-          stroke: #fff;
-        }
-
         .industries-page .navbar-link {
           color: #fff;
         }

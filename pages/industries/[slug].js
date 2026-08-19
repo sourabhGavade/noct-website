@@ -242,12 +242,6 @@ export default function IndustryPage({ industry }) {
           background-color: transparent !important;
         }
 
-        .industry-detail-page #navLogoSVG,
-        .industry-detail-page #navLogoSVG path {
-          fill: #fff;
-          stroke: #fff;
-        }
-
         .industry-detail-page .navbar-link {
           color: #fff;
         }
