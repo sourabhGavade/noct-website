@@ -41,16 +41,11 @@ export default function About({ content }) {
   const [mcIndex2, setMcIndex2] = useState(0);
 
   useEffect(() => {
-    document.querySelector(".navbar-active").classList.add("active-page");
     initFadeUp();
     initParallax();
     initStudioVideos();
     initMobileCarousel();
     initImageCarousel();
-
-    return () => {
-      document.querySelector(".navbar-active").classList.remove("active-page");
-    };
   }, []);
 
   const initMobileCarousel = () => {

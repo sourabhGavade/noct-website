@@ -42,32 +42,15 @@ export async function getStaticProps() {
 export default function Industries({ content }) {
   useEffect(() => {
     document.body.classList.add("industries-page");
-    const navbarActive = document.querySelector(".navbar-active");
-    const links = document.querySelector(".navbar-links");
-    const industriesLink = links?.querySelector('a[href="/industries"]');
+    const navbar = document.querySelector(".navbar");
 
-    if (navbarActive) {
-      navbarActive.classList.remove("work", "services", "about", "clients");
-      navbarActive.classList.add("industries", "active-page");
-
-      if (links && industriesLink) {
-        const linksRect = links.getBoundingClientRect();
-        const linkRect = industriesLink.getBoundingClientRect();
-        const x =
-          linkRect.left -
-          linksRect.left +
-          linkRect.width / 2 -
-          navbarActive.offsetWidth / 2;
-        navbarActive.style.transform = `translate3D(${x}px, 0, 0)`;
-      }
+    if (navbar) {
+      navbar.style.backgroundColor = "transparent";
     }
 
     return () => {
       document.body.classList.remove("industries-page");
-      if (navbarActive) {
-        navbarActive.classList.remove("industries", "active-page");
-        navbarActive.style.transform = "";
-      }
+      if (navbar) navbar.style.backgroundColor = "";
     };
   }, []);
 
@@ -234,10 +217,8 @@ export default function Industries({ content }) {
       </div>
 
       <style jsx global>{`
-        .industries-page #navLogoSVG,
-        .industries-page #navLogoSVG path {
-          fill: #fff;
-          stroke: #fff;
+        .industries-page .navbar {
+          background-color: transparent !important;
         }
 
         .industries-page .navbar-link {

@@ -113,43 +113,14 @@ export default function IndustryPage({ industry }) {
   useEffect(() => {
     document.body.classList.add("industries-page", "industry-detail-page");
     const navbar = document.querySelector(".navbar");
-    const navbarActive = document.querySelector(".navbar-active");
-    const links = document.querySelector(".navbar-links");
-    const industriesLink = links?.querySelector('a[href="/industries"]');
 
     if (navbar) {
       navbar.style.backgroundColor = "transparent";
     }
 
-    if (navbarActive) {
-      navbarActive.classList.remove("work", "services", "about", "clients");
-      navbarActive.classList.add("industries", "active-page");
-
-      if (links && industriesLink) {
-        const linksRect = links.getBoundingClientRect();
-        const linkRect = industriesLink.getBoundingClientRect();
-        const x =
-          linkRect.left -
-          linksRect.left +
-          linkRect.width / 2 -
-          navbarActive.offsetWidth / 2;
-        navbarActive.style.transform = `translate3D(${x}px, 0, 0)`;
-      }
-    }
-
-    const keepNavbarTransparent = () => {
-      if (navbar) navbar.style.backgroundColor = "transparent";
-    };
-    window.addEventListener("scroll", keepNavbarTransparent, false);
-
     return () => {
       document.body.classList.remove("industries-page", "industry-detail-page");
-      window.removeEventListener("scroll", keepNavbarTransparent, false);
       if (navbar) navbar.style.backgroundColor = "";
-      if (navbarActive) {
-        navbarActive.classList.remove("industries", "active-page");
-        navbarActive.style.transform = "";
-      }
     };
   }, []);
 
@@ -244,10 +215,8 @@ export default function IndustryPage({ industry }) {
       </div>
 
       <style jsx global>{`
-        .industry-detail-page #navLogoSVG,
-        .industry-detail-page #navLogoSVG path {
-          fill: #fff;
-          stroke: #fff;
+        .industry-detail-page .navbar {
+          background-color: transparent !important;
         }
 
         .industry-detail-page .navbar-link {
