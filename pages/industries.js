@@ -144,7 +144,7 @@ export default function Industries({ content }) {
                           className="md:tw-hidden tw-block"
                           src={urlFor(item.mobileImage).url()}
                           width={302}
-                          height={342}
+                          height={300}
                           alt={
                             item.mobileImage.alt ||
                             `${item.industryTitle} mobile`
