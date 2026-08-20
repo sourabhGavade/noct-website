@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import sanityClient from "../../client";
+import urlFor from "../../utils/urlFor";
 import LogoCarousel from "../../components/Industries/LogoCarousel";
 import ChallengeSection from "../../components/Industries/ChallengeSection";
 import ConnectSection from "../../components/Industries/ConnectSection";
@@ -36,6 +37,14 @@ export async function getStaticProps({ params }) {
       industryItemMoreDetails{
         mainSubtitle,
         mainDescription,
+        heroGraphicDesktop{
+          ...,
+          asset->
+        },
+        heroGraphicMobile{
+          ...,
+          asset->
+        },
         showTrustedBySection,
         trustedByHeading,
         trustedBy[]{
@@ -133,6 +142,13 @@ export default function IndustryPage({ industry }) {
     details.mainDescription ||
     industry.industryDescription;
 
+  const heroGraphicDesktopSrc = details.heroGraphicDesktop?.asset
+    ? urlFor(details.heroGraphicDesktop).url()
+    : null;
+  const heroGraphicMobileSrc = details.heroGraphicMobile?.asset
+    ? urlFor(details.heroGraphicMobile).url()
+    : null;
+
   return (
     <>
       <Head>
@@ -146,20 +162,24 @@ export default function IndustryPage({ industry }) {
         {/* Hero */}
         <section className="tw-relative tw-flex tw-items-center tw-min-h-[50vh] md:tw-min-h-[80vh] md:tw-pt-[160px] tw-pt-[150px] tw-pb-20 md:tw-pb-[100px]">
           {/* Anchored to section top so it bleeds behind the transparent navbar */}
-          <img
-            src="/graphic.svg"
-            alt="background graphic"
-            aria-hidden="true"
-            className="tw-pointer-events-none tw-absolute tw-right-0 tw-top-0 tw-z-0 tw-hidden tw-w-[min(75vw,640px)] tw-max-w-none tw-select-none md:tw-block"
-          />
-          <img
-            src="/graphic-mobile.svg"
-            alt="background graphic"
-            aria-hidden="true"
-            className="tw-pointer-events-none tw-absolute tw-right-0 tw-top-10 tw-z-0 tw-block tw-w-[min(55vw,195px)] tw-max-w-none tw-select-none md:tw-hidden"
-          />
+          {heroGraphicDesktopSrc && (
+            <img
+              src={heroGraphicDesktopSrc}
+              alt={details.heroGraphicDesktop?.alt || ""}
+              aria-hidden="true"
+              className="tw-pointer-events-none tw-absolute tw-right-0 tw-top-0 tw-z-0 tw-hidden tw-w-[min(75vw,640px)] tw-max-w-none tw-select-none md:tw-block"
+            />
+          )}
+          {heroGraphicMobileSrc && (
+            <img
+              src={heroGraphicMobileSrc}
+              alt={details.heroGraphicMobile?.alt || ""}
+              aria-hidden="true"
+              className="tw-pointer-events-none tw-absolute tw-right-0 tw-top-10 tw-z-0 tw-block tw-w-[min(55vw,195px)] tw-max-w-none tw-select-none md:tw-hidden"
+            />
+          )}
 
-          <div className="container tw-relative sm:tw-z-10">
+          <div className="container tw-relative">
             <div className="md:tw-max-w-[720px] tw-max-w-[342px] tw-space-y-[12px]">
               <p className="tw-text-[12px] md:tw-text-[14px] tw-font-light tw-uppercase tw-tracking-[7%] tw-leading-[160%] tw-text-noct-muted">
                 {industry.industryTitle}
