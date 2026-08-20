@@ -36,6 +36,7 @@ export async function getStaticProps({ params }) {
       industryItemMoreDetails{
         mainSubtitle,
         mainDescription,
+        showTrustedBySection,
         trustedByHeading,
         trustedBy[]{
           ...,
@@ -63,6 +64,7 @@ export async function getStaticProps({ params }) {
         },
         expertiseHeading,
         expertiseItems,
+        showTestimonialSection,
         testimonialHeading,
         testimonialItems[]{
           ...,
@@ -157,8 +159,8 @@ export default function IndustryPage({ industry }) {
             className="tw-pointer-events-none tw-absolute tw-right-0 tw-top-10 tw-z-0 tw-block tw-w-[min(55vw,195px)] tw-max-w-none tw-select-none md:tw-hidden"
           />
 
-          <div className="container tw-relative tw-z-10">
-            <div className="tw-max-w-[720px] tw-space-y-[12px]">
+          <div className="container tw-relative sm:tw-z-10">
+            <div className="md:tw-max-w-[720px] tw-max-w-[342px] tw-space-y-[12px]">
               <p className="tw-text-[12px] md:tw-text-[14px] tw-font-light tw-uppercase tw-tracking-[7%] tw-leading-[160%] tw-text-noct-muted">
                 {industry.industryTitle}
               </p>
@@ -173,10 +175,12 @@ export default function IndustryPage({ industry }) {
         </section>
 
         {/* Trusted By — auto logo carousel */}
-        <LogoCarousel
-          heading={details.trustedByHeading}
-          logos={details.trustedBy}
-        />
+        {details.showTrustedBySection !== false && (
+          <LogoCarousel
+            heading={details.trustedByHeading}
+            logos={details.trustedBy}
+          />
+        )}
 
         {/* Selected Work — manual arrow carousel */}
         <SelectedWorkCarousel
@@ -194,10 +198,12 @@ export default function IndustryPage({ industry }) {
         />
 
         {/* Testimonials — portrait + quotes carousel */}
-        <TestimonialSection
-          heading={details.testimonialHeading}
-          items={details.testimonialItems}
-        />
+        {details.showTestimonialSection !== false && (
+          <TestimonialSection
+            heading={details.testimonialHeading}
+            items={details.testimonialItems}
+          />
+        )}
 
         {/* Challenges — accordion cards (same as services) */}
         <ChallengeSection

@@ -35,7 +35,7 @@ export default function SelectedWorkCard({ item }) {
       <div
         role="img"
         aria-label={title}
-        className="selected-work-card__media tw-relative tw-h-[320px] md:tw-h-[520px] tw-w-full tw-overflow-hidden tw-bg-cover tw-bg-center"
+        className="selected-work-card__media tw-relative tw-h-[320px] md:tw-h-[512px] md:tw-w-[378px] tw-w-[240px] tw-overflow-hidden tw-bg-cover tw-bg-center"
         style={{
           backgroundColor: accent,
           backgroundImage: imageSrc ? `url(${imageSrc})` : undefined,

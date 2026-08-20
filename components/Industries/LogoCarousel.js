@@ -14,7 +14,7 @@ export default function LogoCarousel({ heading, logos = [] }) {
   if (!logos?.length) return null;
 
   return (
-    <section className="logo-carousel tw-overflow-hidden tw-py-8 md:tw-py-16">
+    <section className="logo-carousel tw-overflow-hidden tw-pb-8 md:tw-pb-16">
       {heading && (
         <p className="tw-mb-8 md:tw-mb-[45px] max-sm:tw-max-w-[170px] mx-auto tw-text-center tw-text-[12px] tw-font-light tw-uppercase tw-tracking-[7%] tw-leading-[140%] tw-text-noct-muted">
           {heading}
@@ -29,12 +29,15 @@ export default function LogoCarousel({ heading, logos = [] }) {
             return (
               <div
                 key={`${logo._key || logo.asset?._ref || "logo"}-${index}`}
-                className="logo-carousel__item tw-flex tw-shrink-0 tw-items-center tw-justify-center tw-px-6 md:tw-px-[72px]"
+                className="logo-carousel__item tw-flex tw-shrink-0 tw-items-center tw-justify-center tw-px-6"
               >
                 <img
                   src={src}
                   alt={logo.alt || ""}
-                  className="tw-h-[15px] md:tw-h-[36px] tw-w-auto tw-max-w-[70px] md:tw-max-w-[120px] tw-object-contain"
+                  width={133}
+                  height={26}
+                  className="md:tw-h-[26px] md:tw-w-[133px] tw-object-contain"
+                  loading="lazy"
                 />
               </div>
             );
