@@ -1,18 +1,8 @@
 import urlFor from "../../utils/urlFor";
 import TestimonialCard from "../TestimonialCard";
 
-/**
- * Challenges accordion grid — reuses the services TestimonialCard.
- * Items are distributed across 3 columns (desktop) like the services page.
- * Styled for the dark industry page background.
- */
 export default function ChallengeSection({ heading, items = [] }) {
   if (!items?.length) return null;
-
-  const columns = [[], [], []];
-  items.forEach((item, index) => {
-    columns[index % 3].push(item);
-  });
 
   return (
     <section className="challenge-section tw-bg-noct-dark tw-pt-[100px] md:tw-pt-[200px] tw-text-white">
@@ -24,23 +14,24 @@ export default function ChallengeSection({ heading, items = [] }) {
         )}
 
         <div className="testimonial-grid grid-3">
-          {columns.map((column, colIndex) => (
-            <div key={`challenge-col-${colIndex}`}>
-              {column.map((item, index) => (
-                <TestimonialCard
-                  key={item._key || `challenge-${colIndex}-${index}`}
-                  problem={item.problem}
-                  solution={item.solution}
-                  logo={item.logo ? urlFor(item.logo).url() : null}
-                  ctaLink={item.link}
-                />
-              ))}
-            </div>
+          {items.map((item, index) => (
+            <TestimonialCard
+              key={item._key || `challenge-${index}`}
+              problem={item.problem}
+              solution={item.solution}
+              logo={item.logo ? urlFor(item.logo).url() : null}
+              ctaLink={item.link}
+            />
           ))}
         </div>
       </div>
 
       <style jsx global>{`
+        .challenge-section .testimonial-grid {
+          align-items: start;
+          row-gap: 0;
+        }
+
         .challenge-section .testimonial-card {
           border-top-color: rgba(255, 255, 255, 0.2);
           color: #fff;

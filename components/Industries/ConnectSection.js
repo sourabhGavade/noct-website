@@ -27,7 +27,7 @@ export default function ConnectSection({ heading, items = [], image, cta }) {
   );
 
   return (
-    <section className="connect-section tw-bg-noct-dark md:tw-pt-[200px] md:tw-pb-[140px] tw-pt-16 tw-pb-10 tw-text-white">
+    <section className="connect-section tw-bg-noct-dark md:tw-pt-[180px] md:tw-pb-[140px] tw-pt-[80px] tw-pb-10 tw-text-white">
       <div className="container">
         <div className="tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-gap-10 lg:tw-gap-0 tw-items-center tw-border tw-border-white/10 tw-bg-[#1E1E1E] tw-px-6 tw-py-10 md:tw-px-[80px] md:tw-py-14">
           <div className="tw-flex tw-flex-col tw-items-start">
@@ -58,7 +58,7 @@ export default function ConnectSection({ heading, items = [], image, cta }) {
               <img
                 src={imageSrc}
                 alt={image?.alt || ""}
-                className="tw-w-full tw-max-w-[320px] tw-h-auto tw-object-contain"
+                className="tw-w-full tw-max-w-[406px] tw-h-auto tw-object-contain"
               />
             </div>
           )}
