@@ -36,6 +36,7 @@ export async function getStaticProps({ params }) {
       industryItemMoreDetails{
         mainSubtitle,
         mainDescription,
+        showTrustedBySection,
         trustedByHeading,
         trustedBy[]{
           ...,
@@ -63,6 +64,7 @@ export async function getStaticProps({ params }) {
         },
         expertiseHeading,
         expertiseItems,
+        showTestimonialSection,
         testimonialHeading,
         testimonialItems[]{
           ...,
@@ -173,10 +175,12 @@ export default function IndustryPage({ industry }) {
         </section>
 
         {/* Trusted By — auto logo carousel */}
-        <LogoCarousel
-          heading={details.trustedByHeading}
-          logos={details.trustedBy}
-        />
+        {details.showTrustedBySection !== false && (
+          <LogoCarousel
+            heading={details.trustedByHeading}
+            logos={details.trustedBy}
+          />
+        )}
 
         {/* Selected Work — manual arrow carousel */}
         <SelectedWorkCarousel
@@ -194,10 +198,12 @@ export default function IndustryPage({ industry }) {
         />
 
         {/* Testimonials — portrait + quotes carousel */}
-        <TestimonialSection
-          heading={details.testimonialHeading}
-          items={details.testimonialItems}
-        />
+        {details.showTestimonialSection !== false && (
+          <TestimonialSection
+            heading={details.testimonialHeading}
+            items={details.testimonialItems}
+          />
+        )}
 
         {/* Challenges — accordion cards (same as services) */}
         <ChallengeSection
