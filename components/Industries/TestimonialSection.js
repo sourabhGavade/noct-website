@@ -102,7 +102,7 @@ export default function TestimonialSection({ heading, items = [] }) {
 
         <div
           ref={scrollerRef}
-          className="testimonial-section__scroller tw-flex tw-gap-5 md:tw-gap-10 tw-overflow-x-auto tw-scroll-smooth tw-pb-2"
+          className="testimonial-section__scroller tw-flex tw-items-stretch tw-gap-5 md:tw-gap-10 tw-overflow-x-auto tw-scroll-smooth tw-pb-2"
         >
           {items.map((item, index) => (
             <TestimonialCard
@@ -140,7 +140,7 @@ function TestimonialCard({ item }) {
       className={
         imageSrc
           ? "testimonial-card tw-grid tw-shrink-0 tw-w-[min(753px,140vw)] tw-grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] tw-gap-4 md:tw-gap-6 lg:tw-gap-8 tw-items-stretch"
-          : "testimonial-card tw-flex tw-shrink-0 tw-w-[min(240px,72vw)] md:tw-w-[425px] tw-flex-col"
+          : "testimonial-card tw-flex tw-h-auto tw-shrink-0 tw-w-[min(240px,72vw)] md:tw-w-[425px] tw-flex-col"
       }
     >
       {imageSrc && (
@@ -153,7 +153,8 @@ function TestimonialCard({ item }) {
         </div>
       )}
 
-      <div className="tw-flex tw-h-full tw-min-h-0 tw-flex-col tw-justify-center">
+      {/* Stretch to tallest card; mt-auto pins name/title to a shared baseline */}
+      <div className="tw-flex tw-h-full tw-min-h-0 tw-flex-col">
         {logoSrc && (
           <div className="tw-mb-4 md:tw-mb-6 lg:tw-mb-[40px]">
             <img
@@ -168,7 +169,7 @@ function TestimonialCard({ item }) {
           {item.quote}
         </p>
 
-        <div>
+        <div className="tw-mt-auto">
           <div
             aria-hidden="true"
             className="tw-mb-4 md:tw-mb-7 tw-h-px tw-w-10 md:tw-w-[56px] tw-bg-white/25"
