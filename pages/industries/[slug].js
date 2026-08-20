@@ -158,7 +158,7 @@ export default function IndustryPage({ industry }) {
           />
 
           <div className="container tw-relative tw-z-10">
-            <div className="tw-max-w-[720px] tw-space-y-[12px]">
+            <div className="md:tw-max-w-[720px] tw-max-w-[342px] tw-space-y-[12px]">
               <p className="tw-text-[12px] md:tw-text-[14px] tw-font-light tw-uppercase tw-tracking-[7%] tw-leading-[160%] tw-text-noct-muted">
                 {industry.industryTitle}
               </p>

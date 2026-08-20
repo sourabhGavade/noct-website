@@ -47,14 +47,14 @@ export default function SelectedWorkCarousel({ heading, items = [] }) {
   return (
     <section className="selected-work-carousel tw-pt-[100px] md:tw-pt-[120px] max-sm:tw-pb-[50px]">
       <div className="container">
-        <div className="tw-mb-[48px] md:tw-mb-[64px] tw-flex tw-items-center tw-justify-between tw-gap-4">
+        <div className="tw-mb-[48px] md:tw-mb-[64px] tw-flex tw-items-center tw-justify-between">
           {heading && (
-            <h2 className="tw-mb-0 tw-text-[24px] md:tw-text-[40px] lg:tw-text-[48px] tw-font-bold tw-leading-[1.15] tw-tracking-[-0.02em] tw-text-white">
+            <h2 className="tw-text-[24px] md:tw-text-[40px] lg:tw-text-[48px] tw-font-bold tw-leading-[1.15] tw-tracking-[-0.02em] tw-text-white">
               {heading}
             </h2>
           )}
 
-          <div className="tw-flex tw-shrink-0 tw-items-center tw-gap-1 md:tw-gap-2">
+          <div className="tw-flex tw-shrink-0 tw-items-center tw-gap-1 md:tw-gap-2 tw--mr-2 md:tw--mr-3">
             <button
               type="button"
               aria-label="Previous work"
@@ -84,10 +84,9 @@ export default function SelectedWorkCarousel({ heading, items = [] }) {
           </div>
         </div>
 
-        {/* Bleed right so cards can scroll past the container edge */}
         <div
           ref={scrollerRef}
-          className="selected-work-carousel__scroller tw-flex tw-gap-[32px] md:tw-gap-[60px] tw-overflow-x-auto tw-scroll-smooth"
+          className="selected-work-carousel__scroller tw-flex tw-gap-[32px] md:tw-gap-[36px] tw-overflow-x-auto tw-scroll-smooth"
         >
           {items.map((item, index) => (
             <SelectedWorkCard key={item._key || `work-${index}`} item={item} />
@@ -97,8 +96,6 @@ export default function SelectedWorkCarousel({ heading, items = [] }) {
 
       <style jsx>{`
         .selected-work-carousel__scroller {
-          margin-right: calc(50% - 50vw);
-          padding-right: calc(50vw - 50%);
           scrollbar-width: none;
           -ms-overflow-style: none;
         }
