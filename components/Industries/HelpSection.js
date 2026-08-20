@@ -94,7 +94,7 @@ export default function HelpSection({ heading, items = [] }) {
           </div>
 
           {/* Titles + scroll-revealed descriptions */}
-          <div className="help-section__list lg:tw-order-1 tw-flex tw-flex-col tw-gap-3 md:tw-gap-[50px]">
+          <div className="help-section__list lg:tw-order-1 tw-flex tw-flex-col tw-gap-[40px] md:tw-gap-[50px]">
             {items.map((item, index) => {
               const isActive = index === activeIndex;
               const distance = Math.abs(index - activeIndex);

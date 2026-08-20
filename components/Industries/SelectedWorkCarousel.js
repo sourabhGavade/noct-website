@@ -47,14 +47,14 @@ export default function SelectedWorkCarousel({ heading, items = [] }) {
   return (
     <section className="selected-work-carousel tw-pt-[100px] md:tw-pt-[120px] max-sm:tw-pb-[50px]">
       <div className="container">
-        <div className="tw-mb-[48px] md:tw-mb-[64px] tw-flex tw-items-center tw-justify-between">
+        <div className="tw-mb-[48px] md:tw-mb-[64px] tw-flex tw-items-center tw-justify-between tw-gap-4">
           {heading && (
-            <h2 className="tw-text-[24px] md:tw-text-[40px] lg:tw-text-[48px] tw-font-bold tw-leading-[1.15] tw-tracking-[-0.02em] tw-text-white">
+            <h2 className="tw-mb-0 tw-text-[24px] md:tw-text-[40px] lg:tw-text-[48px] tw-font-bold tw-leading-none tw-tracking-[-0.02em] tw-text-white">
               {heading}
             </h2>
           )}
 
-          <div className="tw-flex tw-shrink-0 tw-items-center tw-gap-1 md:tw-gap-2 tw--mr-2 md:tw--mr-3">
+          <div className="tw-flex tw-shrink-0 tw-items-center tw-gap-1 md:tw-gap-2 tw--mr-3">
             <button
               type="button"
               aria-label="Previous work"
@@ -66,7 +66,7 @@ export default function SelectedWorkCarousel({ heading, items = [] }) {
                   : "tw-cursor-default tw-text-noct-muted tw-opacity-40"
               }`}
             >
-              <HiChevronLeft size={40} />
+              <HiChevronLeft className="tw-block tw-h-8 tw-w-8 md:tw-h-10 md:tw-w-10" />
             </button>
             <button
               type="button"
@@ -79,7 +79,7 @@ export default function SelectedWorkCarousel({ heading, items = [] }) {
                   : "tw-cursor-default tw-text-noct-muted tw-opacity-40"
               }`}
             >
-              <HiChevronRight size={40} />
+              <HiChevronRight className="tw-block tw-h-8 tw-w-8 md:tw-h-10 md:tw-w-10" />
             </button>
           </div>
         </div>
