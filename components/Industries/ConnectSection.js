@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Button from "../Button";
 import urlFor from "../../utils/urlFor";
 
 /**
@@ -13,17 +14,16 @@ export default function ConnectSection({ heading, items = [], image, cta }) {
   const label = cta?.text || "Let's Connect";
   const isExternal = /^https?:\/\//i.test(href);
 
-  const buttonClassName =
-    "tw-uppercase md:tw-text-[14px] tw-text-[12px] tw-bg-transparent tw-text-white tw-tracking-[1.58px] tw-leading-[18px] tw-border-white tw-border-[0.5px] md:tw-px-[40px] md:tw-py-[16px] tw-px-[32px] tw-py-[11px]";
-
-  const buttonEl = <button className={buttonClassName}>{label}</button>;
+  const buttonEl = <Button text={label} style="alt" />;
 
   const button = isExternal ? (
     <a href={href} target="_blank" rel="noopener noreferrer">
       {buttonEl}
     </a>
   ) : (
-    <Link href={href}>{buttonEl}</Link>
+    <Link href={href}>
+      <a>{buttonEl}</a>
+    </Link>
   );
 
   return (

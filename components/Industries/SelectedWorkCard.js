@@ -12,8 +12,8 @@ export default function SelectedWorkCard({ item }) {
 
   const { title, link, comingSoon, logo, image, accentColor } = item;
 
-  const imageSrc = image ? urlFor(image).url() : null;
-  const logoSrc = logo ? urlFor(logo).url() : null;
+  const imageSrc = image?.asset ? urlFor(image).url() : null;
+  const logoSrc = logo?.asset ? urlFor(logo).url() : null;
   const accent = accentColor?.hex || "#342F1A";
   const hasLink = Boolean(link);
 

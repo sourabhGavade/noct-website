@@ -8,7 +8,7 @@ import urlFor from "../../utils/urlFor";
 export default function LogoCarousel({ heading, logos = [] }) {
   const track = useMemo(() => {
     if (!logos?.length) return [];
-    return [...logos, ...logos, ...logos];
+    return [...logos, ...logos];
   }, [logos]);
 
   if (!logos?.length) return null;
@@ -44,7 +44,7 @@ export default function LogoCarousel({ heading, logos = [] }) {
 
       <style jsx>{`
         .logo-carousel__track {
-          animation: logo-marquee 40s linear infinite;
+          animation: logo-marquee 60s linear infinite;
         }
 
         .logo-carousel__track:hover {
