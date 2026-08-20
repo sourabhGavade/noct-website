@@ -59,7 +59,7 @@ export default function HelpSection({ heading, items = [] }) {
       ref={sectionRef}
       className="help-section tw-relative tw-bg-noct-dark tw-text-white tw-overflow-hidden"
     >
-      <div className="container tw-flex tw-min-h-screen tw-flex-col tw-py-[80px] md:tw-py-[100px] lg:tw-pt-[120px]">
+      <div className="container tw-flex tw-flex-col tw-py-[80px] md:tw-py-[100px] lg:tw-pt-[120px]">
         {heading && (
           <h2 className="tw-text-[24px] tw-mb-8 md:tw-mb-[100px] md:tw-text-[40px] lg:tw-text-[48px] tw-font-bold tw-leading-[1.15] tw-tracking-[-0.02em] tw-text-white">
             {heading}
@@ -69,7 +69,7 @@ export default function HelpSection({ heading, items = [] }) {
         <div className="tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-gap-8 lg:tw-gap-16 tw-items-start">
           {/* Image stays at the first item on the right; does not move as items change */}
           <div className="help-section__image tw-flex tw-justify-center lg:tw-order-2">
-            <div className="tw-relative tw-w-full tw-max-w-[420px] tw-aspect-square">
+            <div className="tw-relative tw-w-[190px] tw-h-[184px] md:tw-w-[388px] md:tw-h-[360px]">
               {items.map((item, index) => {
                 const src = item?.image ? urlFor(item.image).url() : null;
                 if (!src) return null;
