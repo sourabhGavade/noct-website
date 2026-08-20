@@ -70,7 +70,7 @@ export default function TestimonialSection({ heading, items = [] }) {
             </h2>
           )}
 
-          <div className="tw-flex tw-shrink-0 tw-items-center tw-gap-1 md:tw-gap-2">
+          <div className="tw-flex tw-shrink-0 tw-items-center tw-gap-1 md:tw-gap-2 tw--mr-2 md:tw--mr-7">
             <button
               type="button"
               aria-label="Previous testimonial"
@@ -171,7 +171,7 @@ function TestimonialCard({ item }) {
         <div>
           <div
             aria-hidden="true"
-            className="tw-mb-4 md:tw-mb-7 tw-h-px tw-w-10 md:tw-w-12 tw-bg-white/25"
+            className="tw-mb-4 md:tw-mb-7 tw-h-px tw-w-10 md:tw-w-[56px] tw-bg-white/25"
           />
           <h5 className="tw-mb-1 tw-text-[14px] md:tw-text-[20px] tw-font-bold tw-leading-tight tw-text-white">
             {item.name}
