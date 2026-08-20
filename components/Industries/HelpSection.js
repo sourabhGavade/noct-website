@@ -59,7 +59,7 @@ export default function HelpSection({ heading, items = [] }) {
       ref={sectionRef}
       className="help-section tw-relative tw-bg-noct-dark tw-text-white tw-overflow-hidden"
     >
-      <div className="container tw-flex tw-flex-col tw-py-[80px] md:tw-py-[100px] lg:tw-pt-[120px]">
+      <div className="container tw-flex tw-flex-col tw-py-[80px] md:tw-py-[100px]">
         {heading && (
           <h2 className="tw-text-[24px] tw-mb-8 md:tw-mb-[100px] md:tw-text-[40px] lg:tw-text-[48px] tw-font-bold tw-leading-[1.15] tw-tracking-[-0.02em] tw-text-white">
             {heading}
