@@ -89,7 +89,7 @@ export default function Industries({ content }) {
       <div className="tw-bg-noct-dark tw-text-white">
         {/* Hero */}
         <section
-          className="tw-flex tw-items-center tw-justify-center tw-min-h-0 lg:tw-min-h-[70vh] tw-pt-[160px] tw-pb-20 md:tw-pt-[160px] md:tw-pb-[100px] tw-bg-cover tw-bg-center tw-bg-no-repeat"
+          className="tw-flex tw-items-center tw-justify-center tw-min-h-0 lg:tw-min-h-[70vh] tw-pt-[128px] tw-pb-20 md:tw-pt-[168px] md:tw-pb-[100px] tw-bg-cover tw-bg-center tw-bg-no-repeat"
           style={bgImage ? { backgroundImage: `url(${bgImage})` } : undefined}
         >
           <div className="container tw-text-center">
@@ -97,10 +97,10 @@ export default function Industries({ content }) {
               className="tw-mx-auto tw-max-w-[720px] tw-text-center"
               // data-fade-up
             >
-              <h1 className="tw-mx-auto tw-mb-4 tw-max-w-[600px] tw-text-[32px] md:tw-text-[64px] tw-leading-[1.2] tw-text-white">
+              <h1 className="tw-mx-auto tw-mb-4 md:tw-max-w-[600px] tw-max-w-[270px] tw-text-[28px] md:tw-text-[64px] tw-leading-[130%] tw-text-white">
                 <LetteringTitle text={content.title} />
               </h1>
-              <p className="tw-mx-auto md:tw-max-w-[620px] tw-max-w-[300px] md:tw-text-[22px] tw-text-[14px] tw-leading-relaxed tw-text-noct-muted">
+              <p className="tw-mx-auto md:tw-max-w-[620px] tw-max-w-[300px] md:tw-text-[22px] tw-text-[14px] tw-leading-[170%] tw-text-noct-muted">
                 {content.description}
               </p>
             </div>
@@ -116,12 +116,12 @@ export default function Industries({ content }) {
           return (
             <section
               key={slug || item.industryTitle || index}
-              className="padded-section"
+              className="tw-py-[30px] md:tw-pt-[64px]"
             >
               <div className="container">
                 <div className="row align-items-center justify-content-between">
                   <div
-                    className={`col-lg-5 md:mb-5 mb-[16px] mb-lg-0 ${
+                    className={`col-lg-5 md:mb-5 mb-[16px] ${
                       imageOnLeft ? "order-1" : "order-1 order-lg-2"
                     }`}
                     // data-fade-up
@@ -144,7 +144,7 @@ export default function Industries({ content }) {
                           className="md:tw-hidden tw-block"
                           src={urlFor(item.mobileImage).url()}
                           width={302}
-                          height={220}
+                          height={342}
                           alt={
                             item.mobileImage.alt ||
                             `${item.industryTitle} mobile`
@@ -155,7 +155,7 @@ export default function Industries({ content }) {
                   </div>
 
                   <div
-                    className={`col-lg-6 max-sm:tw-text-center ${
+                    className={`col-lg-6 tw-text-center md:tw-text-left ${
                       imageOnLeft ? "order-2" : "order-2 order-lg-1"
                     }`}
                     // data-fade-up
@@ -163,7 +163,7 @@ export default function Industries({ content }) {
                     <h3 className="text-white tw-tracking-[2%] tw-leading-[140%] tw-mb-[5px] max-sm:tw-text-[18px]">
                       {item.industryTitle}
                     </h3>
-                    <p className="tw-text-[#a0a0a0] max-sm:tw-max-w-[250px] tw-mx-auto md:tw-text-[18px] tw-text-[12px] tw-tracking-[2.1%] tw-leading-[160%] tw-font-light tw-mb-[20px]">
+                    <p className="tw-text-[#a0a0a0] max-sm:tw-mx-auto tw-max-w-[246px] md:tw-max-w-[500px] md:tw-text-[18px] tw-text-[12px] tw-tracking-[2.1%] tw-leading-[160%] tw-font-light tw-mb-[24px]">
                       {item.industryDescription}
                     </p>
                     {item.services?.length > 0 && (
