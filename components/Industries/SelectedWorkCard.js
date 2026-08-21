@@ -4,17 +4,15 @@ import urlFor from "../../utils/urlFor";
 
 /**
  * Work showcase card for industry detail pages.
- * Accent color from Sanity is applied as a bottom-up gradient behind the title.
  * Linked cards show a right arrow on the title (hover-only on desktop).
  */
 export default function SelectedWorkCard({ item }) {
   if (!item) return null;
 
-  const { title, link, comingSoon, logo, image, accentColor } = item;
+  const { title, link, comingSoon, logo, image } = item;
 
   const imageSrc = image?.asset ? urlFor(image).url() : null;
   const logoSrc = logo?.asset ? urlFor(logo).url() : null;
-  const accent = accentColor?.hex || "#342F1A";
   const hasLink = Boolean(link);
 
   const titleContent = (
@@ -37,7 +35,6 @@ export default function SelectedWorkCard({ item }) {
         aria-label={title}
         className="selected-work-card__media tw-relative tw-h-[320px] md:tw-h-[512px] md:tw-w-[378px] tw-w-[240px] tw-overflow-hidden tw-bg-cover tw-bg-center"
         style={{
-          backgroundColor: accent,
           backgroundImage: imageSrc ? `url(${imageSrc})` : undefined,
         }}
       >
@@ -51,13 +48,7 @@ export default function SelectedWorkCard({ item }) {
           </div>
         )}
 
-        {/* Accent gradient from Sanity — transparent → solid color from bottom */}
-        <div
-          className="tw-absolute tw-inset-x-0 tw-bottom-0 tw-z-[2] tw-flex tw-flex-col tw-justify-end tw-gap-3 tw-px-4 tw-pb-5 tw-pt-16 md:tw-gap-3 md:tw-px-6 md:tw-pb-7 md:tw-pt-[100px]"
-          style={{
-            background: `linear-gradient(180deg, transparent 0%, ${accent} 50%, ${accent} 100%)`,
-          }}
-        >
+        <div className="tw-absolute tw-inset-x-0 tw-bottom-0 tw-z-[2] tw-flex tw-flex-col tw-justify-end tw-gap-3 tw-px-4 tw-pb-5 tw-pt-16 md:tw-gap-3 md:tw-px-6 md:tw-pb-7 md:tw-pt-[100px]">
           {comingSoon && (
             <span className="tw-inline-block tw-w-fit tw-rounded-full tw-bg-white/15 tw-px-3 tw-py-1.5 tw-text-[9px] md:tw-text-[12px] tw-font-medium tw-uppercase tw-tracking-[7%] tw-backdrop-blur-sm">
               Coming Soon
