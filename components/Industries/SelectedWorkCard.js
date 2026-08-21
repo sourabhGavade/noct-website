@@ -19,11 +19,18 @@ export default function SelectedWorkCard({ item }) {
     <span className="tw-inline tw-text-[14px] md:tw-text-[22px] tw-font-medium tw-leading-[160%] tw-tracking-[0.01em] tw-text-white">
       {title}
       {hasLink && (
-        <HiArrowRight
-          className="selected-work-card__arrow tw-ml-3 tw-inline-block tw-align-middle tw-shrink-0 tw-opacity-100 md:tw-opacity-0 md:tw-transition-opacity md:tw-duration-200 md:group-hover:tw-opacity-100"
-          size={16}
-          aria-hidden="true"
-        />
+        <>
+          {/* Word joiner + 0-width wrap: arrow stays on the last text line
+              instead of wrapping alone onto a 3rd line. */}
+          {"\u2060"}
+          <span className="tw-inline-block tw-w-0 tw-overflow-visible tw-whitespace-nowrap tw-align-middle">
+            <HiArrowRight
+              className="selected-work-card__arrow tw-ml-2 tw-inline-block tw-align-middle tw-opacity-100 md:tw-opacity-0 md:tw-transition-opacity md:tw-duration-200 md:group-hover:tw-opacity-100"
+              size={16}
+              aria-hidden="true"
+            />
+          </span>
+        </>
       )}
     </span>
   );
