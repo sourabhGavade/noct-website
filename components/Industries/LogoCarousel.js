@@ -8,7 +8,7 @@ import urlFor from "../../utils/urlFor";
 export default function LogoCarousel({ heading, logos = [] }) {
   const track = useMemo(() => {
     if (!logos?.length) return [];
-    return [...logos, ...logos];
+    return [...logos, ...logos, ...logos];
   }, [logos]);
 
   if (!logos?.length) return null;
@@ -29,7 +29,7 @@ export default function LogoCarousel({ heading, logos = [] }) {
             return (
               <div
                 key={`${logo._key || logo.asset?._ref || "logo"}-${index}`}
-                className="logo-carousel__item tw-flex tw-shrink-0 tw-items-center tw-justify-center tw-px-6"
+                className="logo-carousel__item tw-flex tw-shrink-0 tw-items-center tw-justify-center md:tw-px-6 tw-px-3"
               >
                 <img
                   src={src}
@@ -47,7 +47,13 @@ export default function LogoCarousel({ heading, logos = [] }) {
 
       <style jsx>{`
         .logo-carousel__track {
-          animation: logo-marquee 60s linear infinite;
+          animation: logo-marquee 30s linear infinite;
+        }
+
+        @media (min-width: 768px) {
+          .logo-carousel__track {
+            animation: logo-marquee 50s linear infinite;
+          }
         }
 
         .logo-carousel__track:hover {

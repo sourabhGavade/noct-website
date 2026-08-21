@@ -167,7 +167,7 @@ export default function IndustryPage({ industry }) {
               src={heroGraphicDesktopSrc}
               alt={details.heroGraphicDesktop?.alt || ""}
               aria-hidden="true"
-              className="tw-pointer-events-none tw-absolute tw-right-0 tw-top-0 tw-z-0 tw-hidden tw-w-[min(75vw,640px)] tw-max-w-none tw-select-none md:tw-block"
+              className="tw-pointer-events-none tw-absolute tw-right-10 tw-top-10 tw-z-0 tw-hidden tw-w-[min(55vw,480px)] tw-max-w-none tw-select-none md:tw-block"
             />
           )}
           {heroGraphicMobileSrc && (
@@ -175,7 +175,7 @@ export default function IndustryPage({ industry }) {
               src={heroGraphicMobileSrc}
               alt={details.heroGraphicMobile?.alt || ""}
               aria-hidden="true"
-              className="tw-pointer-events-none tw-absolute tw-right-0 tw-top-10 tw-z-0 tw-block tw-w-[min(55vw,195px)] tw-max-w-none tw-select-none md:tw-hidden"
+              className="tw-pointer-events-none tw-absolute tw-right-1 tw-top-10 tw-z-0 tw-block tw-w-[min(40vw,145px)] tw-max-w-none tw-select-none md:tw-hidden"
             />
           )}
 
