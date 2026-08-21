@@ -3,6 +3,7 @@ import sanityClient from "../client";
 import HeroSection from "../components/DesignSystem/HeroSection";
 import FeaturesSection from "../components/DesignSystem/FeaturesSection";
 import MainVideoSection from "../components/DesignSystem/MainVideoSection";
+import FooterCTA from "../components/FooterCTA";
 
 export async function getStaticProps() {
   const content = await sanityClient.fetch(`*[_type=="designSystem"][0]{
@@ -65,7 +66,7 @@ export default function DesignSystem({ content }) {
         <title>NOCT | Design System</title>
       </Head>
 
-      <div className="tw-bg-white tw-text-noct-dark tw-space-y-[80px] tw-pb-[80px] md:tw-space-y-[163px] md:tw-pb-[160px]">
+      <div className="tw-bg-white tw-text-noct-dark tw-space-y-[80px] md:tw-space-y-[163px]">
         <HeroSection
           title={content.title}
           trustDescription={content.trustDescription}
@@ -77,6 +78,8 @@ export default function DesignSystem({ content }) {
         <FeaturesSection features={content.features} />
 
         <MainVideoSection videoUrl={content.mainVideo} />
+
+        <FooterCTA />
       </div>
     </>
   );
