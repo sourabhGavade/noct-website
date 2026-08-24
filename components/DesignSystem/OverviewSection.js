@@ -98,13 +98,9 @@ export default function OverviewSection({ heading, description, items = [] }) {
                         type="button"
                         onClick={() => handleItemClick(index)}
                         aria-expanded={isOpen}
-                        className={`overview-item__header tw-group tw-flex tw-w-full tw-items-center tw-border-0 tw-bg-transparent tw-p-0 tw-text-left tw-transition-colors tw-duration-300 ${
-                          isOpen || isActive
-                            ? "tw-text-noct-dark"
-                            : "tw-text-noct-muted hover:tw-text-noct-dark"
-                        }`}
+                        className="overview-item__header tw-flex tw-w-full tw-items-center tw-border-0 tw-bg-transparent tw-p-0 tw-text-left"
                       >
-                        <span className="tw-text-[16px] tw-font-normal tw-leading-[1.4] md:tw-text-[20px]">
+                        <span className="overview-item__title tw-text-[16px] tw-font-normal tw-leading-[1.4] md:tw-text-[20px]">
                           {item.title}
                         </span>
                         <span aria-hidden="true" className="plus-icon" />
@@ -171,6 +167,15 @@ export default function OverviewSection({ heading, description, items = [] }) {
           cursor: pointer;
         }
 
+        .overview-item__title {
+          color: var(--text);
+          transition: color 0.25s ease;
+        }
+
+        .overview-item__header:hover .overview-item__title {
+          color: var(--purple);
+        }
+
         .overview-item__desc {
           height: 0px;
         }
@@ -198,6 +203,11 @@ export default function OverviewSection({ heading, description, items = [] }) {
 
         .overview-item.open .overview-item__header:hover :global(.plus-icon) {
           transform: rotate(0);
+        }
+
+        .overview-item__header:hover :global(.plus-icon:before),
+        .overview-item__header:hover :global(.plus-icon:after) {
+          background: var(--purple);
         }
       `}</style>
     </section>
