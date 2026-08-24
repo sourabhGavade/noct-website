@@ -35,8 +35,8 @@ export default function LogoCarousel({ heading, logos = [] }) {
                   src={src}
                   alt={logo.alt || ""}
                   width={133}
-                  height={26}
-                  className="md:tw-h-[26px] md:tw-w-[133px] tw-object-contain"
+                  height={40}
+                  className="md:tw-h-[40px] md:tw-w-[133px] tw-object-contain"
                   loading="lazy"
                 />
               </div>

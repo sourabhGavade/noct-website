@@ -72,7 +72,7 @@ export default function SelectedWorkCard({ item }) {
   );
 
   const className =
-    "selected-work-card tw-group tw-block tw-shrink-0 tw-w-[240px] md:tw-w-[384px] tw-no-underline";
+    "selected-work-card tw-group tw-block tw-shrink-0 tw-w-[240px] md:tw-w-[384px] tw-no-underline hover:tw-scale-105 tw-transition-transform tw-duration-300";
 
   if (hasLink) {
     const isExternal = /^https?:\/\//i.test(link);
