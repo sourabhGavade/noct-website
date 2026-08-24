@@ -167,7 +167,7 @@ export default function IndustryPage({ industry }) {
               src={heroGraphicDesktopSrc}
               alt={details.heroGraphicDesktop?.alt || ""}
               aria-hidden="true"
-              className="tw-pointer-events-none tw-absolute tw-right-10 tw-top-10 tw-z-0 tw-hidden tw-w-[min(55vw,480px)] tw-max-w-none tw-select-none md:tw-block"
+              className="tw-pointer-events-none tw-absolute tw-right-[120px] tw-top-[120px] tw-z-0 tw-hidden tw-w-[min(55vw,444px)] tw-max-w-none tw-select-none md:tw-block"
             />
           )}
           {heroGraphicMobileSrc && (
