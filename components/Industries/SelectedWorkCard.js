@@ -40,11 +40,14 @@ export default function SelectedWorkCard({ item }) {
       <div
         role="img"
         aria-label={title}
-        className="selected-work-card__media tw-relative tw-h-[320px] md:tw-h-[512px] md:tw-w-[378px] tw-w-[240px] tw-overflow-hidden tw-bg-cover tw-bg-center"
-        style={{
-          backgroundImage: imageSrc ? `url(${imageSrc})` : undefined,
-        }}
+        className="selected-work-card__media tw-relative tw-h-[320px] md:tw-h-[512px] md:tw-w-[378px] tw-w-[240px] tw-overflow-hidden"
       >
+        <div
+          className="tw-absolute tw-inset-0 tw-bg-cover tw-bg-center tw-transition-transform tw-duration-300 group-hover:tw-scale-105"
+          style={{
+            backgroundImage: imageSrc ? `url(${imageSrc})` : undefined,
+          }}
+        />
         {logoSrc && (
           <div className="tw-absolute tw-left-4 tw-top-4 md:tw-left-6 md:tw-top-6 tw-z-10">
             <img
@@ -72,7 +75,7 @@ export default function SelectedWorkCard({ item }) {
   );
 
   const className =
-    "selected-work-card tw-group tw-block tw-shrink-0 tw-w-[240px] md:tw-w-[384px] tw-no-underline hover:tw-scale-105 tw-transition-transform tw-duration-300";
+    "selected-work-card tw-group tw-block tw-shrink-0 tw-w-[240px] md:tw-w-[384px] tw-no-underline";
 
   if (hasLink) {
     const isExternal = /^https?:\/\//i.test(link);

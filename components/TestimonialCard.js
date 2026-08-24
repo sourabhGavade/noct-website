@@ -66,13 +66,19 @@ export default function TestimonialCard({ problem, solution, logo, ctaLink }) {
           border-top: 1px solid rgba(0, 0, 0, 0.2);
           padding: 15px 0 0;
           margin-bottom: 60px;
+          overflow-x: clip;
           overflow-y: hidden;
-          overflow-x: visible;
-          transition: all 0.3s ease;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+          transition: border-color 0.3s ease;
+        }
+
+        .testimonial-card::-webkit-scrollbar {
+          display: none;
         }
 
         .testimonial-card:hover {
-          border-top: 1px solid rgba(0, 0, 0, 0.7);
+          border-top-color: rgba(0, 0, 0, 0.7);
         }
 
         .testimonial-card__header {
