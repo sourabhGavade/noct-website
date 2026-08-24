@@ -47,7 +47,7 @@ export default function LogoCarousel({ heading, logos = [] }) {
 
       <style jsx>{`
         .logo-carousel__track {
-          animation: logo-marquee 30s linear infinite;
+          animation: logo-marquee 15s linear infinite;
         }
 
         @media (min-width: 768px) {
