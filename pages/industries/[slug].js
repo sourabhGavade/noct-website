@@ -241,10 +241,6 @@ export default function IndustryPage({ industry }) {
       </div>
 
       <style jsx global>{`
-        .industry-detail-page .navbar {
-          background-color: transparent !important;
-        }
-
         .industry-detail-page .navbar-link {
           color: #fff;
         }

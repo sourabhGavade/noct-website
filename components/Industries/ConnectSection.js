@@ -17,9 +17,7 @@ export default function ConnectSection({ heading, items = [], image, cta }) {
   const buttonEl = <Button text={label} style="alt" />;
 
   const button = isExternal ? (
-    <a href={href} target="_blank" rel="noopener noreferrer">
-      {buttonEl}
-    </a>
+    <a href={href}>{buttonEl}</a>
   ) : (
     <Link href={href}>
       <a>{buttonEl}</a>

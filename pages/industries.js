@@ -216,10 +216,6 @@ export default function Industries({ content }) {
       </div>
 
       <style jsx global>{`
-        .industries-page .navbar {
-          background-color: transparent !important;
-        }
-
         .industries-page .navbar-link {
           color: #fff;
         }
