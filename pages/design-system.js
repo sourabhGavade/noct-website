@@ -36,6 +36,7 @@ export async function getStaticProps() {
       items[]{
         _key,
         title,
+        description,
         image{
           alt,
           caption,
