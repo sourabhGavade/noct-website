@@ -94,7 +94,7 @@ export default function HelpSection({ heading, items = [] }) {
           </div>
 
           {/* Titles + scroll-revealed descriptions */}
-          <div className="help-section__list lg:tw-order-1 tw-flex tw-flex-col tw-gap-[40px] md:tw-gap-[50px]">
+          <div className="help-section__list lg:tw-order-1 tw-flex tw-flex-col tw-gap-[28px] md:tw-gap-[40px]">
             {items.map((item, index) => {
               const isActive = index === activeIndex;
               const distance = Math.abs(index - activeIndex);
@@ -107,7 +107,7 @@ export default function HelpSection({ heading, items = [] }) {
                   className="help-section__item"
                 >
                   <h3
-                    className={`tw-mb-0 tw-text-[18px] md:tw-text-[24px] lg:tw-text-[32px] tw-font-bold tw-leading-[1.3] tw-transition-colors tw-duration-300 ${
+                    className={`tw-mb-0 tw-text-[18px] md:tw-text-[24px] lg:tw-text-[30px] tw-font-bold tw-leading-[1.3] tw-transition-colors tw-duration-300 ${
                       isActive ? "tw-text-white" : "tw-text-noct-muted"
                     }`}
                     style={!isActive ? { opacity: inactiveOpacity } : undefined}

@@ -3,6 +3,8 @@ import sanityClient from "../client";
 import HeroSection from "../components/DesignSystem/HeroSection";
 import FeaturesSection from "../components/DesignSystem/FeaturesSection";
 import MainVideoSection from "../components/DesignSystem/MainVideoSection";
+import OverviewSection from "../components/DesignSystem/OverviewSection";
+import EngagementModelsSection from "../components/DesignSystem/EngagementModelsSection";
 import FooterCTA from "../components/FooterCTA";
 
 export async function getStaticProps() {
@@ -28,7 +30,38 @@ export async function getStaticProps() {
       caption,
       asset
     },
-    mainVideo
+    mainVideo,
+    overview{
+      heading,
+      description,
+      items[]{
+        _key,
+        title,
+        description,
+        image{
+          alt,
+          caption,
+          asset
+        }
+      }
+    },
+    engagementModels{
+      heading,
+      subtitle,
+      models[]{
+        _key,
+        title,
+        description,
+        includes,
+        idealForLabel,
+        idealForLogos[]{
+          _key,
+          alt,
+          caption,
+          asset
+        }
+      }
+    }
   }`);
 
   return {
@@ -78,6 +111,18 @@ export default function DesignSystem({ content }) {
         <FeaturesSection features={content.features} />
 
         <MainVideoSection videoUrl={content.mainVideo} />
+
+        <OverviewSection
+          heading={content.overview?.heading}
+          description={content.overview?.description}
+          items={content.overview?.items}
+        />
+
+        <EngagementModelsSection
+          heading={content.engagementModels?.heading}
+          subtitle={content.engagementModels?.subtitle}
+          models={content.engagementModels?.models}
+        />
 
         <FooterCTA />
       </div>

@@ -35,8 +35,8 @@ export default function LogoCarousel({ heading, logos = [] }) {
                   src={src}
                   alt={logo.alt || ""}
                   width={133}
-                  height={26}
-                  className="md:tw-h-[26px] md:tw-w-[133px] tw-object-contain"
+                  height={40}
+                  className="md:tw-h-[40px] md:tw-w-[133px] tw-object-contain"
                   loading="lazy"
                 />
               </div>
@@ -47,7 +47,7 @@ export default function LogoCarousel({ heading, logos = [] }) {
 
       <style jsx>{`
         .logo-carousel__track {
-          animation: logo-marquee 30s linear infinite;
+          animation: logo-marquee 15s linear infinite;
         }
 
         @media (min-width: 768px) {

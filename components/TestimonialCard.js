@@ -24,7 +24,7 @@ export default function TestimonialCard({ problem, solution, logo, ctaLink }) {
         split.lines,
         0.3,
         { y: 20, opacity: 0, delay: 0.1 },
-        0.03
+        0.03,
       );
       TweenMax.from(ctaRef.current, 0.3, { y: 20, opacity: 0, delay: 0.3 });
     }
@@ -51,9 +51,11 @@ export default function TestimonialCard({ problem, solution, logo, ctaLink }) {
             {solution}
           </p>
           <div className="testimonial-cta" ref={ctaRef}>
-            <a href={ctaLink} target="_blank">
-              <ButtonLink text="View The Project" />
-            </a>
+            {ctaLink && (
+              <a href={ctaLink} target="_blank">
+                <ButtonLink text="View The Project" />
+              </a>
+            )}
             {logo && <img src={logo} alt="" />}
           </div>
         </div>

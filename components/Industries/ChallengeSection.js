@@ -19,8 +19,6 @@ export default function ChallengeSection({ heading, items = [] }) {
               key={item._key || `challenge-${index}`}
               problem={item.problem}
               solution={item.solution}
-              logo={item.logo ? urlFor(item.logo).url() : null}
-              ctaLink={item.link}
             />
           ))}
         </div>
