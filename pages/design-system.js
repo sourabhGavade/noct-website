@@ -4,6 +4,7 @@ import HeroSection from "../components/DesignSystem/HeroSection";
 import FeaturesSection from "../components/DesignSystem/FeaturesSection";
 import MainVideoSection from "../components/DesignSystem/MainVideoSection";
 import OverviewSection from "../components/DesignSystem/OverviewSection";
+import ProcessSection from "../components/DesignSystem/ProcessSection";
 import EngagementModelsSection from "../components/DesignSystem/EngagementModelsSection";
 import FooterCTA from "../components/FooterCTA";
 
@@ -39,6 +40,19 @@ export async function getStaticProps() {
         title,
         description,
         image{
+          alt,
+          caption,
+          asset
+        }
+      }
+    },
+    process{
+      heading,
+      steps[]{
+        _key,
+        title,
+        description,
+        icon{
           alt,
           caption,
           asset
@@ -116,6 +130,11 @@ export default function DesignSystem({ content }) {
           heading={content.overview?.heading}
           description={content.overview?.description}
           items={content.overview?.items}
+        />
+
+        <ProcessSection
+          heading={content.process?.heading}
+          steps={content.process?.steps}
         />
 
         <EngagementModelsSection
