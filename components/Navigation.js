@@ -96,7 +96,7 @@ export default function Navigation({ awards }) {
         if (isDarkNavbarPage) {
           navbar.style.backgroundColor = st < 400 ? "transparent" : "#1a1a1a";
         } else if (st < 400) {
-          navbar.style.backgroundColor = "#222323";
+          navbar.style.backgroundColor = "transparent";
         } else {
           navbar.style.backgroundColor = "#FCFCFC";
         }
