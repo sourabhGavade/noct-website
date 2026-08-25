@@ -52,9 +52,9 @@ export default function ExpertiseSection({ heading, items = [] }) {
 
     const tweens = [];
     const configs = [
-      { reverse: true, duration: 150 },
-      { reverse: false, duration: 150 },
-      { reverse: true, duration: 150 },
+      { reverse: true, duration: 140 },
+      { reverse: false, duration: 140 },
+      { reverse: true, duration: 140 },
     ];
 
     const setupRow = (trackEl, { reverse, duration }) => {
