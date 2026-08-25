@@ -158,41 +158,43 @@ export default function IndustryPage({ industry }) {
         )}
       </Head>
 
-      <div className="tw-relative tw-bg-noct-dark tw-text-white">
+      <div className="tw-bg-noct-dark tw-text-white">
         {/* Hero */}
-        <section className="tw-relative tw-flex tw-items-center tw-min-h-[50vh] md:tw-min-h-[80vh] md:tw-pt-[160px] tw-pt-[150px] tw-pb-20 md:tw-pb-[100px]">
-          {/* Anchored to section top so it bleeds behind the transparent navbar */}
+        <section className="tw-flex tw-items-center container md:tw-pt-[120px] tw-pt-[117px] tw-pb-[28px] md:tw-pb-[100px]">
+          <div className="md:tw-max-w-[670px] tw-max-w-[320px] tw-space-y-[12px]">
+            <p className="tw-text-[12px] md:tw-text-[14px] tw-font-light tw-uppercase tw-tracking-[7%] tw-leading-[160%] tw-text-noct-muted">
+              {industry.industryTitle}
+            </p>
+            <h1 className="tw-text-[28px] mb-0 md:tw-text-[56px] lg:tw-text-[64px] tw-leading-[130%] tw-tracking-[0.28%] tw-text-white">
+              {details.mainSubtitle}
+            </h1>
+            <p className="tw-text-[14px] md:tw-text-[18px] lg:tw-text-[22px] tw-font-light tw-leading-[170%] tw-tracking-[2%] tw-text-noct-muted">
+              {details.mainDescription}
+            </p>
+          </div>
+
           {heroGraphicDesktopSrc && (
             <img
               src={heroGraphicDesktopSrc}
               alt={details.heroGraphicDesktop?.alt || ""}
               aria-hidden="true"
-              className="tw-pointer-events-none tw-absolute tw-right-[120px] tw-top-[120px] tw-z-0 tw-hidden tw-w-[min(55vw,444px)] tw-max-w-none tw-select-none md:tw-block"
+              className="tw-pointer-events-none tw-hidden tw-w-[min(55vw,444px)] tw-max-w-none tw-select-none md:tw-block"
             />
           )}
-          {heroGraphicMobileSrc && (
+        </section>
+
+        {/* Hero Graphic Mobile */}
+        {heroGraphicMobileSrc && (
+          <div className="tw-flex tw-justify-center tw-mb-[72px] md:tw-hidden">
             <img
               src={heroGraphicMobileSrc}
               alt={details.heroGraphicMobile?.alt || ""}
               aria-hidden="true"
-              className="tw-pointer-events-none tw-absolute tw-right-1 tw-top-10 tw-z-0 tw-block tw-w-[min(40vw,145px)] tw-max-w-none tw-select-none md:tw-hidden"
+              width={306}
+              className="tw-pointer-events-none tw-select-none"
             />
-          )}
-
-          <div className="container tw-relative">
-            <div className="md:tw-max-w-[720px] tw-max-w-[342px] tw-space-y-[12px]">
-              <p className="tw-text-[12px] md:tw-text-[14px] tw-font-light tw-uppercase tw-tracking-[7%] tw-leading-[160%] tw-text-noct-muted">
-                {industry.industryTitle}
-              </p>
-              <h1 className="tw-text-[28px] mb-0 md:tw-text-[56px] lg:tw-text-[64px] tw-leading-[130%] tw-tracking-[0.28%] tw-text-white">
-                {details.mainSubtitle}
-              </h1>
-              <p className="tw-text-[14px] md:tw-text-[18px] lg:tw-text-[22px] tw-font-light tw-leading-[170%] tw-tracking-[2%] tw-text-noct-muted">
-                {details.mainDescription}
-              </p>
-            </div>
           </div>
-        </section>
+        )}
 
         {/* Trusted By — auto logo carousel */}
         {details.showTrustedBySection !== false && (
