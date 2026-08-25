@@ -664,10 +664,9 @@ ul li {
   transform: translateY(0);
 }
 
-/* Industries pages are dark — never let the global scroll handler flash a white bar */
+/* Industries pages: scroll handler sets transparent near top, #1a1a1a when scrolled */
 .industries-page .navbar {
-  background-color: transparent !important;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, background-color 0.25s ease;
 }
 
 #navLogoSVG {

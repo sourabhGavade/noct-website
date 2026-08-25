@@ -86,14 +86,16 @@ export default function Navigation({ awards }) {
         const navbar = document.querySelector(".navbar");
         if (!navbar) return;
 
-        // Dark pages keep a transparent navbar so it never flashes white on scroll-up
+        // Industry pages: transparent near top, dark fill when scrolled (mirrors white fill elsewhere)
         const path = window.location.pathname;
         const isDarkNavbarPage =
           document.body.classList.contains("industries-page") ||
           path === "/industries" ||
           path.startsWith("/industries/");
 
-        if (st < 400 || isDarkNavbarPage) {
+        if (isDarkNavbarPage) {
+          navbar.style.backgroundColor = st < 400 ? "transparent" : "#1a1a1a";
+        } else if (st < 400) {
           navbar.style.backgroundColor = "transparent";
         } else {
           navbar.style.backgroundColor = "#FCFCFC";
@@ -237,7 +239,7 @@ export default function Navigation({ awards }) {
                     Industries
                   </a>
                 </Link>
-                {/* <Link href="/clients">
+                <Link href="/clients">
                   <a
                     className={`navbar-link ${
                       router.pathname === "/clients" ? "font-weight-bold" : ""
@@ -247,7 +249,7 @@ export default function Navigation({ awards }) {
                   >
                     Clients
                   </a>
-                </Link> */}
+                </Link>
                 <Link href="/about">
                   <a
                     className={`navbar-link ${
@@ -332,7 +334,7 @@ export default function Navigation({ awards }) {
               <a className="fs-nav-link">Industries</a>
             </Link>
           </div>
-          {/* <div
+          <div
             className={`fs-nav-inner ${
               router.pathname === "/clients" ? "active" : ""
             }`}
@@ -341,7 +343,7 @@ export default function Navigation({ awards }) {
             <Link href="/clients">
               <a className="fs-nav-link">Clients</a>
             </Link>
-          </div> */}
+          </div>
           <div
             className={`fs-nav-inner ${
               router.pathname === "/about" ? "active" : ""

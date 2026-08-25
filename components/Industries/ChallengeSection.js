@@ -30,12 +30,12 @@ export default function ChallengeSection({ heading, items = [] }) {
           row-gap: 0;
         }
 
-        .challenge-section .testimonial-card {
+        .challenge-section .testimonial-grid .testimonial-card {
           border-top-color: rgba(255, 255, 255, 0.2);
           color: #fff;
         }
 
-        .challenge-section .testimonial-card:hover {
+        .challenge-section .testimonial-grid .testimonial-card:hover {
           border-top-color: rgba(255, 255, 255, 0.7);
         }
 

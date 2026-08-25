@@ -101,7 +101,7 @@ export default function ExpertiseSection({ heading, items = [] }) {
         </h2>
       )}
 
-      <div className="expertise-section__fade tw-relative tw-w-full tw-flex tw-flex-col tw-gap-4 md:tw-gap-5 lg:tw-gap-6">
+      <div className="expertise-section__fade tw-relative tw-w-full tw-flex tw-flex-col tw-gap-4 md:tw-gap-5 lg:tw-gap-[32px]">
         {[0, 1, 2].map((rowIndex) => (
           <div
             key={`expertise-row-${rowIndex}`}

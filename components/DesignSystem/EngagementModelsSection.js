@@ -68,7 +68,7 @@ function ModelCard({ model }) {
           </p>
           <ul className="tw-mb-0 tw-list-disc tw-space-y-2 tw-pl-5 tw-text-[13px] tw-font-normal tw-leading-[1.55] tw-tracking-[0.02em] tw-text-noct-dark md:tw-space-y-2.5 md:tw-text-[16px]">
             {includes.map((item, index) => (
-              <li key={`${model._key || "include"}-${index}`}>{item}</li>
+              <li key={`${model._key || "include"}-${index}`} className="tw-mb-0">{item}</li>
             ))}
           </ul>
         </div>
