@@ -93,9 +93,10 @@ export default function HelpSection({ heading, items = [] }) {
             </div>
           </div>
 
-          {/* Titles + scroll-revealed descriptions */}
-          <div className="help-section__list lg:tw-order-1 tw-flex tw-flex-col tw-gap-[28px] md:tw-gap-[25px]">
+          {/* Titles + scroll-revealed descriptions; past items collapse out of layout */}
+          <div className="help-section__list lg:tw-order-1 tw-flex tw-flex-col">
             {items.map((item, index) => {
+              const isPast = index < activeIndex;
               const isActive = index === activeIndex;
               const distance = Math.abs(index - activeIndex);
               const inactiveOpacity =
@@ -104,13 +105,21 @@ export default function HelpSection({ heading, items = [] }) {
               return (
                 <div
                   key={item._key || `help-${index}`}
-                  className="help-section__item"
+                  className={`help-section__item tw-overflow-hidden tw-transition-all tw-duration-500 tw-ease-out ${
+                    isPast
+                      ? "tw-max-h-0 tw-opacity-0 tw-mb-0"
+                      : "tw-max-h-[320px] tw-opacity-100 tw-mb-[28px] md:tw-mb-[30px] last:tw-mb-0"
+                  }`}
                 >
                   <h3
-                    className={`tw-mb-0 tw-text-[18px] md:tw-text-[24px] lg:tw-text-[28px] tw-font-bold tw-leading-[1.3] tw-transition-colors tw-duration-300 ${
+                    className={`tw-mb-0 tw-text-[18px] md:tw-text-[24px] lg:tw-text-[32px] tw-font-bold tw-leading-[1.3] tw-transition-colors tw-duration-300 ${
                       isActive ? "tw-text-white" : "tw-text-noct-muted"
                     }`}
-                    style={!isActive ? { opacity: inactiveOpacity } : undefined}
+                    style={
+                      !isActive && !isPast
+                        ? { opacity: inactiveOpacity }
+                        : undefined
+                    }
                   >
                     {item.title}
                   </h3>
