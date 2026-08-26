@@ -16,7 +16,7 @@ export default function SelectedWorkCard({ item }) {
   const hasLink = Boolean(link);
 
   const titleContent = (
-    <span className="tw-inline tw-text-[14px] md:tw-text-[22px] tw-font-medium tw-leading-[160%] tw-tracking-[0.01em] tw-text-white">
+    <h4 className="tw-inline tw-text-[14px] md:tw-text-[22px] tw-font-semibold tw-leading-[160%] tw-text-white">
       {title}
       {hasLink && (
         <>
@@ -30,7 +30,7 @@ export default function SelectedWorkCard({ item }) {
           </span>
         </>
       )}
-    </span>
+    </h4>
   );
 
   const cardInner = (
@@ -63,7 +63,7 @@ export default function SelectedWorkCard({ item }) {
             </span>
           )}
 
-          <span className="tw-inline tw-font-bold">{titleContent}</span>
+          <span className="tw-inline">{titleContent}</span>
         </div>
       </div>
     </>
