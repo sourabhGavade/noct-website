@@ -119,12 +119,12 @@ export default function ExpertiseSection({ heading, items = [] }) {
                   key={`expertise-${rowIndex}-${index}`}
                   className="expertise-section__item tw-inline-flex tw-shrink-0 tw-items-center"
                 >
-                  <h4 className="tw-whitespace-nowrap tw-px-4 md:tw-px-6 lg:tw-px-8 tw-text-[14px] md:tw-text-[20px] lg:tw-text-[24px] tw-font-normal tw-leading-none tw-tracking-[0.01em] tw-text-noct-muted">
+                  <h4 className="tw-whitespace-nowrap tw-px-4 md:tw-px-6 lg:tw-px-8 tw-text-[14px] md:tw-text-[20px] lg:tw-text-[24px] tw-font-normal tw-tracking-[0.01em] tw-text-noct-muted">
                     {label}
                   </h4>
                   <span
                     aria-hidden="true"
-                    className="tw-block tw-h-[5px] tw-w-[5px] md:tw-h-[8px] md:tw-w-[8px] tw-shrink-0 tw-rounded-full tw-bg-noct-muted/30"
+                    className="tw-block tw-h-[5px] tw-w-[5px] md:tw-h-[8px] md:tw-w-[8px] tw-shrink-0 tw-rounded-full tw-bg-noct-muted/20"
                   />
                 </span>
               ))}
