@@ -11,14 +11,21 @@ export default function TestimonialCard({ problem, solution, logo, ctaLink }) {
     setOpen(!open);
     let split = new SplitText(descRef.current, { type: "lines" });
     if (open) {
+      // Pin current height before collapsing — TweenMax can't animate from "auto"
+      TweenMax.set(dropRef.current, { height: dropRef.current.offsetHeight });
       TweenMax.to(dropRef.current, 0.55, {
         height: "0px",
         ease: "Power1.easeOut",
       });
     } else {
+      // Measure natural content height so we don't leave empty space under short copy
+      const targetHeight = dropRef.current.scrollHeight;
       TweenMax.to(dropRef.current, 0.55, {
-        height: "340px",
+        height: targetHeight,
         ease: "Power1.easeOut",
+        onComplete: () => {
+          if (dropRef.current) dropRef.current.style.height = "auto";
+        },
       });
       TweenMax.staggerFrom(
         split.lines,
