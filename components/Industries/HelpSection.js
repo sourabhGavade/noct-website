@@ -69,7 +69,7 @@ export default function HelpSection({ heading, items = [] }) {
         <div className="tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-gap-8 lg:tw-gap-16 tw-items-start">
           {/* Image stays at the first item on the right; does not move as items change */}
           <div className="help-section__image tw-flex tw-justify-center lg:tw-order-2">
-            <div className="tw-relative tw-w-[200px] tw-h-[184px] md:tw-w-[388px] md:tw-h-[360px]">
+            <div className="tw-relative tw-w-[200px] md:tw-w-[388px]">
               {items.map((item, index) => {
                 const src = item?.image ? urlFor(item.image).url() : null;
                 if (!src) return null;

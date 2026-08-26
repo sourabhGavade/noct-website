@@ -160,8 +160,8 @@ export default function IndustryPage({ industry }) {
 
       <div className="tw-bg-noct-dark tw-text-white">
         {/* Hero */}
-        <section className="tw-flex tw-items-center container md:tw-pt-[120px] tw-pt-[117px] tw-pb-[28px] md:tw-pb-[100px]">
-          <div className="md:tw-max-w-[670px] tw-max-w-[320px] tw-space-y-[12px]">
+        <section className="tw-flex tw-items-center container md:tw-pt-[120px] tw-pt-[117px] tw-pb-[18px] md:tw-pb-[74px]">
+          <div className="md:tw-max-w-[670px] tw-space-y-[12px] max-sm:tw-text-center max-sm:tw-px-[24px]">
             <p className="tw-text-[12px] md:tw-text-[14px] tw-font-light tw-uppercase tw-tracking-[7%] tw-leading-[160%] tw-text-noct-muted">
               {industry.industryTitle}
             </p>
@@ -190,7 +190,7 @@ export default function IndustryPage({ industry }) {
               src={heroGraphicMobileSrc}
               alt={details.heroGraphicMobile?.alt || ""}
               aria-hidden="true"
-              width={306}
+              width={274.32}
               className="tw-pointer-events-none tw-select-none"
             />
           </div>

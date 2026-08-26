@@ -20,12 +20,10 @@ export default function SelectedWorkCard({ item }) {
       {title}
       {hasLink && (
         <>
-          {/* Word joiner + 0-width wrap: arrow stays on the last text line
-              instead of wrapping alone onto a 3rd line. */}
           {"\u2060"}
-          <span className="tw-inline-block tw-w-0 tw-overflow-visible tw-whitespace-nowrap tw-align-middle">
+          <span className="tw-inline-block tw-w-0 tw-overflow-visible tw-whitespace-nowrap">
             <HiArrowRight
-              className="selected-work-card__arrow tw-ml-2 tw-inline-block tw-align-middle tw-opacity-100 md:tw-opacity-0 md:tw-transition-opacity md:tw-duration-200 md:group-hover:tw-opacity-100"
+              className="selected-work-card__arrow tw-ml-2 tw-inline-block tw-opacity-100 md:tw-opacity-0 md:tw-transition-opacity md:tw-duration-200 md:group-hover:tw-opacity-100"
               size={16}
               aria-hidden="true"
             />
