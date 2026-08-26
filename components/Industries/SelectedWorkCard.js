@@ -62,11 +62,8 @@ export default function SelectedWorkCard({ item }) {
               Coming Soon
             </span>
           )}
-          {hasLink ? (
-            <span className="tw-inline tw-font-bold">{titleContent}</span>
-          ) : (
-            <p className="tw-inline tw-font-bold">{titleContent}</p>
-          )}
+
+          <span className="tw-inline tw-font-bold">{titleContent}</span>
         </div>
       </div>
     </>
