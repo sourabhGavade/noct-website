@@ -14,7 +14,7 @@ export default function LogoCarousel({ heading, logos = [] }) {
   if (!logos?.length) return null;
 
   return (
-    <section className="logo-carousel tw-overflow-hidden tw-pb-8 md:tw-pb-16">
+    <section className="logo-carousel tw-overflow-hidden tw-pb-8 md:tw-pb-[60px]">
       {heading && (
         <p className="tw-mb-8 md:tw-mb-[28px] max-sm:tw-max-w-[170px] mx-auto tw-text-center tw-text-[12px] tw-font-light tw-uppercase tw-tracking-[7%] tw-leading-[140%] tw-text-noct-muted">
           {heading}

@@ -129,10 +129,9 @@ export default function Industries({ content }) {
                     <div className="tw-flex tw-items-center tw-justify-center">
                       {item.desktopImage && (
                         <img
-                          className="md:tw-block tw-hidden tw-w-[600px] tw-h-[480px] tw-object-contain"
+                          className="md:tw-block tw-hidden tw-w-[600px]"
                           src={urlFor(item.desktopImage).url()}
                           width={600}
-                          height={480}
                           alt={
                             item.desktopImage.alt ||
                             `${item.industryTitle} desktop`
@@ -144,7 +143,6 @@ export default function Industries({ content }) {
                           className="md:tw-hidden tw-block"
                           src={urlFor(item.mobileImage).url()}
                           width={302}
-                          height={300}
                           alt={
                             item.mobileImage.alt ||
                             `${item.industryTitle} mobile`

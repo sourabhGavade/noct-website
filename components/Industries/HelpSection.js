@@ -61,7 +61,7 @@ export default function HelpSection({ heading, items = [] }) {
     >
       <div className="container tw-flex tw-flex-col tw-py-[80px] md:tw-py-[100px]">
         {heading && (
-          <h2 className="tw-text-[24px] tw-mb-8 md:tw-mb-[100px] md:tw-text-[40px] lg:tw-text-[48px] tw-font-bold tw-leading-[1.15] tw-tracking-[-0.02em] tw-text-white">
+          <h2 className="tw-text-[24px] tw-mb-8 md:tw-mb-[70px] md:tw-text-[40px] lg:tw-text-[48px] tw-font-bold tw-leading-[1.15] tw-tracking-[-0.02em] tw-text-white">
             {heading}
           </h2>
         )}
@@ -94,7 +94,7 @@ export default function HelpSection({ heading, items = [] }) {
           </div>
 
           {/* Titles + scroll-revealed descriptions */}
-          <div className="help-section__list lg:tw-order-1 tw-flex tw-flex-col tw-gap-[28px] md:tw-gap-[40px]">
+          <div className="help-section__list lg:tw-order-1 tw-flex tw-flex-col tw-gap-[28px] md:tw-gap-[25px]">
             {items.map((item, index) => {
               const isActive = index === activeIndex;
               const distance = Math.abs(index - activeIndex);
@@ -107,7 +107,7 @@ export default function HelpSection({ heading, items = [] }) {
                   className="help-section__item"
                 >
                   <h3
-                    className={`tw-mb-0 tw-text-[18px] md:tw-text-[24px] lg:tw-text-[30px] tw-font-bold tw-leading-[1.3] tw-transition-colors tw-duration-300 ${
+                    className={`tw-mb-0 tw-text-[18px] md:tw-text-[24px] lg:tw-text-[28px] tw-font-bold tw-leading-[1.3] tw-transition-colors tw-duration-300 ${
                       isActive ? "tw-text-white" : "tw-text-noct-muted"
                     }`}
                     style={!isActive ? { opacity: inactiveOpacity } : undefined}
@@ -122,7 +122,7 @@ export default function HelpSection({ heading, items = [] }) {
                         : "tw-max-h-0 tw-opacity-0 tw-mt-0"
                     }`}
                   >
-                    <p className="tw-mb-0 tw-max-w-[540px] tw-text-[13px] md:tw-text-[18px] tw-font-light tw-leading-[1.6] tw-tracking-[0.02em] tw-text-noct-muted">
+                    <p className="tw-mb-0 tw-max-w-[540px] tw-text-[13px] md:tw-text-[18px] tw-font-light tw-leading-[1.5] tw-tracking-[0.02em] tw-text-noct-muted">
                       {item.description}
                     </p>
                   </div>
