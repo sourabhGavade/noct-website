@@ -16,23 +16,21 @@ export default function SelectedWorkCard({ item }) {
   const hasLink = Boolean(link);
 
   const titleContent = (
-    <span className="tw-inline tw-text-[14px] md:tw-text-[22px] tw-font-medium tw-leading-[160%] tw-tracking-[0.01em] tw-text-white">
+    <h4 className="tw-inline tw-text-[14px] md:tw-text-[22px] tw-font-semibold tw-leading-[160%] tw-text-white">
       {title}
       {hasLink && (
         <>
-          {/* Word joiner + 0-width wrap: arrow stays on the last text line
-              instead of wrapping alone onto a 3rd line. */}
           {"\u2060"}
-          <span className="tw-inline-block tw-w-0 tw-overflow-visible tw-whitespace-nowrap tw-align-middle">
+          <span className="tw-inline-block tw-w-0 tw-overflow-visible tw-whitespace-nowrap">
             <HiArrowRight
-              className="selected-work-card__arrow tw-ml-2 tw-inline-block tw-align-middle tw-opacity-100 md:tw-opacity-0 md:tw-transition-opacity md:tw-duration-200 md:group-hover:tw-opacity-100"
+              className="selected-work-card__arrow tw-ml-2 tw-inline-block tw-opacity-100 md:tw-opacity-0 md:tw-transition-opacity md:tw-duration-200 md:group-hover:tw-opacity-100"
               size={16}
               aria-hidden="true"
             />
           </span>
         </>
       )}
-    </span>
+    </h4>
   );
 
   const cardInner = (
@@ -64,11 +62,8 @@ export default function SelectedWorkCard({ item }) {
               Coming Soon
             </span>
           )}
-          {hasLink ? (
-            <span className="tw-inline tw-font-bold">{titleContent}</span>
-          ) : (
-            <p className="tw-inline tw-font-bold">{titleContent}</p>
-          )}
+
+          <span className="tw-inline">{titleContent}</span>
         </div>
       </div>
     </>
