@@ -92,7 +92,7 @@ function FeatureCard({ card, flushImage = false }) {
           {paragraphs.map((text, index) => (
             <p
               key={`${card._key}-p-${index}`}
-              className={`tw-mb-0 tw-mt-3 tw-text-[14px] tw-font-light tw-leading-[1.6] tw-tracking-[0.38px] md:tw-mt-4 md:tw-text-[18px] md:tw-leading-[28px] ${bodyColor}`}
+              className={`tw-mb-0 tw-mt-[8px] tw-text-[14px] tw-font-light tw-leading-[1.6] tw-tracking-[0.38px] md:tw-text-[18px] md:tw-leading-[28px] ${bodyColor}`}
             >
               {text}
             </p>
@@ -118,7 +118,7 @@ function FeatureCard({ card, flushImage = false }) {
         <div className="tw-px-6 tw-pt-6 md:tw-px-8 md:tw-pt-8 lg:tw-px-10 lg:tw-pt-10">
           {card.title && (
             <h3
-              className={`tw-mb-2 tw-text-[20px] tw-font-bold tw-leading-[130%] md:tw-mb-[10px] md:tw-text-[24px] lg:tw-text-[32px] ${titleColor}`}
+              className={`tw-mb-[8px] tw-text-[20px] tw-font-bold tw-leading-[130%] md:tw-text-[24px] lg:tw-text-[32px] ${titleColor}`}
             >
               {card.title}
             </h3>
@@ -160,7 +160,7 @@ function FeatureCard({ card, flushImage = false }) {
         <div className={featured ? "tw-max-w-[330px]" : "tw-max-w-[462px]"}>
           {card.title && (
             <h3
-              className={`tw-mb-3 tw-text-[20px] tw-font-bold tw-leading-[130%] tw-tracking-[0.13px] md:tw-mb-4 md:tw-text-[24px] lg:tw-text-[32px] ${titleColor}`}
+              className={`tw-mb-[8px] tw-text-[20px] tw-font-bold tw-leading-[130%] tw-tracking-[0.13px] md:tw-text-[24px] lg:tw-text-[32px] ${titleColor}`}
             >
               {card.title}
             </h3>
