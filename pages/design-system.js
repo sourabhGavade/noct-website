@@ -4,6 +4,7 @@ import HeroSection from "../components/DesignSystem/HeroSection";
 import FeaturesSection from "../components/DesignSystem/FeaturesSection";
 import MainVideoSection from "../components/DesignSystem/MainVideoSection";
 import OverviewSection from "../components/DesignSystem/OverviewSection";
+import AiReadableSection from "../components/DesignSystem/AiReadableSection";
 import ProcessSection from "../components/DesignSystem/ProcessSection";
 import EngagementModelsSection from "../components/DesignSystem/EngagementModelsSection";
 import FooterCTA from "../components/FooterCTA";
@@ -39,6 +40,22 @@ export async function getStaticProps() {
         _key,
         title,
         description,
+        image{
+          alt,
+          caption,
+          asset
+        }
+      }
+    },
+    aiReadable{
+      heading,
+      description,
+      cards[]{
+        _key,
+        title,
+        description,
+        backgroundColor,
+        layout,
         image{
           alt,
           caption,
@@ -113,7 +130,7 @@ export default function DesignSystem({ content }) {
         <title>NOCT | Design System</title>
       </Head>
 
-      <div className="tw-bg-white tw-text-noct-dark tw-space-y-[80px] md:tw-space-y-[163px]">
+      <div className="tw-bg-[#F7F7F7] tw-text-noct-dark tw-space-y-[80px] md:tw-space-y-[163px]">
         <HeroSection
           title={content.title}
           trustDescription={content.trustDescription}
@@ -130,6 +147,12 @@ export default function DesignSystem({ content }) {
           heading={content.overview?.heading}
           description={content.overview?.description}
           items={content.overview?.items}
+        />
+
+        <AiReadableSection
+          heading={content.aiReadable?.heading}
+          description={content.aiReadable?.description}
+          cards={content.aiReadable?.cards}
         />
 
         <ProcessSection
