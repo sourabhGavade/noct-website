@@ -50,6 +50,7 @@ export default function AiReadableSection({
                 <FeatureCard
                   key={row.cards[0]?._key || `${row.layout}-${rowIndex}`}
                   card={row.cards[0]}
+                  flushImage={rowIndex === rows.length - 1}
                 />
               );
             })}
@@ -60,7 +61,7 @@ export default function AiReadableSection({
   );
 }
 
-function FeatureCard({ card }) {
+function FeatureCard({ card, flushImage = false }) {
   if (!card) return null;
 
   const layout = card.layout || "split";
@@ -148,7 +149,11 @@ function FeatureCard({ card }) {
 
   return (
     <article
-      className="tw-p-6 md:tw-p-8 lg:tw-p-[48px]"
+      className={
+        flushImage
+          ? "tw-overflow-hidden tw-pt-6 tw-pl-6 tw-pr-4 md:tw-pt-8 md:tw-pl-8 md:tw-pr-6 lg:tw-pt-[48px] lg:tw-pl-[72px] lg:tw-pr-[35px]"
+          : "tw-p-6 md:tw-p-8 lg:tw-p-[48px]"
+      }
       style={{ backgroundColor }}
     >
       <div className="tw-grid tw-grid-cols-1 tw-gap-6 md:tw-gap-20 lg:tw-grid-cols-2">
@@ -172,11 +177,19 @@ function FeatureCard({ card }) {
           ))}
         </div>
         {imageSrc && (
-          <div className="tw-w-full">
+          <div
+            className={
+              flushImage
+                ? "tw-flex tw-w-full tw-items-end tw-justify-end"
+                : "tw-w-full"
+            }
+          >
             <img
               src={imageSrc}
               alt={imageAlt}
-              className="tw-block tw-h-auto md:tw-w-[520px] tw-object-contain"
+              className={`tw-block tw-h-auto md:tw-w-[520px] tw-object-contain ${
+                flushImage ? "tw-w-full tw-object-right-bottom" : ""
+              }`}
             />
           </div>
         )}
