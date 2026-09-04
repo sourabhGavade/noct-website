@@ -169,13 +169,12 @@ export default function Clients({ content }) {
                       key={logo._key || `logo-${index}`}
                       className="tw-flex tw-flex-col tw-items-center tw-text-center"
                     >
-                      <div className="tw-mb-8 tw-flex tw-h-11 md:tw-h-14 tw-items-center">
-                        <img
-                          src={src}
-                          alt={logo.alt || ""}
-                          className="tw-block tw-h-auto tw-max-h-12 md:tw-max-h-12 tw-w-auto tw-max-w-[140px] tw-object-contain tw-object-left tw-opacity-80 tw-grayscale"
-                        />
-                      </div>
+                      <img
+                        src={src}
+                        alt={logo.alt || ""}
+                        className="tw-block tw-h-auto tw-w-auto tw-max-w-[150px] tw-object-contain tw-object-center md:tw-mb-8 tw-mb-4"
+                      />
+
                       {logo.alt && (
                         <h5 className="tw-mb-[6px] tw-text-[14px] md:tw-text-[20px] tw-font-bold tw-leading-tight tw-text-noct-dark">
                           {logo.alt}

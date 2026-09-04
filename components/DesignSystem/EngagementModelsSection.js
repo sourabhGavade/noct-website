@@ -48,7 +48,7 @@ function ModelCard({ model }) {
   const idealForLabel = model.idealForLabel || "Ideal for";
 
   return (
-    <article className="tw-flex tw-h-full tw-flex-col tw-bg-[#F5F5F5] tw-p-6 md:tw-p-8 lg:tw-p-[30px]">
+    <article className="tw-flex tw-h-full tw-flex-col tw-bg-[#f1f1f1] tw-p-6 md:tw-p-8 lg:tw-p-[30px]">
       {model.title && (
         <h3 className="tw-mb-[10px] tw-text-[20px] tw-font-bold tw-leading-[130%] tw-text-noct-dark md:tw-text-[28px]">
           {model.title}
@@ -75,8 +75,8 @@ function ModelCard({ model }) {
       )}
 
       {logos.length > 0 && (
-        <div className="tw-mt-auto tw-pt-4 tw-flex tw-items-center tw-gap-x-[13px]">
-          <p className="tw-text-[12px] tw-font-light tw-leading-[36px] tw-tracking-[0.02em] md:tw-text-[14px]">
+        <div className="tw-mt-auto tw-flex tw-items-center tw-gap-x-[13px] tw-pt-4">
+          <p className="tw-shrink-0 tw-whitespace-nowrap tw-text-[12px] tw-font-light tw-leading-[36px] tw-tracking-[0.02em] md:tw-text-[14px]">
             {idealForLabel}
           </p>
           <div className="tw-flex tw-flex-wrap tw-items-center tw-gap-x-[10px] tw-gap-y-[13px] md:tw-gap-x-[13px]">

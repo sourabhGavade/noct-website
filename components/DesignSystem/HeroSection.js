@@ -1,3 +1,4 @@
+import { useRef, useState } from "react";
 import urlFor from "../../utils/urlFor";
 import LetteringTitle from "../LetteringTitle";
 
@@ -8,9 +9,31 @@ export default function HeroSection({
   heroVideo,
   heroVideoThumbnail,
 }) {
+  const videoRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
   const thumbnailSrc = heroVideoThumbnail?.asset
     ? urlFor(heroVideoThumbnail).url()
     : null;
+
+  const handlePlay = async () => {
+    if (!heroVideo || isPlaying) return;
+
+    setIsPlaying(true);
+
+    const video = videoRef.current;
+    if (!video) return;
+
+    try {
+      await video.play();
+    } catch {
+      setIsPlaying(false);
+    }
+  };
+
+  const handleEnded = () => {
+    setIsPlaying(false);
+  };
 
   return (
     <section className="tw-pt-[140px] md:tw-pt-[180px] lg:tw-pt-[152px]">
@@ -53,18 +76,54 @@ export default function HeroSection({
           </div>
 
           <div className="tw-w-full">
-            <div className="tw-relative tw-aspect-[622/450] tw-w-full tw-overflow-hidden tw-bg-[#D9D9D9]">
+            <div className="tw-group tw-relative tw-aspect-[622/450] tw-w-full tw-overflow-hidden tw-bg-[#D9D9D9]">
               {heroVideo ? (
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  poster={thumbnailSrc || undefined}
-                  className="tw-absolute tw-inset-0 tw-block tw-h-full tw-w-full tw-object-cover"
-                >
-                  <source src={heroVideo} type="video/mp4" />
-                </video>
+                <>
+                  <video
+                    ref={videoRef}
+                    playsInline
+                    controls={isPlaying}
+                    poster={thumbnailSrc || undefined}
+                    onEnded={handleEnded}
+                    className="tw-absolute tw-inset-0 tw-block tw-h-full tw-w-full tw-object-cover"
+                  >
+                    <source src={heroVideo} type="video/mp4" />
+                  </video>
+
+                  {!isPlaying && (
+                    <button
+                      type="button"
+                      onClick={handlePlay}
+                      aria-label="Play video"
+                      className="tw-absolute tw-inset-0 tw-flex tw-cursor-pointer tw-items-center tw-justify-center tw-border-0 tw-bg-transparent tw-p-0"
+                    >
+                      {thumbnailSrc && (
+                        <img
+                          src={thumbnailSrc}
+                          alt={heroVideoThumbnail?.alt || ""}
+                          className="tw-absolute tw-inset-0 tw-block tw-h-full tw-w-full tw-object-cover"
+                        />
+                      )}
+                      <span
+                        aria-hidden="true"
+                        className="tw-relative tw-z-[1] tw-flex tw-h-14 tw-w-14 tw-items-center tw-justify-center tw-rounded-full tw-bg-white/80 tw-opacity-100 tw-shadow-sm tw-transition-opacity tw-duration-200 md:tw-h-16 md:tw-w-16 md:tw-opacity-0 md:group-hover:tw-opacity-100"
+                      >
+                        <svg
+                          width="14"
+                          height="16"
+                          viewBox="0 0 14 16"
+                          fill="none"
+                          className="tw-ml-[2px] tw-h-5 tw-w-5"
+                        >
+                          <path
+                            d="M1.2 1.15v13.7c0 .38.14.7.41.95.27.26.58.38.94.38.11 0 .23-.02.35-.05.12-.03.24-.08.35-.15l10.9-6.85c.2-.13.35-.3.45-.5.1-.2.15-.41.15-.63s-.05-.43-.15-.63c-.1-.2-.25-.37-.45-.5L3.25.4C3.14.33 3.02.28 2.9.25 2.78.22 2.66.2 2.55.2c-.36 0-.67.13-.94.39-.27.25-.41.57-.41.95Z"
+                            fill="#222323"
+                          />
+                        </svg>
+                      </span>
+                    </button>
+                  )}
+                </>
               ) : thumbnailSrc ? (
                 <img
                   src={thumbnailSrc}

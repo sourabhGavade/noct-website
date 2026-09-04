@@ -1,48 +1,64 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import gsap from "gsap/dist/gsap";
 
-/**
- * Three-row expertise marquee (GSAP).
- * Rows alternate LTR / RTL / LTR. Items are repeated until they fill the
- * viewport edge-to-edge, then duplicated for a seamless pixel loop.
- */
+const ROW_COUNT = 3;
+
+/** Sequential chunks: 15 items → 5 / 5 / 5 across the three marquees. */
+function chunkItems(items, rowCount = ROW_COUNT) {
+  if (!items?.length) return [];
+  const size = Math.ceil(items.length / rowCount);
+  return Array.from({ length: rowCount }, (_, i) =>
+    items.slice(i * size, (i + 1) * size),
+  ).filter((chunk) => chunk.length > 0);
+}
+
 export default function ExpertiseSection({ heading, items = [] }) {
   const rowRefs = useRef([]);
-  const measureRef = useRef(null);
-  // Even number of item-set copies (two identical halves for the loop)
-  const [sets, setSets] = useState(4);
+  // Even number of item-set copies per row (two identical halves for the loop)
+  const [sets, setSets] = useState(() => Array(ROW_COUNT).fill(4));
 
-  const track = useMemo(() => {
-    if (!items?.length) return [];
-    return Array.from({ length: sets }, () => items).flat();
-  }, [items, sets]);
+  const chunks = useMemo(() => chunkItems(items), [items]);
 
-  // Grow copies until one half is wider than the viewport
+  const tracks = useMemo(
+    () =>
+      chunks.map((chunk, i) =>
+        Array.from({ length: sets[i] ?? 4 }, () => chunk).flat(),
+      ),
+    [chunks, sets],
+  );
+
+  // Grow copies until one half of each row is wider than the viewport
   useLayoutEffect(() => {
-    if (!items?.length) return;
+    if (!chunks.length) return;
 
     const measure = () => {
-      const el = measureRef.current || rowRefs.current[0];
-      if (!el) return;
+      setSets((prev) => {
+        const next = chunks.map((chunk, i) => {
+          const el = rowRefs.current[i];
+          const prevSets = prev[i] ?? 4;
+          if (!el || !chunk.length) return prevSets;
 
-      const oneSetWidth = el.scrollWidth / sets;
-      if (oneSetWidth <= 0) return;
+          const oneSetWidth = el.scrollWidth / prevSets;
+          if (oneSetWidth <= 0) return prevSets;
 
-      const setsPerHalf = Math.max(
-        1,
-        Math.ceil(window.innerWidth / oneSetWidth) + 1,
-      );
-      const next = setsPerHalf * 2;
-      setSets((prev) => (prev === next ? prev : next));
+          const setsPerHalf = Math.max(
+            1,
+            Math.ceil(window.innerWidth / oneSetWidth) + 1,
+          );
+          return setsPerHalf * 2;
+        });
+
+        return next.every((n, i) => n === prev[i]) ? prev : next;
+      });
     };
 
     measure();
     window.addEventListener("resize", measure);
     return () => window.removeEventListener("resize", measure);
-  }, [items, sets]);
+  }, [chunks, sets]);
 
   useEffect(() => {
-    if (!items?.length) return;
+    if (!chunks.length) return;
 
     const prefersReduced =
       typeof window !== "undefined" &&
@@ -52,9 +68,9 @@ export default function ExpertiseSection({ heading, items = [] }) {
 
     const tweens = [];
     const configs = [
-      { reverse: true, duration: 200 },
-      { reverse: false, duration: 200 },
-      { reverse: true, duration: 200 },
+      { reverse: true, duration: 100 },
+      { reverse: false, duration: 100 },
+      { reverse: true, duration: 100 },
     ];
 
     const setupRow = (trackEl, { reverse, duration }) => {
@@ -75,8 +91,8 @@ export default function ExpertiseSection({ heading, items = [] }) {
 
     const rebuild = () => {
       tweens.splice(0).forEach((t) => t?.kill());
-      configs.forEach((config, i) => {
-        const tween = setupRow(rowRefs.current[i], config);
+      chunks.forEach((_, i) => {
+        const tween = setupRow(rowRefs.current[i], configs[i]);
         if (tween) tweens.push(tween);
       });
     };
@@ -89,9 +105,9 @@ export default function ExpertiseSection({ heading, items = [] }) {
       window.removeEventListener("resize", rebuild);
       tweens.forEach((t) => t?.kill());
     };
-  }, [items, sets]);
+  }, [chunks, sets]);
 
-  if (!items?.length) return null;
+  if (!chunks.length) return null;
 
   return (
     <section className="expertise-section tw-relative tw-w-full tw-overflow-hidden tw-bg-noct-dark tw-pt-[50px]">
@@ -102,7 +118,7 @@ export default function ExpertiseSection({ heading, items = [] }) {
       )}
 
       <div className="expertise-section__fade tw-relative tw-w-full tw-flex tw-flex-col tw-gap-[26px] md:tw-gap-[30px] lg:tw-gap-[42px]">
-        {[0, 1, 2].map((rowIndex) => (
+        {tracks.map((track, rowIndex) => (
           <div
             key={`expertise-row-${rowIndex}`}
             className="expertise-section__viewport tw-w-full tw-overflow-hidden"
@@ -110,7 +126,6 @@ export default function ExpertiseSection({ heading, items = [] }) {
             <div
               ref={(el) => {
                 rowRefs.current[rowIndex] = el;
-                if (rowIndex === 0) measureRef.current = el;
               }}
               className="expertise-section__track tw-flex tw-w-max tw-items-center tw-will-change-transform"
             >
