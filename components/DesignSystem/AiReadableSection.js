@@ -198,6 +198,12 @@ function FeatureCard({ card, flushImage = false }) {
   );
 }
 
+/**
+ * Group cards into rows.
+ * If a card is "stacked", it is added to the "stacked" row.
+ * If a card is not "stacked", it is added to the "split" row.
+ * If the last card is "stacked", the "stacked" row is flushed.
+ */
 function groupCards(cards) {
   const rows = [];
   let stacked = [];
