@@ -110,7 +110,7 @@ export default function DesignSystem({ content }) {
         <Head>
           <title>NOCT | Design System</title>
         </Head>
-        <section className="tw-min-h-screen tw-bg-white tw-pb-20 tw-pt-[160px] tw-text-noct-dark">
+        <section className="tw-min-h-screen tw-bg-[#FCFCFC] tw-pb-20 tw-pt-[160px] tw-text-noct-dark">
           <div className="container tw-text-center">
             <h1 className="tw-mb-4 tw-text-[32px] tw-font-black tw-leading-[1.2] md:tw-text-[64px]">
               Design System
@@ -143,11 +143,11 @@ export default function DesignSystem({ content }) {
 
         <MainVideoSection videoUrl={content.mainVideo} />
 
-        <OverviewSection
+        {/* <OverviewSection
           heading={content.overview?.heading}
           description={content.overview?.description}
           items={content.overview?.items}
-        />
+        /> */}
 
         <AiReadableSection
           heading={content.aiReadable?.heading}
