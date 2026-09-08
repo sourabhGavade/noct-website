@@ -15,7 +15,7 @@ export default function AiReadableSection({
         {(heading || description) && (
           <div className="tw-mx-auto tw-mb-8 tw-text-center md:tw-mb-12 lg:tw-mb-[56px]">
             {heading && (
-              <h2 className="tw-mb-0 tw-text-[24px] tw-max-w-[543px] tw-mx-auto tw-font-black tw-leading-[1.25] tw-tracking-[0.13px] tw-text-noct-dark md:tw-text-[32px] md:tw-leading-[1.3] lg:tw-text-[48px] lg:tw-leading-[62px]">
+              <h2 className="tw-mb-0 tw-text-balance tw-text-[24px] tw-max-w-[543px] tw-mx-auto tw-font-black tw-leading-[1.25] tw-tracking-[0.13px] tw-text-noct-dark md:tw-text-[32px] md:tw-leading-[1.3] lg:tw-text-[48px] lg:tw-leading-[62px]">
                 {heading}
               </h2>
             )}
@@ -84,7 +84,7 @@ function FeatureCard({ card, flushImage = false }) {
         <div className="tw-mx-auto tw-max-w-[720px] tw-text-center">
           {card.title && (
             <h3
-              className={`tw-mb-0 tw-text-[20px] tw-font-bold tw-leading-[130%] md:tw-text-[24px] lg:tw-text-[32px] ${titleColor}`}
+              className={`tw-mb-0 tw-text-balance tw-text-[20px] tw-font-bold tw-leading-[130%] md:tw-text-[24px] lg:tw-text-[32px] ${titleColor}`}
             >
               {card.title}
             </h3>
