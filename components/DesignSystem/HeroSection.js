@@ -76,7 +76,7 @@ export default function HeroSection({
           </div>
 
           <div className="tw-w-full">
-            <div className="tw-group tw-relative tw-aspect-[622/450] tw-w-full tw-overflow-hidden tw-bg-[#D9D9D9]">
+            <div className="tw-group tw-relative tw-aspect-[622/450] tw-w-full tw-overflow-hidden">
               {heroVideo ? (
                 <>
                   <video

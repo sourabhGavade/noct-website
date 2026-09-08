@@ -39,7 +39,7 @@ export default function ProcessSection({ heading, steps = [] }) {
                           <img
                             src={iconSrc}
                             alt={step.icon?.alt || ""}
-                            className="tw-block tw-h-11 tw-w-11 tw-object-contain"
+                            className="tw-block tw-h-10 tw-w-10 tw-object-contain"
                           />
                         )}
                       </div>
@@ -83,8 +83,8 @@ export default function ProcessSection({ heading, steps = [] }) {
           display: block;
           position: absolute;
           width: 3px;
-          left: calc(22px - 1.5px);
-          top: 44px;
+          left: calc(22px - 4px);
+          top: 26px;
           height: 100%;
           background: #e1e1e1;
         }
