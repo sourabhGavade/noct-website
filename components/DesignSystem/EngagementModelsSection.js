@@ -13,7 +13,7 @@ export default function EngagementModelsSection({
         {(heading || subtitle) && (
           <div className="tw-mb-8 tw-max-w-[640px] md:tw-mb-12 lg:tw-mb-[72px]">
             {heading && (
-              <h2 className="tw-mb-0 tw-text-[24px] tw-font-black tw-leading-[62px] tw-tracking-[0.13px] tw-text-noct-dark md:tw-text-[32px] lg:tw-text-[48px]">
+              <h2 className="tw-mb-0 tw-text-balance tw-text-[24px] tw-font-black md:tw-leading-[62px] tw-tracking-[0.13px] tw-text-noct-dark md:tw-text-[32px] lg:tw-text-[48px]">
                 {heading}
               </h2>
             )}
@@ -48,9 +48,9 @@ function ModelCard({ model }) {
   const idealForLabel = model.idealForLabel || "Ideal for";
 
   return (
-    <article className="tw-flex tw-h-full tw-flex-col tw-bg-[#f1f1f1] tw-p-6 md:tw-p-8 lg:tw-p-[30px]">
+    <article className="tw-flex tw-h-full tw-flex-col tw-bg-[#F5F5F5] tw-p-6 md:tw-p-8 lg:tw-p-[30px]">
       {model.title && (
-        <h3 className="tw-mb-[10px] tw-text-[20px] tw-font-bold tw-leading-[130%] tw-text-noct-dark md:tw-text-[28px]">
+        <h3 className="tw-mb-[10px] tw-text-[20px] tw-font-bold tw-leading-[130%] tw-text-noct-dark md:tw-text-[26px]">
           {model.title}
         </h3>
       )}
@@ -63,10 +63,10 @@ function ModelCard({ model }) {
 
       {includes.length > 0 && (
         <div className="tw-mb-8 md:tw-mb-10">
-          <p className="tw-mb-3 tw-text-[12px] tw-font-light tw-leading-[1.4] tw-tracking-[0.02em] tw-text-[#808080] md:tw-mb-[10px] md:tw-text-[16px]">
+          <p className="tw-mb-3 tw-text-[12px] tw-font-light tw-leading-[1.4] tw-tracking-[0.02em] tw-text-[#808080] md:tw-mb-[10px] md:tw-text-[14px]">
             Includes
           </p>
-          <ul className="tw-mb-0 tw-list-disc tw-space-y-2 tw-pl-5 tw-text-[13px] tw-font-normal tw-leading-[1.55] tw-tracking-[0.02em] tw-text-noct-dark md:tw-space-y-2.5 md:tw-text-[16px]">
+          <ul className="tw-mb-0 tw-list-disc tw-space-y-2 sm:tw-pl-5 tw-text-[13px] tw-font-normal tw-leading-[1.55] tw-tracking-[0.02em] tw-text-noct-dark md:tw-space-y-2.5 md:tw-text-[14px]">
             {includes.map((item, index) => (
               <li key={`${model._key || "include"}-${index}`} className="tw-mb-0">{item}</li>
             ))}
@@ -75,8 +75,8 @@ function ModelCard({ model }) {
       )}
 
       {logos.length > 0 && (
-        <div className="tw-mt-auto tw-flex tw-items-center tw-gap-x-[13px] tw-pt-4">
-          <p className="tw-shrink-0 tw-whitespace-nowrap tw-text-[12px] tw-font-light tw-leading-[36px] tw-tracking-[0.02em] md:tw-text-[14px]">
+        <div className="tw-mt-auto tw-flex tw-flex-col tw-pt-4 tw-gap-[5px]">
+          <p className="tw-shrink-0 tw-whitespace-nowrap tw-text-[12px] tw-font-normal tw-leading-[36px] tw-tracking-[0.02em] md:tw-text-[14px]">
             {idealForLabel}
           </p>
           <div className="tw-flex tw-flex-wrap tw-items-center tw-gap-x-[10px] tw-gap-y-[13px] md:tw-gap-x-[13px]">

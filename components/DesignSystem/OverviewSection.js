@@ -72,7 +72,7 @@ export default function OverviewSection({ heading, description, items = [] }) {
         <div className="tw-grid tw-grid-cols-1 tw-items-start tw-gap-10 lg:tw-grid-cols-2 lg:tw-gap-[48px] xl:tw-gap-[72px]">
           <div className="tw-flex tw-flex-col">
             {heading && (
-              <h2 className="tw-mb-0 tw-max-w-[522px] tw-text-[24px] md:tw-leading-[62px] tw-tracking-[0.13px] tw-text-noct-dark md:tw-text-[32px] lg:tw-text-[48px]">
+              <h2 className="tw-mb-0 tw-max-w-[522px] tw-text-balance tw-text-[24px] md:tw-leading-[62px] tw-tracking-[0.13px] tw-text-noct-dark md:tw-text-[32px] lg:tw-text-[48px]">
                 {heading}
               </h2>
             )}

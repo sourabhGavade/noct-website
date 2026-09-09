@@ -9,7 +9,7 @@ export default function ProcessSection({ heading, steps = [] }) {
         <div className="tw-grid tw-grid-cols-1 tw-items-start tw-gap-10 lg:tw-grid-cols-12 lg:tw-gap-[48px]">
           {heading && (
             <div className="lg:tw-col-span-4">
-              <h2 className="tw-mb-0 tw-max-w-[420px] tw-text-[24px] tw-font-black tw-leading-[1.25] tw-tracking-[0.13px] tw-text-noct-dark md:tw-text-[32px] md:tw-leading-[1.3] lg:tw-text-[48px] lg:tw-leading-[62px]">
+              <h2 className="tw-mb-0 tw-max-w-[420px] tw-text-balance tw-text-[24px] tw-font-black tw-leading-[1.25] tw-tracking-[0.13px] tw-text-noct-dark md:tw-text-[32px] md:tw-leading-[1.3] lg:tw-text-[48px] lg:tw-leading-[62px]">
                 {heading}
               </h2>
             </div>
@@ -39,7 +39,7 @@ export default function ProcessSection({ heading, steps = [] }) {
                           <img
                             src={iconSrc}
                             alt={step.icon?.alt || ""}
-                            className="tw-block tw-h-11 tw-w-11 tw-object-contain"
+                            className="tw-block tw-h-10 tw-w-10 tw-object-contain"
                           />
                         )}
                       </div>
@@ -83,8 +83,8 @@ export default function ProcessSection({ heading, steps = [] }) {
           display: block;
           position: absolute;
           width: 3px;
-          left: calc(22px - 1.5px);
-          top: 44px;
+          left: calc(22px - 4px);
+          top: 26px;
           height: 100%;
           background: #e1e1e1;
         }

@@ -7,7 +7,7 @@ import OverviewSection from "../components/DesignSystem/OverviewSection";
 import AiReadableSection from "../components/DesignSystem/AiReadableSection";
 import ProcessSection from "../components/DesignSystem/ProcessSection";
 import EngagementModelsSection from "../components/DesignSystem/EngagementModelsSection";
-import FooterCTA from "../components/FooterCTA";
+import { DesignSystemFooterCTA } from "../components/FooterCTA";
 
 export async function getStaticProps() {
   const content = await sanityClient.fetch(`*[_type=="designSystem"][0]{
@@ -112,7 +112,7 @@ export default function DesignSystem({ content }) {
         </Head>
         <section className="tw-min-h-screen tw-bg-[#FCFCFC] tw-pb-20 tw-pt-[160px] tw-text-noct-dark">
           <div className="container tw-text-center">
-            <h1 className="tw-mb-4 tw-text-[32px] tw-font-black tw-leading-[1.2] md:tw-text-[64px]">
+            <h1 className="tw-mb-4 tw-text-balance tw-text-[32px] tw-font-black tw-leading-[1.2] md:tw-text-[64px]">
               Design System
             </h1>
             <p className="tw-text-[14px] tw-text-noct-muted md:tw-text-[18px]">
@@ -130,7 +130,7 @@ export default function DesignSystem({ content }) {
         <title>NOCT | Design System</title>
       </Head>
 
-      <div className="tw-bg-[#F7F7F7] tw-text-noct-dark tw-space-y-[80px] md:tw-space-y-[163px]">
+      <div className="tw-bg-[#FCFCFC] tw-text-noct-dark tw-space-y-[60px] md:tw-space-y-[163px]">
         <HeroSection
           title={content.title}
           trustDescription={content.trustDescription}
@@ -166,7 +166,7 @@ export default function DesignSystem({ content }) {
           models={content.engagementModels?.models}
         />
 
-        <FooterCTA />
+        <DesignSystemFooterCTA />
       </div>
     </>
   );

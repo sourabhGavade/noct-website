@@ -41,7 +41,7 @@ export default function HeroSection({
         <div className="tw-grid tw-grid-cols-1 tw-items-center tw-gap-10 lg:tw-grid-cols-2 lg:tw-gap-[48px] xl:tw-gap-[72px]">
           <div className="tw-flex tw-flex-col">
             {title && (
-              <h1 className="tw-mb-0 tw-max-w-[400px] tw-text-[28px] tw-font-black md:tw-leading-[80px] tw-tracking-[0.18px] tw-text-noct-dark md:tw-max-w-[520px] md:tw-text-[56px] lg:tw-text-[64px]">
+              <h1 className="tw-mb-0 tw-max-w-[400px] tw-text-balance tw-text-[28px] tw-font-black md:tw-leading-[80px] tw-tracking-[0.18px] tw-text-noct-dark md:tw-max-w-[520px] md:tw-text-[56px] lg:tw-text-[64px]">
                 <LetteringTitle text={title} />
               </h1>
             )}
@@ -49,7 +49,7 @@ export default function HeroSection({
             {(trustDescription || trustLogos.length > 0) && (
               <div className="tw-mt-10 md:tw-mt-[64px]">
                 {trustDescription && (
-                  <p className="tw-mb-5 tw-text-[12px] md:tw-text-[14px] tw-font-light tw-uppercase tw-leading-[24px] tw-tracking-[9%] tw-text-noct-muted md:tw-mb-6">
+                  <p className="tw-mb-3 md:tw-text-[12px] tw-text-[10px] tw-font-normal tw-uppercase tw-leading-[1.3] tw-tracking-[9%] tw-text-noct-muted md:tw-mb-6">
                     {trustDescription}
                   </p>
                 )}
@@ -76,7 +76,7 @@ export default function HeroSection({
           </div>
 
           <div className="tw-w-full">
-            <div className="tw-group tw-relative tw-aspect-[622/450] tw-w-full tw-overflow-hidden tw-bg-[#D9D9D9]">
+            <div className="tw-group tw-relative tw-aspect-[622/450] tw-w-full tw-overflow-hidden">
               {heroVideo ? (
                 <>
                   <video

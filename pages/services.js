@@ -10,6 +10,7 @@ import LetteringTitle from "../components/LetteringTitle";
 import Service from "../components/Service";
 import TestimonialCard from "../components/TestimonialCard";
 import ButtonLink from "../components/ButtonLink";
+import Button from "../components/Button";
 import initFadeUp from "../utils/initFadeUp";
 import sanityClient from "../client";
 import urlFor from "../utils/urlFor";
@@ -296,33 +297,54 @@ export default function Services({ content }) {
       {/* Audits CTA */}
       <section className="pb-5">
         <div className="container">
-          <div className="row" data-fade-up>
-            <div className="col-lg-5 mr-md-auto mb-4 mb-lg-0">
-              <div className="audit-cta p-4 p-lg-5 bg-light-orange">
-                <div className="h6 mb-3 orange text-uppercase">
-                  UX Design Audit
-                </div>
-                <div className="cta-text">
-                  Don't know where to start with your product, or not sure how
-                  to take it forward? We can help.
-                </div>
-                <Link href="/contact">
-                  <a>
-                    <ButtonLink text="Contact Us" />
-                  </a>
-                </Link>
+          <div className="audit-cta-grid" data-fade-up>
+            <div className="audit-cta p-4 p-lg-5 bg-light-orange">
+              <div className="h6 mb-3 orange text-uppercase">
+                UX Design Audit
               </div>
+              <div className="cta-text">
+                Don't know where to start with your product, or not sure how
+                to take it forward? We can help.
+              </div>
+              <Link href="/contact">
+                <a>
+                  <ButtonLink text="Contact Us" />
+                </a>
+              </Link>
             </div>
-            <div className="col-lg-6">
-              <div className="audit-cta p-4 p-lg-5 bg-light-purple">
-                <div className="h6 mb-3 purple text-uppercase">Brand Audit</div>
-                <div className="cta-text">
-                  Not sure how your brand is performing or if everything is in
-                  line with your vision? Let us help you find out
+            <div className="audit-cta p-4 p-lg-5 bg-light-purple">
+              <div className="h6 mb-3 purple text-uppercase">Brand Audit</div>
+              <div className="cta-text">
+                Not sure how your brand is performing or if everything is in
+                line with your vision? Let us help you find out
+              </div>
+              <Link href="/contact">
+                <a>
+                  <ButtonLink text="Contact Us" />
+                </a>
+              </Link>
+            </div>
+            <div className="design-system-cta">
+              <div className="design-system-cta__image">
+                <img
+                  src="/images/illustrations/design-system.svg"
+                  alt="Design system illustration"
+                />
+              </div>
+              <div className="design-system-cta__content">
+                <div className="h3 mb-3">
+                  Make your Design 
+                  <br />
+                  system AI ready
                 </div>
-                <Link href="/contact">
+                <p className="design-system-cta__text">
+                  Creating a brand is like building a human and
+                  <br />
+                  communicating as a brand is like being true to its nature.
+                </p>
+                <Link href="/design-system">
                   <a>
-                    <ButtonLink text="Contact Us" />
+                    <Button text="Explore" />
                   </a>
                 </Link>
               </div>
@@ -449,6 +471,73 @@ export default function Services({ content }) {
           letter-spacing: 0;
           line-height: 36px;
           margin-bottom: 40px;
+        }
+
+        .audit-cta-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 25px;
+        }
+
+        .design-system-cta {
+          grid-column: 1 / -1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 32px;
+          padding: 20px 20px;
+          background: #ffffff;
+          border: 1px solid #e5e5e5;
+        }
+
+        .design-system-cta__image {
+          width: 100%;
+          max-width: 373px;
+        }
+
+        .design-system-cta__image img {
+          display: block;
+          width: 100%;
+          height: auto;
+        }
+
+        .design-system-cta__content {
+          width: 100%;
+        }
+
+        .design-system-cta__text {
+          color: #808080;
+          font-size: 16px;
+          line-height: 26px;
+          margin-bottom: 32px;
+          max-width: 520px;
+        }
+
+        @media screen and (min-width: 992px) {
+          .audit-cta-grid {
+            grid-template-columns: 1fr 1fr;
+          }
+
+          .design-system-cta {
+            flex-direction: row;
+            align-items: center;
+            gap: 116px;
+            padding: 24px 56px;
+          }
+
+          .design-system-cta__image {
+            flex: 0 0 38%;
+            max-width: 373px;
+          }
+
+          .design-system-cta__content {
+            flex: 1;
+          }
+
+          .design-system-cta__text {
+            font-size: 18px;
+            line-height: 28px;
+          }
         }
 
         @media screen and (max-width: 768px) {
