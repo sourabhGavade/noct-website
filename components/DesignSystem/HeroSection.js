@@ -1,6 +1,9 @@
-import { useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import gsap from "gsap/dist/gsap";
 import urlFor from "../../utils/urlFor";
 import LetteringTitle from "../LetteringTitle";
+
+const LOGO_SET_COPIES = 4;
 
 export default function HeroSection({
   title,
@@ -10,11 +13,74 @@ export default function HeroSection({
   heroVideoThumbnail,
 }) {
   const videoRef = useRef(null);
+  const trackRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
   const thumbnailSrc = heroVideoThumbnail?.asset
     ? urlFor(heroVideoThumbnail).url()
     : null;
+
+  const logoItems = useMemo(
+    () =>
+      (trustLogos || [])
+        .map((logo, index) => {
+          const src = logo?.asset ? urlFor(logo).url() : null;
+          if (!src) return null;
+          return {
+            key: logo._key || `trust-logo-${index}`,
+            src,
+            alt: logo.alt || "",
+          };
+        })
+        .filter(Boolean),
+    [trustLogos],
+  );
+
+  const trackItems = useMemo(
+    () => Array.from({ length: LOGO_SET_COPIES }, () => logoItems).flat(),
+    [logoItems],
+  );
+
+  useEffect(() => {
+    const trackEl = trackRef.current;
+    if (!trackEl || logoItems.length === 0) return;
+
+    const prefersReduced =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (prefersReduced) return;
+
+    let tween;
+
+    const setup = () => {
+      tween?.kill();
+
+      const setWidth = trackEl.scrollWidth / 2;
+      if (setWidth <= 0) return;
+
+      gsap.set(trackEl, { x: 0 });
+
+      // ~40px/s so speed stays consistent regardless of logo count
+      const duration = Math.max(12, setWidth / 40);
+
+      tween = gsap.to(trackEl, {
+        x: -setWidth,
+        duration,
+        ease: "none",
+        repeat: -1,
+      });
+    };
+
+    const raf = requestAnimationFrame(setup);
+    window.addEventListener("resize", setup);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", setup);
+      tween?.kill();
+    };
+  }, [logoItems, trackItems]);
 
   const handlePlay = async () => {
     if (!heroVideo || isPlaying) return;
@@ -39,6 +105,7 @@ export default function HeroSection({
     <section className="tw-pt-[140px] md:tw-pt-[180px] lg:tw-pt-[152px]">
       <div className="container">
         <div className="tw-grid tw-grid-cols-1 tw-items-center tw-gap-10 lg:tw-grid-cols-2 lg:tw-gap-[48px] xl:tw-gap-[72px]">
+          {/* Text */}
           <div className="tw-flex tw-flex-col">
             {title && (
               <h1 className="tw-mb-0 tw-max-w-[400px] tw-text-balance tw-text-[28px] tw-font-black md:tw-leading-[80px] tw-tracking-[0.18px] tw-text-noct-dark md:tw-max-w-[520px] md:tw-text-[56px] lg:tw-text-[64px]">
@@ -46,7 +113,7 @@ export default function HeroSection({
               </h1>
             )}
 
-            {(trustDescription || trustLogos.length > 0) && (
+            {(trustDescription || logoItems.length > 0) && (
               <div className="tw-mt-10 md:tw-mt-[64px]">
                 {trustDescription && (
                   <p className="tw-mb-3 md:tw-text-[12px] tw-text-[10px] tw-font-normal tw-uppercase tw-leading-[1.3] tw-tracking-[9%] tw-text-noct-muted md:tw-mb-6">
@@ -54,30 +121,31 @@ export default function HeroSection({
                   </p>
                 )}
 
-                {trustLogos.length > 0 && (
-                  <div className="tw-flex tw-flex-wrap tw-items-center tw-gap-x-6 tw-gap-y-4 md:tw-gap-x-8">
-                    {trustLogos.map((logo, index) => {
-                      const src = logo?.asset ? urlFor(logo).url() : null;
-                      if (!src) return null;
-
-                      return (
+                {logoItems.length > 0 && (
+                  <div className="trust-logos tw-relative tw-w-full tw-overflow-hidden">
+                    <div
+                      ref={trackRef}
+                      className="tw-flex tw-w-max tw-items-center tw-gap-x-8 tw-will-change-transform md:tw-gap-x-10"
+                    >
+                      {trackItems.map((logo, index) => (
                         <img
-                          key={logo._key || `trust-logo-${index}`}
-                          src={src}
-                          alt={logo.alt || ""}
-                          className="tw-block tw-h-[20px] tw-w-auto tw-max-w-[70px] tw-object-contain md:tw-h-[22px] md:tw-max-w-[99px]"
+                          key={`${logo.key}-${index}`}
+                          src={logo.src}
+                          alt={logo.alt}
+                          className="tw-block tw-h-[20px] tw-w-auto tw-shrink-0 tw-object-contain md:tw-h-[22px]"
                         />
-                      );
-                    })}
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
             )}
           </div>
 
+          {/* Video */}
           <div className="tw-w-full">
             <div className="tw-group tw-relative tw-aspect-[622/450] tw-w-full tw-overflow-hidden">
-              {heroVideo ? (
+              {heroVideo && thumbnailSrc && (
                 <>
                   <video
                     ref={videoRef}
@@ -97,13 +165,6 @@ export default function HeroSection({
                       aria-label="Play video"
                       className="tw-absolute tw-inset-0 tw-flex tw-cursor-pointer tw-items-center tw-justify-center tw-border-0 tw-bg-transparent tw-p-0"
                     >
-                      {thumbnailSrc && (
-                        <img
-                          src={thumbnailSrc}
-                          alt={heroVideoThumbnail?.alt || ""}
-                          className="tw-absolute tw-inset-0 tw-block tw-h-full tw-w-full tw-object-cover"
-                        />
-                      )}
                       <span
                         aria-hidden="true"
                         className="tw-relative tw-z-[1] tw-flex tw-h-14 tw-w-14 tw-items-center tw-justify-center tw-rounded-full tw-bg-white/80 tw-opacity-100 tw-shadow-sm tw-transition-opacity tw-duration-200 md:tw-h-16 md:tw-w-16 md:tw-opacity-0 md:group-hover:tw-opacity-100"
@@ -124,17 +185,49 @@ export default function HeroSection({
                     </button>
                   )}
                 </>
-              ) : thumbnailSrc ? (
-                <img
-                  src={thumbnailSrc}
-                  alt={heroVideoThumbnail?.alt || ""}
-                  className="tw-absolute tw-inset-0 tw-block tw-h-full tw-w-full tw-object-cover"
-                />
-              ) : null}
+              )}
             </div>
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        .trust-logos {
+          -webkit-mask-image: linear-gradient(
+            to right,
+            transparent 0,
+            #000 32px,
+            #000 calc(100% - 32px),
+            transparent 100%
+          );
+          mask-image: linear-gradient(
+            to right,
+            transparent 0,
+            #000 32px,
+            #000 calc(100% - 32px),
+            transparent 100%
+          );
+        }
+
+        @media (min-width: 768px) {
+          .trust-logos {
+            -webkit-mask-image: linear-gradient(
+              to right,
+              transparent 0,
+              #000 48px,
+              #000 calc(100% - 48px),
+              transparent 100%
+            );
+            mask-image: linear-gradient(
+              to right,
+              transparent 0,
+              #000 48px,
+              #000 calc(100% - 48px),
+              transparent 100%
+            );
+          }
+        }
+      `}</style>
     </section>
   );
 }
