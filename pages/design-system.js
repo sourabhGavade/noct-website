@@ -130,7 +130,7 @@ export default function DesignSystem({ content }) {
         <title>NOCT | Design System</title>
       </Head>
 
-      <div className="tw-bg-[#FCFCFC] tw-text-noct-dark tw-space-y-[60px] md:tw-space-y-[163px]">
+      <div className="tw-bg-[#FCFCFC] tw-text-noct-dark tw-space-y-[117px] md:tw-space-y-[160px]">
         <HeroSection
           title={content.title}
           trustDescription={content.trustDescription}
@@ -154,17 +154,18 @@ export default function DesignSystem({ content }) {
           description={content.aiReadable?.description}
           cards={content.aiReadable?.cards}
         />
+        <div className="tw-bg-white md:tw-pt-[120px] tw-pt-[60px] tw-space-y-[117px] md:tw-space-y-[160px]">
+          <ProcessSection
+            heading={content.process?.heading}
+            steps={content.process?.steps}
+          />
 
-        <ProcessSection
-          heading={content.process?.heading}
-          steps={content.process?.steps}
-        />
-
-        <EngagementModelsSection
-          heading={content.engagementModels?.heading}
-          subtitle={content.engagementModels?.subtitle}
-          models={content.engagementModels?.models}
-        />
+          <EngagementModelsSection
+            heading={content.engagementModels?.heading}
+            subtitle={content.engagementModels?.subtitle}
+            models={content.engagementModels?.models}
+          />
+        </div>
 
         <DesignSystemFooterCTA />
       </div>

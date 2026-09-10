@@ -560,8 +560,8 @@ ul li {
   }
 
   .mc-dot {
-    width: 6px;
-    height: 6px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     margin-right: 6px;
     background: #a6a6a6;
