@@ -1,7 +1,7 @@
 import React from 'react'
 import urlFor from '../utils/urlFor'
 
-export default function VerticalTimeline({ items }) {
+export default function VerticalTimeline({ items, lineTop = '44px' }) {
   return (
     <>
       <div className="v-timeline">
@@ -41,7 +41,7 @@ export default function VerticalTimeline({ items }) {
           position: absolute;
           width: 3px;
           left: calc(22px - 1.5px);
-          top: 44px;
+          top: ${lineTop};
           /* height: calc(100% - 44px); */
           height: 100%;
           background: #e1e1e1;
