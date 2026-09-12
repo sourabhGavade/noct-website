@@ -5,8 +5,8 @@ import FeaturesSection from "../components/DesignSystem/FeaturesSection";
 import MainVideoSection from "../components/DesignSystem/MainVideoSection";
 import OverviewSection from "../components/DesignSystem/OverviewSection";
 import AiReadableSection from "../components/DesignSystem/AiReadableSection";
-import ProcessSection from "../components/DesignSystem/ProcessSection";
 import EngagementModelsSection from "../components/DesignSystem/EngagementModelsSection";
+import VerticalTimeline from "../components/VerticalTimeline";
 import { DesignSystemFooterCTA } from "../components/FooterCTA";
 
 export async function getStaticProps() {
@@ -155,10 +155,38 @@ export default function DesignSystem({ content }) {
           cards={content.aiReadable?.cards}
         />
         <div className="tw-bg-white md:tw-pt-[120px] tw-pt-[60px] tw-space-y-[117px] md:tw-space-y-[160px]">
-          <ProcessSection
-            heading={content.process?.heading}
-            steps={content.process?.steps}
-          />
+          {(content.process?.heading || content.process?.steps?.length > 0) && (
+            <section>
+              <div className="container">
+                <div className="row justify-content-between">
+                  {content.process?.heading && (
+                    <div className="col-lg-4">
+                      <div
+                        className={`h2 ${
+                          content.process.steps?.length > 5 ? "sticky" : ""
+                        }`}
+                      >
+                        {content.process.heading}
+                      </div>
+                    </div>
+                  )}
+                  {content.process?.steps?.length > 0 && (
+                    <div className="col-lg-7">
+                      <VerticalTimeline
+                        lineTop="28px"
+                        items={content.process.steps.map((step) => ({
+                          _key: step._key,
+                          title: step.title,
+                          description: step.description,
+                          image: step.icon,
+                        }))}
+                      />
+                    </div>
+                  )}
+                </div>
+              </div>
+            </section>
+          )}
 
           <EngagementModelsSection
             heading={content.engagementModels?.heading}
