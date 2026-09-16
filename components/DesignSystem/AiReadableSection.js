@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import urlFor from "../../utils/urlFor";
 
 export default function AiReadableSection({
@@ -30,28 +31,35 @@ export default function AiReadableSection({
         {rows.length > 0 && (
           <div className="tw-flex tw-flex-col tw-gap-4 md:tw-gap-10">
             {rows.map((row, rowIndex) => {
-              if (row.layout === "stacked") {
-                return (
-                  <div
-                    key={row.cards[0]?._key || `stacked-row-${rowIndex}`}
-                    className="tw-grid tw-grid-cols-1 tw-gap-4 md:tw-grid-cols-2 md:tw-gap-10"
-                  >
-                    {row.cards.map((card, index) => (
-                      <FeatureCard
-                        key={card._key || `stacked-${rowIndex}-${index}`}
-                        card={card}
-                      />
-                    ))}
-                  </div>
-                );
-              }
+              const isLastRow = rowIndex === rows.length - 1;
+              const rowKey =
+                row.cards[0]?._key || `${row.layout}-${rowIndex}`;
 
               return (
-                <FeatureCard
-                  key={row.cards[0]?._key || `${row.layout}-${rowIndex}`}
-                  card={row.cards[0]}
-                  flushImage={rowIndex === rows.length - 1}
-                />
+                <Fragment key={rowKey}>
+                  {isLastRow && (
+                    <img
+                      src="/images/illustrations/design1.jpeg"
+                      alt="One Design.md connecting product areas, skills, accessibility, tone of voice, tokens, components, design patterns, and layout rules"
+                      className="tw-block tw-h-auto tw-w-full"
+                    />
+                  )}
+                  {row.layout === "stacked" ? (
+                    <div className="tw-grid tw-grid-cols-1 tw-gap-4 md:tw-grid-cols-2 md:tw-gap-10">
+                      {row.cards.map((card, index) => (
+                        <FeatureCard
+                          key={card._key || `stacked-${rowIndex}-${index}`}
+                          card={card}
+                        />
+                      ))}
+                    </div>
+                  ) : (
+                    <FeatureCard
+                      card={row.cards[0]}
+                      flushImage={isLastRow}
+                    />
+                  )}
+                </Fragment>
               );
             })}
           </div>
