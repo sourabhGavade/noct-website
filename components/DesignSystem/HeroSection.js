@@ -108,7 +108,7 @@ export default function HeroSection({
           {/* Text */}
           <div className="tw-flex tw-flex-col">
             {title && (
-              <h1 className="tw-mb-0 tw-max-w-[400px] tw-text-balance tw-text-[28px] tw-font-black md:tw-leading-[80px] tw-tracking-[0.18px] tw-text-noct-dark md:tw-max-w-[520px] md:tw-text-[56px] lg:tw-text-[64px]">
+              <h1 className="tw-mb-0 tw-max-w-[400px] max-sm:tw-text-center tw-text-balance tw-text-[28px] tw-font-black md:tw-leading-[80px] tw-tracking-[0.18px] tw-text-noct-dark md:tw-max-w-[520px] md:tw-text-[56px] lg:tw-text-[64px]">
                 <LetteringTitle text={title} />
               </h1>
             )}

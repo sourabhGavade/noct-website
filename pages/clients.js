@@ -36,9 +36,13 @@ export async function getStaticProps() {
   };
 }
 
+function hasPersonImage(item) {
+  return Boolean(item?.image?.asset);
+}
+
 /**
- * Walk CMS order: video items become full-width rows;
- * non-video items are paired into two-column grids.
+ * Walk CMS order: items with a person image (and optional video)
+ * become full-width rows; quote-only items are paired into two-column grids.
  */
 function groupClientRows(items = []) {
   const rows = [];
@@ -51,7 +55,7 @@ function groupClientRows(items = []) {
   };
 
   items.forEach((item) => {
-    if (item?.videoUrl) {
+    if (hasPersonImage(item) || item?.videoUrl) {
       flushPair();
       rows.push({ type: "featured", item });
       return;
