@@ -130,7 +130,7 @@ export default function DesignSystem({ content }) {
         <title>NOCT | Design System</title>
       </Head>
 
-      <div className="tw-bg-[#F7F7F7] tw-font-[Lato] tw-text-noct-dark tw-space-y-[117px] md:tw-space-y-[160px] tw-overflow-x-hidden">
+      <div className="tw-bg-[#F7F7F7] tw-font-[Lato] tw-text-noct-dark tw-overflow-x-hidden">
         <HeroSection
           title={content.title}
           trustDescription={content.trustDescription}
@@ -141,60 +141,62 @@ export default function DesignSystem({ content }) {
 
         <FeaturesSection features={content.features} />
 
-        <MainVideoSection videoUrl={content.mainVideo} />
+        <div className="tw-mt-[117px] tw-space-y-[117px] md:tw-mt-[160px] md:tw-space-y-[160px]">
+          <MainVideoSection videoUrl={content.mainVideo} />
 
-        {/* <OverviewSection
-          heading={content.overview?.heading}
-          description={content.overview?.description}
-          items={content.overview?.items}
-        /> */}
+          {/* <OverviewSection
+            heading={content.overview?.heading}
+            description={content.overview?.description}
+            items={content.overview?.items}
+          /> */}
 
-        <AiReadableSection
-          heading={content.aiReadable?.heading}
-          description={content.aiReadable?.description}
-          cards={content.aiReadable?.cards}
-        />
+          <AiReadableSection
+            heading={content.aiReadable?.heading}
+            description={content.aiReadable?.description}
+            cards={content.aiReadable?.cards}
+          />
 
-        {(content.process?.heading || content.process?.steps?.length > 0) && (
-          <section>
-            <div className="container">
-              <div className="row justify-content-between">
-                {content.process?.heading && (
-                  <div className="col-lg-4">
-                    <div
-                      className={`h2 tw-text-balance ${
-                        content.process.steps?.length > 5 ? "sticky" : ""
-                      }`}
-                    >
-                      {content.process.heading}
+          {(content.process?.heading || content.process?.steps?.length > 0) && (
+            <section>
+              <div className="container">
+                <div className="row justify-content-between">
+                  {content.process?.heading && (
+                    <div className="col-lg-4">
+                      <div
+                        className={`h2 tw-text-balance ${
+                          content.process.steps?.length > 5 ? "sticky" : ""
+                        }`}
+                      >
+                        {content.process.heading}
+                      </div>
                     </div>
-                  </div>
-                )}
-                {content.process?.steps?.length > 0 && (
-                  <div className="col-lg-7">
-                    <VerticalTimeline
-                      lineTop="28px"
-                      items={content.process.steps.map((step) => ({
-                        _key: step._key,
-                        title: step.title,
-                        description: step.description,
-                        image: step.icon,
-                      }))}
-                    />
-                  </div>
-                )}
+                  )}
+                  {content.process?.steps?.length > 0 && (
+                    <div className="col-lg-7">
+                      <VerticalTimeline
+                        lineTop="28px"
+                        items={content.process.steps.map((step) => ({
+                          _key: step._key,
+                          title: step.title,
+                          description: step.description,
+                          image: step.icon,
+                        }))}
+                      />
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-          </section>
-        )}
+            </section>
+          )}
 
-        <EngagementModelsSection
-          heading={content.engagementModels?.heading}
-          subtitle={content.engagementModels?.subtitle}
-          models={content.engagementModels?.models}
-        />
+          <EngagementModelsSection
+            heading={content.engagementModels?.heading}
+            subtitle={content.engagementModels?.subtitle}
+            models={content.engagementModels?.models}
+          />
 
-        <DesignSystemFooterCTA />
+          <DesignSystemFooterCTA />
+        </div>
       </div>
     </>
   );

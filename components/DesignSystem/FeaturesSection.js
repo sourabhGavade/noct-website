@@ -25,7 +25,7 @@ export default function FeaturesSection({ features = [] }) {
   if (!features.length) return null;
 
   return (
-    <section>
+    <section className="tw-mt-[48px] md:tw-mt-[160px]">
       <div className="container">
         {/* Mobile carousel — text top, image bottom, dots bottom-left */}
         <div className="md:tw-hidden">
@@ -80,7 +80,7 @@ export default function FeaturesSection({ features = [] }) {
         </div>
 
         {/* Desktop grid — unchanged */}
-        <div className="tw-hidden tw-grid-cols-1 tw-gap-10 md:tw-grid md:tw-grid-cols-3 md:tw-gap-x-8 md:tw-gap-y-[48px] lg:tw-gap-x-[72px] lg:tw-gap-y-[48px]">
+        <div className="tw-hidden tw-grid-cols-1 tw-gap-10 md:tw-grid md:tw-grid-cols-3 md:tw-gap-8 lg:tw-gap-x-[72px] lg:tw-gap-y-[96px]">
           {features.map((item, index) => (
             <FeatureCard key={item._key || `feature-${index}`} item={item} />
           ))}
@@ -108,12 +108,12 @@ function FeatureCard({ item, textFirst = false }) {
   const text = textFirst ? (
     <div>
       {item.alt && (
-        <h4 className="tw-mb-2 tw-text-balance tw-text-[18px] tw-font-bold tw-leading-[140%] tw-tracking-[0.01em]">
+        <h4 className="tw-mb-2 tw-font-[Lato] tw-text-balance tw-text-[18px] tw-font-bold tw-leading-[140%] tw-tracking-[0.01em]">
           {item.alt}
         </h4>
       )}
       {item.caption && (
-        <p className="tw-mb-0 tw-text-[14px] tw-font-light tw-leading-[160%] tw-tracking-[0.02em]">
+        <p className="tw-mb-0 tw-font-[Lato] tw-text-[14px] tw-font-light tw-leading-[160%] tw-tracking-[0.02em]">
           {item.caption}
         </p>
       )}
@@ -121,12 +121,12 @@ function FeatureCard({ item, textFirst = false }) {
   ) : (
     <>
       {item.alt && (
-        <h4 className="tw-mb-2 tw-text-balance tw-text-[18px] tw-font-bold tw-leading-[140%] tw-tracking-[0.01em] md:tw-mb-[8px] md:tw-text-[24px]">
+        <h4 className="tw-mb-2 tw-font-[Lato] tw-text-balance tw-text-[18px] tw-font-bold tw-leading-[140%] tw-tracking-[0.01em] md:tw-mb-[8px] md:tw-text-[24px]">
           {item.alt}
         </h4>
       )}
       {item.caption && (
-        <p className="tw-mb-0 tw-text-[14px] tw-font-light tw-leading-[160%] tw-tracking-[0.02em] md:tw-text-[18px]">
+        <p className="tw-mb-0 tw-font-[Lato] tw-text-[14px] tw-font-light tw-leading-[160%] tw-tracking-[0.02em] md:tw-text-[18px]">
           {item.caption}
         </p>
       )}
