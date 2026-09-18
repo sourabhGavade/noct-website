@@ -130,7 +130,7 @@ export default function DesignSystem({ content }) {
         <title>NOCT | Design System</title>
       </Head>
 
-      <div className="tw-bg-[#FCFCFC] tw-text-noct-dark tw-space-y-[117px] md:tw-space-y-[160px]">
+      <div className="tw-bg-[#FCFCFC] tw-text-noct-dark tw-space-y-[117px] md:tw-space-y-[160px] tw-overflow-x-hidden">
         <HeroSection
           title={content.title}
           trustDescription={content.trustDescription}

@@ -53,7 +53,7 @@ function ModelCard({ model }) {
   const hasLogos = logos.length > 0;
 
   return (
-    <article className="tw-flex tw-h-full tw-flex-col tw-bg-[#F5F5F5] tw-p-6 md:tw-p-8 lg:tw-p-[30px]">
+    <article className="tw-flex tw-h-full tw-flex-col tw-bg-[#F5F5F5] tw-p-[1.6rem] tw-pb-[1.5rem] md:tw-p-8 lg:tw-p-[30px]">
       {model.title && (
         <h3 className="tw-mb-[10px] tw-text-[20px] tw-font-bold tw-leading-[130%] tw-text-noct-dark md:tw-text-[26px]">
           {model.title}
@@ -61,7 +61,7 @@ function ModelCard({ model }) {
       )}
 
       {model.description && (
-        <p className="tw-mb-6 tw-text-[14px] tw-font-light tw-leading-[170%] tw-tracking-[0.02em] tw-text-noct-dark md:tw-mb-[34px]">
+        <p className="tw-mb-[1.7rem] tw-text-[14px] tw-font-light tw-leading-[170%] tw-tracking-[0.02em] tw-text-noct-dark md:tw-mb-[34px]">
           {model.description}
         </p>
       )}
@@ -110,33 +110,16 @@ function ModelCard({ model }) {
             type="button"
             onClick={() => setIncludesOpen((open) => !open)}
             aria-expanded={includesOpen}
-            className={`tw-mb-0 tw-flex tw-w-full tw-items-center tw-gap-3 tw-border-0 tw-bg-transparent tw-p-0 tw-text-left md:tw-hidden ${
+            className={`engagement-includes-trigger tw-mb-0 tw-flex tw-w-full tw-items-center tw-gap-3 tw-border-0 tw-bg-transparent tw-p-0 tw-text-left md:tw-hidden ${
               hasLogos
                 ? "tw-mt-5 tw-border-t tw-border-[#808080] tw-pt-5"
                 : ""
-            }`}
+            } ${includesOpen ? "open" : ""}`}
           >
-            <span className="tw-text-[14px] tw-font-semibold tw-leading-[1.4] tw-tracking-[0.02em] tw-text-noct-dark">
+            <span className="tw-text-[14px] tw-font-medium tw-leading-[1.4] tw-tracking-[0.02em] tw-text-noct-dark">
               what&apos;s included
             </span>
-            <svg
-              aria-hidden="true"
-              width="10"
-              height="8"
-              viewBox="0 0 12 8"
-              fill="none"
-              className={`tw-shrink-0 tw-transition-transform tw-duration-200 ${
-                includesOpen ? "tw-rotate-180" : ""
-              }`}
-            >
-              <path
-                d="M1 1.5L6 6.5L11 1.5"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <span aria-hidden="true" className="plus-icon" />
           </button>
 
           {/* Desktop label */}
@@ -157,6 +140,21 @@ function ModelCard({ model }) {
           </ul>
         </div>
       )}
+
+      <style jsx>{`
+        .engagement-includes-trigger :global(.plus-icon) {
+          margin-left: 0;
+          margin-top: 0;
+        }
+
+        .engagement-includes-trigger.open :global(.plus-icon:before) {
+          transform: rotate(90deg);
+        }
+
+        .engagement-includes-trigger.open :global(.plus-icon:after) {
+          transform: rotate(180deg);
+        }
+      `}</style>
     </article>
   );
 }
