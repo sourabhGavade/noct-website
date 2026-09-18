@@ -25,7 +25,7 @@ export default function FeaturesSection({ features = [] }) {
   if (!features.length) return null;
 
   return (
-    <section>
+    <section className="tw-mt-[48px] md:tw-mt-[160px]">
       <div className="container">
         {/* Mobile carousel — text top, image bottom, dots bottom-left */}
         <div className="md:tw-hidden">
@@ -54,10 +54,15 @@ export default function FeaturesSection({ features = [] }) {
 
             :global(.features-mobile-carousel > div) {
               flex: 0 0 332px;
-              width: 352px;
-              max-width: 352px;
+              width: 310px;
+              max-width: 310px;
               margin-right: 10px;
               display: flex;
+            }
+
+            :global(.features-mobile-carousel > div:last-child) {
+              padding-right: 0;
+              margin-right: 24px;
             }
 
             :global(.features-mobile-carousel > div > article) {
@@ -95,7 +100,7 @@ function FeatureCard({ item, textFirst = false }) {
       src={src}
       alt={item.alt || ""}
       className={`tw-block tw-h-auto tw-w-full ${
-        textFirst ? "" : "tw-mb-5 md:tw-mb-[30px]"
+        textFirst ? "" : "tw-mb-5 md:tw-mb-[48px]"
       }`}
     />
   ) : null;
@@ -103,12 +108,12 @@ function FeatureCard({ item, textFirst = false }) {
   const text = textFirst ? (
     <div>
       {item.alt && (
-        <h4 className="tw-mb-2 tw-text-[18px] tw-font-bold tw-leading-[140%] tw-tracking-[0.01em]">
+        <h4 className="tw-mb-2 tw-font-[Lato] tw-text-balance tw-text-[18px] tw-font-bold tw-leading-[140%] tw-tracking-[0.01em]">
           {item.alt}
         </h4>
       )}
       {item.caption && (
-        <p className="tw-mb-0 tw-text-[14px] tw-font-light tw-leading-[160%] tw-tracking-[0.02em]">
+        <p className="tw-mb-0 tw-font-[Lato] tw-text-[14px] tw-font-light tw-leading-[160%] tw-tracking-[0.02em]">
           {item.caption}
         </p>
       )}
@@ -116,12 +121,12 @@ function FeatureCard({ item, textFirst = false }) {
   ) : (
     <>
       {item.alt && (
-        <h4 className="tw-mb-2 tw-text-[18px] tw-font-bold tw-leading-[140%] tw-tracking-[0.01em] md:tw-mb-[8px] md:tw-text-[24px]">
+        <h4 className="tw-mb-2 tw-font-[Lato] tw-text-balance tw-text-[18px] tw-font-bold tw-leading-[140%] tw-tracking-[0.01em] md:tw-mb-[8px] md:tw-text-[24px]">
           {item.alt}
         </h4>
       )}
       {item.caption && (
-        <p className="tw-mb-0 tw-text-[14px] tw-font-light tw-leading-[160%] tw-tracking-[0.02em] md:tw-text-[18px]">
+        <p className="tw-mb-0 tw-font-[Lato] tw-text-[14px] tw-font-light tw-leading-[160%] tw-tracking-[0.02em] md:tw-text-[18px]">
           {item.caption}
         </p>
       )}
@@ -129,7 +134,7 @@ function FeatureCard({ item, textFirst = false }) {
   );
 
   return (
-    <article>
+    <article className="tw-font-[Lato]">
       {textFirst ? (
         <>
           {text}
