@@ -105,7 +105,7 @@ export default function Clients({ content }) {
         <title>NOCT | Clients</title>
       </Head>
 
-      <div className="tw-bg-white tw-text-noct-dark md:tw-space-y-[144px] tw-space-y-[110px] md:tw-pb-[160px] tw-pb-[40px]">
+      <div className="tw-bg-white tw-text-noct-dark md:tw-space-y-[144px] tw-space-y-[80px] md:tw-pb-[160px] tw-pb-[40px]">
         <section className="tw-flex tw-items-center tw-justify-center tw-pt-[152px] md:tw-pt-[240px]">
           <div className="container md:tw-text-center max-sm:tw-text-left">
             <div className="tw-mx-auto">
@@ -176,16 +176,16 @@ export default function Clients({ content }) {
                       <img
                         src={src}
                         alt={logo.alt || ""}
-                        className="tw-block tw-h-auto tw-w-auto tw-max-w-[150px] tw-object-contain tw-object-center md:tw-mb-8 tw-mb-4"
+                        className="tw-block tw-h-auto tw-w-auto tw-max-w-[150px] tw-object-contain tw-object-center tw-mb-[0.2rem]"
                       />
 
                       {logo.alt && (
-                        <h5 className="tw-mb-[6px] tw-text-[14px] md:tw-text-[20px] tw-font-bold tw-leading-tight tw-text-noct-dark">
+                        <h5 className="tw-mb-4 tw-text-[16px] tw-font-bold tw-leading-tight tw-text-noct-muted">
                           {logo.alt}
                         </h5>
                       )}
                       {logo.caption && (
-                        <p className="tw-mb-0 tw-text-[12px] md:tw-text-[14px] tw-font-normal tw-leading-snug tw-text-noct-dark/40">
+                        <p className="tw-mb-0 tw-text-[12px] md:tw-text-[14px] tw-font-normal tw-leading-snug tw-text-noct-muted">
                           {logo.caption}
                         </p>
                       )}
