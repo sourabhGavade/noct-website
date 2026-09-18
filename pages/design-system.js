@@ -110,7 +110,7 @@ export default function DesignSystem({ content }) {
         <Head>
           <title>NOCT | Design System</title>
         </Head>
-        <section className="tw-min-h-screen tw-bg-[#FCFCFC] tw-pb-20 tw-pt-[160px] tw-text-noct-dark">
+        <section className="tw-min-h-screen tw-bg-[#F7F7F7] tw-pb-20 tw-pt-[160px] tw-text-noct-dark">
           <div className="container tw-text-center">
             <h1 className="tw-mb-4 tw-text-balance tw-text-[32px] tw-font-black tw-leading-[1.2] md:tw-text-[64px]">
               Design System
@@ -130,7 +130,7 @@ export default function DesignSystem({ content }) {
         <title>NOCT | Design System</title>
       </Head>
 
-      <div className="tw-bg-[#FCFCFC] tw-text-noct-dark tw-space-y-[117px] md:tw-space-y-[160px] tw-overflow-x-hidden">
+      <div className="tw-bg-[#F7F7F7] tw-font-[Lato] tw-text-noct-dark tw-space-y-[117px] md:tw-space-y-[160px] tw-overflow-x-hidden">
         <HeroSection
           title={content.title}
           trustDescription={content.trustDescription}
@@ -154,46 +154,45 @@ export default function DesignSystem({ content }) {
           description={content.aiReadable?.description}
           cards={content.aiReadable?.cards}
         />
-        <div className="tw-bg-white md:tw-pt-[120px] tw-pt-[60px] tw-space-y-[117px] md:tw-space-y-[160px]">
-          {(content.process?.heading || content.process?.steps?.length > 0) && (
-            <section>
-              <div className="container">
-                <div className="row justify-content-between">
-                  {content.process?.heading && (
-                    <div className="col-lg-4">
-                      <div
-                        className={`h2 ${
-                          content.process.steps?.length > 5 ? "sticky" : ""
-                        }`}
-                      >
-                        {content.process.heading}
-                      </div>
-                    </div>
-                  )}
-                  {content.process?.steps?.length > 0 && (
-                    <div className="col-lg-7">
-                      <VerticalTimeline
-                        lineTop="28px"
-                        items={content.process.steps.map((step) => ({
-                          _key: step._key,
-                          title: step.title,
-                          description: step.description,
-                          image: step.icon,
-                        }))}
-                      />
-                    </div>
-                  )}
-                </div>
-              </div>
-            </section>
-          )}
 
-          <EngagementModelsSection
-            heading={content.engagementModels?.heading}
-            subtitle={content.engagementModels?.subtitle}
-            models={content.engagementModels?.models}
-          />
-        </div>
+        {(content.process?.heading || content.process?.steps?.length > 0) && (
+          <section>
+            <div className="container">
+              <div className="row justify-content-between">
+                {content.process?.heading && (
+                  <div className="col-lg-4">
+                    <div
+                      className={`h2 tw-text-balance ${
+                        content.process.steps?.length > 5 ? "sticky" : ""
+                      }`}
+                    >
+                      {content.process.heading}
+                    </div>
+                  </div>
+                )}
+                {content.process?.steps?.length > 0 && (
+                  <div className="col-lg-7">
+                    <VerticalTimeline
+                      lineTop="28px"
+                      items={content.process.steps.map((step) => ({
+                        _key: step._key,
+                        title: step.title,
+                        description: step.description,
+                        image: step.icon,
+                      }))}
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
+          </section>
+        )}
+
+        <EngagementModelsSection
+          heading={content.engagementModels?.heading}
+          subtitle={content.engagementModels?.subtitle}
+          models={content.engagementModels?.models}
+        />
 
         <DesignSystemFooterCTA />
       </div>

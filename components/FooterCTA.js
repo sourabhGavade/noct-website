@@ -38,7 +38,7 @@ export function DesignSystemFooterCTA() {
       <div className="container">
         <div className="row align-items-center justify-content-between">
           <div className="col-lg-8 mb-5 mb-lg-0 pr-lg-5">
-            <div className="h3 text-white mb-3">{title}</div>
+            <div className="h3 text-white mb-3 tw-text-balance">{title}</div>
             <p className=" text-white mb-5 tw-max-w-[660px]">{text}</p>
             <Link href="/contact">
               <a>

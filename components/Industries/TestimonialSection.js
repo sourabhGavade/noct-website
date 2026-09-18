@@ -61,7 +61,7 @@ export default function TestimonialSection({ heading, items = [] }) {
   if (!items?.length) return null;
 
   return (
-    <section className="testimonial-section tw-bg-noct-dark tw-pt-[130px] md:tw-pt-[250px] tw-text-white">
+    <section className="testimonial-section tw-bg-noct-dark tw-text-white">
       <div className="container">
         <div className="tw-mb-6 md:tw-mb-8 lg:tw-mb-[64px] tw-flex tw-items-center tw-justify-between tw-gap-4">
           {heading && (

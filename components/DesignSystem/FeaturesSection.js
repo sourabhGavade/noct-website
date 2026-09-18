@@ -54,10 +54,15 @@ export default function FeaturesSection({ features = [] }) {
 
             :global(.features-mobile-carousel > div) {
               flex: 0 0 332px;
-              width: 352px;
-              max-width: 352px;
+              width: 310px;
+              max-width: 310px;
               margin-right: 10px;
               display: flex;
+            }
+
+            :global(.features-mobile-carousel > div:last-child) {
+              padding-right: 0;
+              margin-right: 24px;
             }
 
             :global(.features-mobile-carousel > div > article) {
@@ -75,7 +80,7 @@ export default function FeaturesSection({ features = [] }) {
         </div>
 
         {/* Desktop grid — unchanged */}
-        <div className="tw-hidden tw-grid-cols-1 tw-gap-10 md:tw-grid md:tw-grid-cols-3 md:tw-gap-8 lg:tw-gap-x-[72px] lg:tw-gap-y-[96px]">
+        <div className="tw-hidden tw-grid-cols-1 tw-gap-10 md:tw-grid md:tw-grid-cols-3 md:tw-gap-x-8 md:tw-gap-y-[48px] lg:tw-gap-x-[72px] lg:tw-gap-y-[48px]">
           {features.map((item, index) => (
             <FeatureCard key={item._key || `feature-${index}`} item={item} />
           ))}
@@ -95,7 +100,7 @@ function FeatureCard({ item, textFirst = false }) {
       src={src}
       alt={item.alt || ""}
       className={`tw-block tw-h-auto tw-w-full ${
-        textFirst ? "" : "tw-mb-5 md:tw-mb-[30px]"
+        textFirst ? "" : "tw-mb-5 md:tw-mb-[48px]"
       }`}
     />
   ) : null;
@@ -103,7 +108,7 @@ function FeatureCard({ item, textFirst = false }) {
   const text = textFirst ? (
     <div>
       {item.alt && (
-        <h4 className="tw-mb-2 tw-text-[18px] tw-font-bold tw-leading-[140%] tw-tracking-[0.01em]">
+        <h4 className="tw-mb-2 tw-text-balance tw-text-[18px] tw-font-bold tw-leading-[140%] tw-tracking-[0.01em]">
           {item.alt}
         </h4>
       )}
@@ -116,7 +121,7 @@ function FeatureCard({ item, textFirst = false }) {
   ) : (
     <>
       {item.alt && (
-        <h4 className="tw-mb-2 tw-text-[18px] tw-font-bold tw-leading-[140%] tw-tracking-[0.01em] md:tw-mb-[8px] md:tw-text-[24px]">
+        <h4 className="tw-mb-2 tw-text-balance tw-text-[18px] tw-font-bold tw-leading-[140%] tw-tracking-[0.01em] md:tw-mb-[8px] md:tw-text-[24px]">
           {item.alt}
         </h4>
       )}
@@ -129,7 +134,7 @@ function FeatureCard({ item, textFirst = false }) {
   );
 
   return (
-    <article>
+    <article className="tw-font-[Lato]">
       {textFirst ? (
         <>
           {text}
