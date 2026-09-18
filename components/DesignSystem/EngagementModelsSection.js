@@ -106,21 +106,27 @@ function ModelCard({ model }) {
       {hasIncludes && (
         <div className="tw-order-3 tw-mb-0 md:tw-order-2 md:tw-mb-10">
           {/* Mobile accordion trigger */}
-          <button
-            type="button"
-            onClick={() => setIncludesOpen((open) => !open)}
-            aria-expanded={includesOpen}
-            className={`engagement-includes-trigger tw-mb-0 tw-flex tw-w-full tw-items-center tw-gap-3 tw-border-0 tw-bg-transparent tw-p-0 tw-text-left md:tw-hidden ${
-              hasLogos
-                ? "tw-mt-5 tw-border-t tw-border-[#808080] tw-pt-5"
-                : ""
-            } ${includesOpen ? "open" : ""}`}
-          >
-            <span className="tw-text-[14px] tw-font-medium tw-leading-[1.4] tw-tracking-[0.02em] tw-text-noct-dark">
-              what&apos;s included
-            </span>
-            <span aria-hidden="true" className="plus-icon" />
-          </button>
+          <div className="md:tw-hidden">
+            {hasLogos && (
+              <div
+                aria-hidden="true"
+                className="tw-mb-5 tw-mt-5 tw-h-[0.5px] tw-bg-[#808080]"
+              />
+            )}
+            <button
+              type="button"
+              onClick={() => setIncludesOpen((open) => !open)}
+              aria-expanded={includesOpen}
+              className={`engagement-includes-trigger tw-mb-0 tw-flex tw-w-full tw-items-center tw-gap-3 tw-appearance-none tw-border-0 tw-bg-transparent tw-p-0 tw-text-left tw-outline-none ${
+                includesOpen ? "open" : ""
+              }`}
+            >
+              <span className="tw-text-[14px] tw-font-medium tw-leading-[1.4] tw-tracking-[0.02em] tw-text-noct-dark">
+                what&apos;s included
+              </span>
+              <span aria-hidden="true" className="plus-icon" />
+            </button>
+          </div>
 
           {/* Desktop label */}
           <p className="tw-mb-3 tw-hidden tw-text-[12px] tw-font-semibold tw-leading-[1.4] tw-tracking-[0.02em] tw-text-[#808080] md:tw-mb-[10px] md:tw-block md:tw-text-[14px]">
