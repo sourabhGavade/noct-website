@@ -141,7 +141,7 @@ export default function DesignSystem({ content }) {
 
         <FeaturesSection features={content.features} />
 
-        <div className="tw-mt-[117px] tw-space-y-[117px] md:tw-mt-[160px] md:tw-space-y-[160px]">
+        <div className="tw-mt-[117px] tw-space-y-[80px] md:tw-mt-[160px] md:tw-space-y-[160px]">
           <MainVideoSection videoUrl={content.mainVideo} />
 
           {/* <OverviewSection
@@ -174,7 +174,7 @@ export default function DesignSystem({ content }) {
                   {content.process?.steps?.length > 0 && (
                     <div className="col-lg-7">
                       <VerticalTimeline
-                        lineTop="28px"
+                        iconBg="#F7F7F7"
                         items={content.process.steps.map((step) => ({
                           _key: step._key,
                           title: step.title,

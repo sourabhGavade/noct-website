@@ -39,9 +39,9 @@ export default function AiReadableSection({
                 <Fragment key={rowKey}>
                   {isLastRow && (
                     <img
-                      src="/images/illustrations/design1.jpeg"
+                      src="/illustration1.svg"
                       alt="One Design.md connecting product areas, skills, accessibility, tone of voice, tokens, components, design patterns, and layout rules"
-                      className="tw-block tw-h-auto tw-w-full"
+                      className="tw-block tw-h-auto tw-w-full tw-pointer-events-none"
                     />
                   )}
                   {row.layout === "stacked" ? (
