@@ -61,15 +61,15 @@ export default function HelpSection({ heading, items = [] }) {
     >
       <div className="container tw-flex tw-flex-col tw-py-[80px] md:tw-py-[100px]">
         {heading && (
-          <h2 className="tw-text-[24px] tw-mb-8 md:tw-mb-[70px] md:tw-text-[40px] lg:tw-text-[48px] tw-font-bold tw-leading-[1.15] tw-tracking-[-0.02em] tw-text-white">
+          <h2 className="tw-text-[24px] tw-mb-8 md:tw-mb-[10vh] md:tw-text-[40px] lg:tw-text-[48px] tw-font-bold tw-leading-[1.15] tw-tracking-[-0.02em] tw-text-white">
             {heading}
           </h2>
         )}
 
-        <div className="tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-gap-8 lg:tw-gap-16 tw-items-start">
+        <div className="tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-gap-8 lg:tw-gap-16 tw-items-center">
           {/* Image stays at the first item on the right; does not move as items change */}
           <div className="help-section__image tw-flex tw-justify-center lg:tw-order-2">
-            <div className="tw-relative tw-w-[200px] tw-h-[184px] md:tw-w-[388px] md:tw-h-[360px]">
+            <div className="tw-relative tw-w-[200px] tw-h-[184px] md:tw-w-[75vw] md:tw-h-[498px]">
               {items.map((item, index) => {
                 const src = item?.image ? urlFor(item.image).url() : null;
                 if (!src) return null;
