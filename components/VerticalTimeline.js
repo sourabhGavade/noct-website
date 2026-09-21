@@ -52,6 +52,11 @@ export default function VerticalTimeline({ items, lineTop = '44px' }) {
           visibility: hidden;
         }
 
+        .v-timeline-item:last-child .v-timeline-icon,
+        .v-timeline-item:last-child .v-timeline-content {
+          padding-bottom: 0;
+        }
+
         .v-timeline-content {
           width: calc(100% - 100px);
           padding-bottom: 32px;

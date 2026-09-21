@@ -110,7 +110,7 @@ export default function DesignSystem({ content }) {
         <Head>
           <title>NOCT | Design System</title>
         </Head>
-        <section className="tw-min-h-screen tw-bg-[#FCFCFC] tw-pb-20 tw-pt-[160px] tw-text-noct-dark">
+        <section className="tw-min-h-screen tw-bg-[#F7F7F7] tw-pb-20 tw-pt-[160px] tw-text-noct-dark">
           <div className="container tw-text-center">
             <h1 className="tw-mb-4 tw-text-balance tw-text-[32px] tw-font-black tw-leading-[1.2] md:tw-text-[64px]">
               Design System
@@ -130,7 +130,7 @@ export default function DesignSystem({ content }) {
         <title>NOCT | Design System</title>
       </Head>
 
-      <div className="tw-bg-[#FCFCFC] tw-text-noct-dark tw-space-y-[117px] md:tw-space-y-[160px]">
+      <div className="tw-bg-[#F7F7F7] tw-font-[Lato] tw-text-noct-dark tw-overflow-x-hidden">
         <HeroSection
           title={content.title}
           trustDescription={content.trustDescription}
@@ -141,20 +141,21 @@ export default function DesignSystem({ content }) {
 
         <FeaturesSection features={content.features} />
 
-        <MainVideoSection videoUrl={content.mainVideo} />
+        <div className="tw-mt-[117px] tw-space-y-[117px] md:tw-mt-[160px] md:tw-space-y-[160px]">
+          <MainVideoSection videoUrl={content.mainVideo} />
 
-        {/* <OverviewSection
-          heading={content.overview?.heading}
-          description={content.overview?.description}
-          items={content.overview?.items}
-        /> */}
+          {/* <OverviewSection
+            heading={content.overview?.heading}
+            description={content.overview?.description}
+            items={content.overview?.items}
+          /> */}
 
-        <AiReadableSection
-          heading={content.aiReadable?.heading}
-          description={content.aiReadable?.description}
-          cards={content.aiReadable?.cards}
-        />
-        <div className="tw-bg-white md:tw-pt-[120px] tw-pt-[60px] tw-space-y-[117px] md:tw-space-y-[160px]">
+          <AiReadableSection
+            heading={content.aiReadable?.heading}
+            description={content.aiReadable?.description}
+            cards={content.aiReadable?.cards}
+          />
+
           {(content.process?.heading || content.process?.steps?.length > 0) && (
             <section>
               <div className="container">
@@ -162,7 +163,7 @@ export default function DesignSystem({ content }) {
                   {content.process?.heading && (
                     <div className="col-lg-4">
                       <div
-                        className={`h2 ${
+                        className={`h2 tw-text-balance ${
                           content.process.steps?.length > 5 ? "sticky" : ""
                         }`}
                       >
@@ -193,9 +194,9 @@ export default function DesignSystem({ content }) {
             subtitle={content.engagementModels?.subtitle}
             models={content.engagementModels?.models}
           />
-        </div>
 
-        <DesignSystemFooterCTA />
+          <DesignSystemFooterCTA />
+        </div>
       </div>
     </>
   );

@@ -30,7 +30,7 @@ export default function ConnectSection({ heading, items = [], image, cta }) {
         <div className="tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-gap-10 lg:tw-gap-0 tw-items-center tw-border tw-border-white/10 tw-bg-[#1E1E1E] tw-px-6 tw-py-10 md:tw-px-[80px] md:tw-py-14">
           <div className="tw-flex tw-flex-col tw-items-start">
             {heading && (
-              <h2 className="tw-mb-6 md:tw-mb-8 tw-text-[28px] md:tw-text-[48px] tw-leading-[1.15] tw-tracking-[-0.02em] tw-text-white">
+              <h2 className="tw-mb-6 md:tw-mb-8 tw-text-[28px] md:tw-text-[48px] tw-leading-[1.15] tw-tracking-[-0.02em] tw-text-[#E3E3E3]">
                 {heading}
               </h2>
             )}
@@ -40,7 +40,7 @@ export default function ConnectSection({ heading, items = [], image, cta }) {
                 {items.map((item, index) => (
                   <li
                     key={`connect-item-${index}`}
-                    className="tw-m-0 tw-ml-0 tw-pl-0 tw-text-left tw-text-[14px] md:tw-text-[16px] lg:tw-text-[22px] tw-font-light tw-leading-[1.5] tw-tracking-[0.01em] tw-text-noct-muted"
+                    className="tw-m-0 tw-ml-0 tw-pl-0 tw-text-left tw-text-[14px] md:tw-text-[16px] lg:tw-text-[22px] tw-font-light tw-leading-[1.5] tw-tracking-[0.01em] tw-text-[#FCFCFC]"
                   >
                     {item}
                   </li>
