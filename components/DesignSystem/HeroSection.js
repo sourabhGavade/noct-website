@@ -116,7 +116,7 @@ export default function HeroSection({
             {(trustDescription || logoItems.length > 0) && (
               <div className="tw-mt-10 md:tw-mt-[64px]">
                 {trustDescription && (
-                  <p className="tw-mb-3 md:tw-text-[12px] tw-text-[10px] tw-font-normal tw-uppercase tw-leading-[1.3] tw-tracking-[9%] tw-text-noct-muted md:tw-mb-6">
+                  <p className="tw-mb-3 md:tw-text-[12px] max-sm:tw-text-center tw-text-[10px] tw-font-normal tw-uppercase tw-leading-[1.3] tw-tracking-[9%] tw-text-noct-muted md:tw-mb-6">
                     {trustDescription}
                   </p>
                 )}
