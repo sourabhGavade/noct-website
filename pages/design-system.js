@@ -195,8 +195,8 @@ export default function DesignSystem({ content }) {
               models={content.engagementModels?.models}
             />
           </div>
-          <DesignSystemFooterCTA />
         </div>
+        <DesignSystemFooterCTA />
       </div>
     </>
   );
