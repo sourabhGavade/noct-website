@@ -158,7 +158,7 @@ export default function DesignSystem({ content }) {
           <div className="tw-bg-[#FCFCFC]">
             {(content.process?.heading ||
               content.process?.steps?.length > 0) && (
-              <section className="md:tw-pt-[154px] md:tw-pb-[85px] tw-pt-[80px] tw-pb-10">
+              <section className="md:tw-pt-[154px] md:tw-pb-[85px] tw-pt-[60px] tw-pb-[60px]">
                 <div className="container">
                   <div className="row justify-content-between">
                     {content.process?.heading && (
@@ -173,7 +173,7 @@ export default function DesignSystem({ content }) {
                       </div>
                     )}
                     {content.process?.steps?.length > 0 && (
-                      <div className="col-lg-7">
+                      <div className="col-lg-7 tw-mt-[28px]">
                         <VerticalTimeline
                           items={content.process.steps.map((step) => ({
                             _key: step._key,
