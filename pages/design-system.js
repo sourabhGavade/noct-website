@@ -155,46 +155,46 @@ export default function DesignSystem({ content }) {
             description={content.aiReadable?.description}
             cards={content.aiReadable?.cards}
           />
-
-          {(content.process?.heading || content.process?.steps?.length > 0) && (
-            <section>
-              <div className="container">
-                <div className="row justify-content-between">
-                  {content.process?.heading && (
-                    <div className="col-lg-4">
-                      <div
-                        className={`h2 tw-text-balance ${
-                          content.process.steps?.length > 5 ? "sticky" : ""
-                        }`}
-                      >
-                        {content.process.heading}
+          <div className="tw-bg-[#FCFCFC]">
+            {(content.process?.heading ||
+              content.process?.steps?.length > 0) && (
+              <section className="md:tw-pt-[154px] md:tw-pb-[85px] tw-pt-[80px] tw-pb-10">
+                <div className="container">
+                  <div className="row justify-content-between">
+                    {content.process?.heading && (
+                      <div className="col-lg-4">
+                        <div
+                          className={`h2 tw-text-balance ${
+                            content.process.steps?.length > 5 ? "sticky" : ""
+                          }`}
+                        >
+                          {content.process.heading}
+                        </div>
                       </div>
-                    </div>
-                  )}
-                  {content.process?.steps?.length > 0 && (
-                    <div className="col-lg-7">
-                      <VerticalTimeline
-                        iconBg="#F7F7F7"
-                        items={content.process.steps.map((step) => ({
-                          _key: step._key,
-                          title: step.title,
-                          description: step.description,
-                          image: step.icon,
-                        }))}
-                      />
-                    </div>
-                  )}
+                    )}
+                    {content.process?.steps?.length > 0 && (
+                      <div className="col-lg-7">
+                        <VerticalTimeline
+                          items={content.process.steps.map((step) => ({
+                            _key: step._key,
+                            title: step.title,
+                            description: step.description,
+                            image: step.icon,
+                          }))}
+                        />
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
-            </section>
-          )}
+              </section>
+            )}
 
-          <EngagementModelsSection
-            heading={content.engagementModels?.heading}
-            subtitle={content.engagementModels?.subtitle}
-            models={content.engagementModels?.models}
-          />
-
+            <EngagementModelsSection
+              heading={content.engagementModels?.heading}
+              subtitle={content.engagementModels?.subtitle}
+              models={content.engagementModels?.models}
+            />
+          </div>
           <DesignSystemFooterCTA />
         </div>
       </div>
