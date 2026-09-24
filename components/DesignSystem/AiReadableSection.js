@@ -159,7 +159,7 @@ function FeatureCard({ card, flushImage = false }) {
     <article
       className={
         flushImage
-          ? "tw-overflow-hidden tw-pt-6 tw-pl-6 tw-pr-4 md:tw-pt-8 md:tw-pl-8 md:tw-pr-6 lg:tw-pt-[48px] lg:tw-pl-[72px] lg:tw-pr-[35px]"
+          ? "tw-overflow-hidden tw-pt-6 tw-pl-6 max-sm:tw-text-center tw-pr-4 md:tw-pt-8 md:tw-pl-8 md:tw-pr-6 lg:tw-pt-[48px] lg:tw-pl-[72px] lg:tw-pr-[35px]"
           : "tw-p-6 md:tw-p-8 lg:tw-p-[48px]"
       }
       style={{ backgroundColor }}

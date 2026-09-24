@@ -68,7 +68,7 @@ export default function VerticalTimeline({ items, iconBg = '#fcfcfc' }) {
           content: '';
           position: absolute;
           top: 4px;
-          bottom: 10px;
+          bottom: 15px;
           left: 50%;
           width: 12px;
           transform: translateX(-50%);
@@ -80,6 +80,12 @@ export default function VerticalTimeline({ items, iconBg = '#fcfcfc' }) {
           position: relative;
           z-index: 1;
           display: block;
+        }
+
+        /* The line is the first child, so the first step is the item after it.
+           Cover the line through the top of that icon; nothing should show above it. */
+        .v-timeline-line + .v-timeline-item .v-timeline-icon-wrap:before {
+          top: 0;
         }
 
         /* Cover the line below the last icon so it doesn't run beside the final text */

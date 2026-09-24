@@ -130,7 +130,7 @@ export default function DesignSystem({ content }) {
         <title>NOCT | Design System</title>
       </Head>
 
-      <div className="tw-bg-[#F7F7F7] tw-font-[Lato] tw-text-noct-dark tw-overflow-x-hidden">
+      <div className="tw-bg-[#FCFCFC] tw-font-[Lato] tw-text-noct-dark tw-overflow-x-hidden">
         <HeroSection
           title={content.title}
           trustDescription={content.trustDescription}
@@ -141,7 +141,7 @@ export default function DesignSystem({ content }) {
 
         <FeaturesSection features={content.features} />
 
-        <div className="tw-mt-[117px] tw-space-y-[80px] md:tw-mt-[160px] md:tw-space-y-[160px]">
+        <div className="tw-mt-[117px] tw-space-y-[80px] md:tw-mt-[160px] md:tw-space-y-[160px] tw-bg-[#f7f7f7]">
           <MainVideoSection videoUrl={content.mainVideo} />
 
           {/* <OverviewSection
