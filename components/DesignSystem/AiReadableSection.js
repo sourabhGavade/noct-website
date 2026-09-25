@@ -32,8 +32,7 @@ export default function AiReadableSection({
           <div className="tw-flex tw-flex-col tw-gap-4 md:tw-gap-10">
             {rows.map((row, rowIndex) => {
               const isLastRow = rowIndex === rows.length - 1;
-              const rowKey =
-                row.cards[0]?._key || `${row.layout}-${rowIndex}`;
+              const rowKey = row.cards[0]?._key || `${row.layout}-${rowIndex}`;
 
               return (
                 <Fragment key={rowKey}>
@@ -54,10 +53,7 @@ export default function AiReadableSection({
                       ))}
                     </div>
                   ) : (
-                    <FeatureCard
-                      card={row.cards[0]}
-                      flushImage={isLastRow}
-                    />
+                    <FeatureCard card={row.cards[0]} flushImage={isLastRow} />
                   )}
                 </Fragment>
               );
@@ -86,10 +82,10 @@ function FeatureCard({ card, flushImage = false }) {
   if (layout === "centered") {
     return (
       <article
-        className="tw-px-6 tw-py-12 md:tw-px-12 md:tw-py-16 lg:tw-px-16 lg:tw-py-[80px]"
+        className="tw-px-6 tw-py-12 max-sm:tw-text-center md:tw-px-12 md:tw-py-16 lg:tw-px-16 lg:tw-py-[80px]"
         style={{ backgroundColor }}
       >
-        <div className="tw-mx-auto tw-max-w-[720px] tw-text-center">
+        <div className="tw-mx-auto tw-max-w-[720px]">
           {card.title && (
             <h3
               className={`tw-mb-0 tw-text-balance tw-text-[20px] tw-font-bold tw-leading-[130%] md:tw-text-[24px] lg:tw-text-[32px] ${titleColor}`}
@@ -120,7 +116,7 @@ function FeatureCard({ card, flushImage = false }) {
   if (layout === "stacked") {
     return (
       <article
-        className="tw-flex tw-h-full tw-flex-col tw-overflow-hidden"
+        className="tw-flex tw-h-full tw-flex-col tw-overflow-hidden max-sm:tw-text-center"
         style={{ backgroundColor }}
       >
         <div className="tw-px-6 tw-pt-6 md:tw-px-8 md:tw-pt-8 lg:tw-px-10 lg:tw-pt-10">
@@ -134,7 +130,7 @@ function FeatureCard({ card, flushImage = false }) {
           {paragraphs.map((text, index) => (
             <p
               key={`${card._key}-p-${index}`}
-              className={`tw-mb-0 tw-text-[14px] tw-font-light tw-leading-[28px] tw-tracking-[0.02em] md:tw-text-[16px] lg:tw-text-[18px] ${bodyColor}`}
+              className={`tw-mb-0 tw-text-[14px] tw-font-light md:tw-leading-[28px] tw-text-balance tw-tracking-[0.02em] md:tw-text-[16px] lg:tw-text-[18px] ${bodyColor}`}
             >
               {text}
             </p>
@@ -159,8 +155,8 @@ function FeatureCard({ card, flushImage = false }) {
     <article
       className={
         flushImage
-          ? "tw-overflow-hidden tw-pt-6 tw-pl-6 tw-pr-4 md:tw-pt-8 md:tw-pl-8 md:tw-pr-6 lg:tw-pt-[48px] lg:tw-pl-[72px] lg:tw-pr-[35px]"
-          : "tw-p-6 md:tw-p-8 lg:tw-p-[48px]"
+          ? "tw-overflow-hidden tw-pt-6 tw-pl-6 max-sm:tw-text-center tw-pr-4 md:tw-pt-8 md:tw-pl-8 md:tw-pr-6 lg:tw-pt-[48px] lg:tw-pl-[72px] lg:tw-pr-[35px]"
+          : "tw-p-6 md:tw-p-8 lg:tw-p-[48px] max-sm:tw-text-center"
       }
       style={{ backgroundColor }}
     >
@@ -176,7 +172,7 @@ function FeatureCard({ card, flushImage = false }) {
           {paragraphs.map((text, index) => (
             <p
               key={`${card._key}-p-${index}`}
-              className={`tw-mb-0 tw-text-[14px] tw-font-light tw-leading-[28px] tw-tracking-[0.02em] md:tw-text-[16px] lg:tw-text-[18px] ${
+              className={`tw-mb-0 tw-text-[14px] tw-font-light md:tw-leading-[28px] tw-text-balance tw-tracking-[0.02em] md:tw-text-[16px] lg:tw-text-[18px] ${
                 index > 0 ? "tw-mt-4" : ""
               } ${bodyColor}`}
             >

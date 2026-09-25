@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import urlFor from "../../utils/urlFor";
 
 export default function EngagementModelsSection({
@@ -43,6 +43,8 @@ export default function EngagementModelsSection({
 
 function ModelCard({ model }) {
   const [includesOpen, setIncludesOpen] = useState(false);
+  const dropRef = useRef(null);
+  const listRef = useRef(null);
 
   if (!model) return null;
 
@@ -51,6 +53,48 @@ function ModelCard({ model }) {
   const idealForLabel = model.idealForLabel || "Ideal for";
   const hasIncludes = includes.length > 0;
   const hasLogos = logos.length > 0;
+
+  const toggleIncludes = () => {
+    const dropEl = dropRef.current;
+    const listEl = listRef.current;
+
+    if (!dropEl || typeof TweenMax === "undefined") {
+      setIncludesOpen((open) => !open);
+      return;
+    }
+
+    if (includesOpen) {
+      // Pin current height before collapsing — TweenMax can't animate from "auto"
+      TweenMax.set(dropEl, { height: dropEl.offsetHeight });
+      TweenMax.to(dropEl, 0.4, {
+        height: "0px",
+        ease: "Power1.easeOut",
+      });
+      setIncludesOpen(false);
+      return;
+    }
+
+    setIncludesOpen(true);
+
+    const targetHeight = dropEl.scrollHeight;
+    TweenMax.to(dropEl, 0.4, {
+      height: targetHeight,
+      ease: "Power1.easeOut",
+      onComplete: () => {
+        if (dropRef.current) dropRef.current.style.height = "auto";
+      },
+    });
+
+    if (listEl?.children?.length) {
+      TweenMax.staggerFromTo(
+        listEl.children,
+        0.3,
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, delay: 0.1, clearProps: "transform" },
+        0.05
+      );
+    }
+  };
 
   return (
     <article className="tw-flex tw-h-full tw-flex-col tw-bg-[#F5F5F5] tw-p-[1.6rem] tw-pb-[1.5rem] md:tw-p-8 lg:tw-p-[30px]">
@@ -104,7 +148,11 @@ function ModelCard({ model }) {
       )}
 
       {hasIncludes && (
-        <div className="tw-order-3 tw-mb-0 md:tw-order-2 md:tw-mb-10">
+        <div
+          className={`engagement-includes${
+            includesOpen ? " open" : ""
+          } tw-order-3 tw-mb-0 md:tw-order-2 md:tw-mb-10`}
+        >
           {/* Mobile accordion trigger */}
           <div className="md:tw-hidden">
             {hasLogos && (
@@ -115,11 +163,9 @@ function ModelCard({ model }) {
             )}
             <button
               type="button"
-              onClick={() => setIncludesOpen((open) => !open)}
+              onClick={toggleIncludes}
               aria-expanded={includesOpen}
-              className={`engagement-includes-trigger tw-mb-0 tw-flex tw-w-full tw-items-center tw-gap-3 tw-appearance-none tw-border-0 tw-bg-transparent tw-p-0 tw-text-left tw-outline-none ${
-                includesOpen ? "open" : ""
-              }`}
+              className="engagement-includes-trigger tw-mb-0 tw-flex tw-w-full tw-items-center tw-gap-3 tw-appearance-none tw-border-0 tw-bg-transparent tw-p-0 tw-text-left tw-outline-none"
             >
               <span className="tw-text-[14px] tw-font-medium tw-leading-[1.4] tw-tracking-[0.02em] tw-text-noct-dark">
                 what&apos;s included
@@ -133,32 +179,48 @@ function ModelCard({ model }) {
             Includes
           </p>
 
-          <ul
-            className={`tw-mb-0 tw-list-disc tw-space-y-2 tw-pl-2 tw-text-[13px] tw-font-normal tw-leading-[1.55] tw-tracking-[0.02em] tw-text-noct-dark md:tw-mt-0 md:tw-block md:tw-space-y-2.5 md:tw-text-[14px] ${
-              includesOpen ? "tw-mt-3 tw-block" : "tw-hidden"
-            }`}
-          >
-            {includes.map((item, index) => (
-              <li key={`${model._key || "include"}-${index}`} className="tw-mb-0">
-                {item}
-              </li>
-            ))}
-          </ul>
+          <div className="engagement-includes-dropdown" ref={dropRef}>
+            <ul
+              ref={listRef}
+              className="tw-mb-0 tw-mt-3 tw-list-disc tw-space-y-2 tw-pl-2 tw-text-[13px] tw-font-normal tw-leading-[1.55] tw-tracking-[0.02em] tw-text-noct-dark md:tw-mt-0 md:tw-space-y-2.5 md:tw-text-[14px]"
+            >
+              {includes.map((item, index) => (
+                <li
+                  key={`${model._key || "include"}-${index}`}
+                  className="tw-mb-0"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       )}
 
       <style jsx>{`
+        .engagement-includes-dropdown {
+          height: 0px;
+          overflow: hidden;
+        }
+
         .engagement-includes-trigger :global(.plus-icon) {
           margin-left: 0;
           margin-top: 0;
         }
 
-        .engagement-includes-trigger.open :global(.plus-icon:before) {
+        .engagement-includes.open :global(.plus-icon:before) {
           transform: rotate(90deg);
         }
 
-        .engagement-includes-trigger.open :global(.plus-icon:after) {
+        .engagement-includes.open :global(.plus-icon:after) {
           transform: rotate(180deg);
+        }
+
+        @media (min-width: 768px) {
+          .engagement-includes-dropdown {
+            height: auto !important;
+            overflow: visible;
+          }
         }
       `}</style>
     </article>

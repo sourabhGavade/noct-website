@@ -487,7 +487,7 @@ export default function Services({ content }) {
           gap: 32px;
           padding: 20px 20px;
           background: #ffffff;
-          border: 1px solid #e5e5e5;
+          border: 1px solid rgba(229, 229, 229, 0.5);
         }
 
         .design-system-cta__image {

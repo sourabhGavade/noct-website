@@ -34,7 +34,7 @@ export function DesignSystemFooterCTA() {
   const text =
     "Are you prepared to seamlessly integrates all your products? Reach out to us and create a cohesive experience that resonates with your users.";
   return (
-    <section className="footer-cta padded-section">
+    <section className="footer-cta padded-section md:tw-mt-[160px] tw-mt-[80px]">
       <div className="container">
         <div className="row align-items-center justify-content-between">
           <div className="col-lg-8 mb-5 mb-lg-0 pr-lg-5">
