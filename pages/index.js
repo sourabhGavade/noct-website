@@ -319,7 +319,6 @@ export default function Home({ content, featuredProjects }) {
               </div>
               <div className="about-stat mb-4">
                 <div className="d-flex flex-row justify-content-start">
-                  <div className="h2">0</div>
                   <div className="h2 about-count" id="years">
                     {content.yearsOld}
                   </div>
