@@ -56,7 +56,7 @@ export default function FeaturesSection({ features = [] }) {
               flex: 0 0 332px;
               width: 310px;
               max-width: 310px;
-              margin-right: 10px;
+              margin-right: 0px;
               display: flex;
             }
 

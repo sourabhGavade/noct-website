@@ -71,7 +71,7 @@ export default function SelectedWorkCarousel({ heading, items = [] }) {
   if (!items?.length) return null;
 
   return (
-    <section className="selected-work-carousel tw-pt-[100px] md:tw-pt-[120px] max-sm:tw-pb-[50px]">
+    <section className="selected-work-carousel">
       <div className="tw-mb-[48px] container md:tw-mb-[64px] tw-flex tw-items-center tw-justify-between tw-gap-4">
         {heading && (
           <h2

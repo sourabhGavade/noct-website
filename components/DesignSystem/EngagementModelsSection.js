@@ -97,7 +97,7 @@ function ModelCard({ model }) {
   };
 
   return (
-    <article className="tw-flex tw-h-full tw-flex-col tw-bg-[#F5F5F5] tw-p-[1.6rem] tw-pb-[1.5rem] md:tw-p-8 lg:tw-p-[30px]">
+    <article className="tw-flex tw-h-full tw-flex-col tw-bg-[#F5F5F5] tw-p-[20px] tw-pb-[1.5rem] md:tw-p-8 lg:tw-p-[30px]">
       {model.title && (
         <h3 className="tw-mb-[10px] tw-text-[20px] tw-font-bold tw-leading-[130%] tw-text-noct-dark md:tw-text-[26px]">
           {model.title}
@@ -136,7 +136,7 @@ function ModelCard({ model }) {
                     className="tw-block tw-h-5 tw-w-5 tw-shrink-0 tw-object-contain md:tw-h-6 md:tw-w-6"
                   />
                   {label && (
-                    <span className="tw-text-[13px] tw-font-light tw-leading-none tw-tracking-[0.01em] tw-text-[#808080] md:tw-text-[14px] md:tw-text-noct-dark">
+                    <span className="tw-text-[13px] tw-font-light tw-leading-none tw-tracking-[0.01em] tw-text-[#222323] md:tw-text-[14px]">
                       {label}
                     </span>
                   )}
@@ -158,7 +158,7 @@ function ModelCard({ model }) {
             {hasLogos && (
               <div
                 aria-hidden="true"
-                className="tw-mb-5 tw-mt-5 tw-h-[0.5px] tw-bg-[#808080]"
+                className="tw-mb-5 tw-mt-5 tw-h-[0.5px] tw-bg-[#D6D6D6]"
               />
             )}
             <button
@@ -182,14 +182,18 @@ function ModelCard({ model }) {
           <div className="engagement-includes-dropdown" ref={dropRef}>
             <ul
               ref={listRef}
-              className="tw-mb-0 tw-mt-3 tw-list-disc tw-space-y-2 tw-pl-2 tw-text-[13px] tw-font-normal tw-leading-[1.55] tw-tracking-[0.02em] tw-text-noct-dark md:tw-mt-0 md:tw-space-y-2.5 md:tw-text-[14px]"
+              className="engagement-includes-list tw-mb-0 tw-mt-3 tw-list-none tw-space-y-2 tw-text-[13px] tw-font-normal tw-leading-[1.55] tw-tracking-[0.02em] tw-text-noct-dark md:tw-mt-0 md:tw-space-y-2.5 md:tw-text-[14px]"
             >
               {includes.map((item, index) => (
                 <li
                   key={`${model._key || "include"}-${index}`}
-                  className="tw-mb-0"
+                  className="tw-mb-0 tw-flex tw-items-start tw-gap-[10px]"
                 >
-                  {item}
+                  <span
+                    aria-hidden="true"
+                    className="tw-mt-[0.55em] tw-h-[5px] tw-w-[5px] tw-shrink-0 tw-rounded-full tw-bg-current"
+                  />
+                  <span>{item}</span>
                 </li>
               ))}
             </ul>
@@ -201,6 +205,11 @@ function ModelCard({ model }) {
         .engagement-includes-dropdown {
           height: 0px;
           overflow: hidden;
+        }
+
+        .engagement-includes-list li {
+          margin-left: 0 !important;
+          margin-bottom: 0 !important;
         }
 
         .engagement-includes-trigger :global(.plus-icon) {

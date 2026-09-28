@@ -109,11 +109,11 @@ export default function Clients({ content }) {
         <section className="tw-flex tw-items-center tw-justify-center tw-pt-[152px] md:tw-pt-[240px]">
           <div className="container md:tw-text-center max-sm:tw-text-left">
             <div className="tw-mx-auto">
-              <h1 className="tw-mx-auto md:tw-mb-4 tw-mb-[12px] tw-text-[28px] md:tw-text-[64px] tw-font-black tw-leading-[1.2] tw-text-noct-dark">
+              <h1 className="tw-mx-auto md:tw-mb-4 tw-mb-[12px] tw-text-balance tw-text-[28px] md:tw-text-[64px] tw-font-black tw-leading-[1.2] tw-text-noct-dark">
                 <LetteringTitle text={content.title} />
               </h1>
               {content.description && (
-                <p className="tw-mx-auto tw-mb-0 tw-max-w-[500px] tw-text-[14px] md:tw-text-[22px] tw-font-normal tw-leading-relaxed tw-text-noct-muted">
+                <p className="tw-mx-auto tw-mb-0 tw-max-w-[500px] tw-text-balance tw-text-[14px] md:tw-text-[22px] tw-font-normal tw-leading-relaxed tw-text-noct-muted">
                   {content.description}
                 </p>
               )}
@@ -171,24 +171,28 @@ export default function Clients({ content }) {
                   return (
                     <div
                       key={logo._key || `logo-${index}`}
-                      className="tw-flex tw-flex-col tw-items-center tw-text-center"
+                      className="tw-flex tw-h-full tw-flex-col tw-items-center tw-text-center"
                     >
-                      <img
-                        src={src}
-                        alt={logo.alt || ""}
-                        className="tw-block tw-h-auto tw-w-auto tw-max-w-[150px] tw-object-contain tw-object-center tw-mb-[0.2rem]"
-                      />
+                      <div className="tw-mb-[0.2rem] tw-flex tw-w-full tw-flex-1 tw-items-end tw-justify-center">
+                        <img
+                          src={src}
+                          alt={logo.alt || ""}
+                          className="tw-block tw-h-auto tw-w-auto tw-max-w-[150px] tw-object-contain tw-object-center"
+                        />
+                      </div>
 
-                      {logo.alt && (
-                        <h5 className="tw-mb-4 tw-text-[16px] tw-font-bold tw-leading-tight tw-text-noct-muted">
-                          {logo.alt}
-                        </h5>
-                      )}
-                      {logo.caption && (
-                        <p className="tw-mb-0 tw-text-[12px] md:tw-text-[14px] tw-font-normal tw-leading-snug tw-text-noct-muted">
-                          {logo.caption}
-                        </p>
-                      )}
+                      <div className="tw-mt-auto">
+                        {logo.alt && (
+                          <h5 className="tw-mb-4 tw-text-[16px] tw-font-bold tw-leading-tight tw-text-noct-muted">
+                            {logo.alt}
+                          </h5>
+                        )}
+                        {logo.caption && (
+                          <p className="tw-mb-0 tw-text-[12px] md:tw-text-[14px] tw-font-normal tw-leading-snug tw-text-noct-muted">
+                            {logo.caption}
+                          </p>
+                        )}
+                      </div>
                     </div>
                   );
                 })}

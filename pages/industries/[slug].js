@@ -158,51 +158,51 @@ export default function IndustryPage({ industry }) {
         )}
       </Head>
 
-      <div className="tw-bg-noct-dark tw-text-white">
-        {/* Hero */}
-        <section className="tw-flex tw-items-center container md:tw-pt-[120px] tw-pt-[117px] tw-pb-[18px] md:tw-pb-[74px]">
-          <div className="md:tw-max-w-[670px] tw-space-y-[12px] max-sm:tw-text-center max-sm:tw-px-[24px]">
-            <p className="tw-text-[12px] md:tw-text-[14px] tw-font-light tw-uppercase tw-tracking-[7%] tw-leading-[160%] tw-text-noct-muted">
-              {industry.industryTitle}
-            </p>
-            <h1 className="tw-text-[28px] mb-0 md:tw-text-[56px] lg:tw-text-[64px] tw-leading-[130%] tw-tracking-[0.28%] tw-text-white">
-              {details.mainSubtitle}
-            </h1>
-            <p className="tw-text-[14px] md:tw-text-[18px] lg:tw-text-[22px] tw-font-light tw-leading-[170%] tw-tracking-[2%] tw-text-noct-muted">
-              {details.mainDescription}
-            </p>
-          </div>
+      <div className="tw-flex tw-flex-col tw-gap-[100px] md:tw-gap-[180px] tw-bg-noct-dark tw-pb-[100px] md:tw-pb-[180px] tw-text-white">
+        {/* Hero + mobile graphic stay one block so the page gap applies once */}
+        <div>
+          <section className="tw-flex tw-items-center container md:tw-pt-[120px] tw-pt-[117px]">
+            <div className="md:tw-max-w-[670px] tw-space-y-[12px] max-sm:tw-text-center max-sm:tw-px-[24px]">
+              <p className="tw-text-[12px] md:tw-text-[14px] tw-font-light tw-uppercase tw-tracking-[7%] tw-leading-[160%] tw-text-noct-muted">
+                {industry.industryTitle}
+              </p>
+              <h1 className="tw-text-[28px] mb-0 md:tw-text-[56px] lg:tw-text-[64px] tw-leading-[130%] tw-tracking-[0.28%] tw-text-white">
+                {details.mainSubtitle}
+              </h1>
+              <p className="tw-text-[14px] md:tw-text-[18px] lg:tw-text-[22px] tw-font-light tw-leading-[170%] tw-tracking-[2%] tw-text-noct-muted">
+                {details.mainDescription}
+              </p>
+            </div>
 
-          {heroGraphicDesktopSrc && (
-            <img
-              src={heroGraphicDesktopSrc}
-              alt={details.heroGraphicDesktop?.alt || ""}
-              aria-hidden="true"
-              className="tw-pointer-events-none tw-hidden tw-w-[min(55vw,444px)] tw-max-w-none tw-select-none md:tw-block"
+            {heroGraphicDesktopSrc && (
+              <img
+                src={heroGraphicDesktopSrc}
+                alt={details.heroGraphicDesktop?.alt || ""}
+                aria-hidden="true"
+                className="tw-pointer-events-none tw-hidden tw-w-[min(55vw,444px)] tw-max-w-none tw-select-none md:tw-block"
+              />
+            )}
+          </section>
+
+          {heroGraphicMobileSrc && (
+            <div className="tw-mt-[18px] tw-flex tw-justify-center md:tw-hidden">
+              <img
+                src={heroGraphicMobileSrc}
+                alt={details.heroGraphicMobile?.alt || ""}
+                aria-hidden="true"
+                width={274.32}
+                className="tw-pointer-events-none tw-select-none"
+              />
+            </div>
+          )}
+          {/* Trusted By — auto logo carousel */}
+          {details.showTrustedBySection !== false && (
+            <LogoCarousel
+              heading={details.trustedByHeading}
+              logos={details.trustedBy}
             />
           )}
-        </section>
-
-        {/* Hero Graphic Mobile */}
-        {heroGraphicMobileSrc && (
-          <div className="tw-flex tw-justify-center tw-mb-[72px] md:tw-hidden">
-            <img
-              src={heroGraphicMobileSrc}
-              alt={details.heroGraphicMobile?.alt || ""}
-              aria-hidden="true"
-              width={274.32}
-              className="tw-pointer-events-none tw-select-none"
-            />
-          </div>
-        )}
-
-        {/* Trusted By — auto logo carousel */}
-        {details.showTrustedBySection !== false && (
-          <LogoCarousel
-            heading={details.trustedByHeading}
-            logos={details.trustedBy}
-          />
-        )}
+        </div>
 
         {/* Selected Work — manual arrow carousel */}
         <SelectedWorkCarousel

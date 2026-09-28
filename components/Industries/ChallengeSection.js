@@ -5,10 +5,10 @@ export default function ChallengeSection({ heading, items = [] }) {
   if (!items?.length) return null;
 
   return (
-    <section className="challenge-section tw-bg-noct-dark tw-pt-[100px] md:tw-pt-[200px] tw-text-white">
+    <section className="challenge-section tw-bg-noct-dark tw-text-white">
       <div className="container">
         {heading && (
-          <h2 className="tw-mb-[50px] md:tw-mb-[64px] tw-text-[24px] md:tw-text-[40px] lg:tw-text-[48px] tw-font-bold tw-leading-[1.15] tw-tracking-[-0.02em] tw-text-white">
+          <h2 className="tw-mb-[50px] md:tw-mb-[64px] tw-text-balance tw-text-[24px] md:tw-text-[40px] lg:tw-text-[48px] tw-font-bold tw-leading-[1.15] tw-tracking-[-0.02em] tw-text-white">
             {heading}
           </h2>
         )}

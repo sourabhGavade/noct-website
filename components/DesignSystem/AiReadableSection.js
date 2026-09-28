@@ -21,7 +21,7 @@ export default function AiReadableSection({
               </h2>
             )}
             {description && (
-              <p className="tw-mb-0 tw-text-[14px] tw-max-w-[614px] tw-mx-auto tw-font-light tw-leading-[1.6] tw-tracking-[0.38px] tw-text-[#808080] tw-mt-2 md:tw-text-[18px] md:tw-leading-[28px]">
+              <p className="tw-mb-0 tw-text-[14px] tw-text-balance tw-max-w-[614px] tw-mx-auto tw-font-light tw-leading-[1.6] tw-tracking-[0.38px] tw-text-[#808080] tw-mt-2 md:tw-text-[18px] md:tw-leading-[28px]">
                 {description}
               </p>
             )}
@@ -82,7 +82,7 @@ function FeatureCard({ card, flushImage = false }) {
   if (layout === "centered") {
     return (
       <article
-        className="tw-px-6 tw-py-12 max-sm:tw-text-center md:tw-px-12 md:tw-py-16 lg:tw-px-16 lg:tw-py-[80px]"
+        className="tw-px-6 tw-py-12 md:tw-px-12 md:tw-py-16 lg:tw-px-16 lg:tw-py-[80px]"
         style={{ backgroundColor }}
       >
         <div className="tw-mx-auto tw-max-w-[720px]">
@@ -116,7 +116,7 @@ function FeatureCard({ card, flushImage = false }) {
   if (layout === "stacked") {
     return (
       <article
-        className="tw-flex tw-h-full tw-flex-col tw-overflow-hidden max-sm:tw-text-center"
+        className="tw-flex tw-h-full tw-flex-col tw-overflow-hidden"
         style={{ backgroundColor }}
       >
         <div className="tw-px-6 tw-pt-6 md:tw-px-8 md:tw-pt-8 lg:tw-px-10 lg:tw-pt-10">
@@ -155,8 +155,8 @@ function FeatureCard({ card, flushImage = false }) {
     <article
       className={
         flushImage
-          ? "tw-overflow-hidden tw-pt-6 tw-pl-6 max-sm:tw-text-center tw-pr-4 md:tw-pt-8 md:tw-pl-8 md:tw-pr-6 lg:tw-pt-[48px] lg:tw-pl-[72px] lg:tw-pr-[35px]"
-          : "tw-p-6 md:tw-p-8 lg:tw-p-[48px] max-sm:tw-text-center"
+          ? "tw-overflow-hidden tw-pt-6 tw-pl-6 tw-pr-4 md:tw-pt-8 md:tw-pl-8 md:tw-pr-6 lg:tw-pt-[48px] lg:tw-pl-[72px] lg:tw-pr-[35px]"
+          : "tw-p-6 md:tw-p-8 lg:tw-p-[48px]"
       }
       style={{ backgroundColor }}
     >
