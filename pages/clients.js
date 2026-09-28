@@ -171,24 +171,28 @@ export default function Clients({ content }) {
                   return (
                     <div
                       key={logo._key || `logo-${index}`}
-                      className="tw-flex tw-flex-col tw-items-center tw-text-center"
+                      className="tw-flex tw-h-full tw-flex-col tw-items-center tw-text-center"
                     >
-                      <img
-                        src={src}
-                        alt={logo.alt || ""}
-                        className="tw-block tw-h-auto tw-w-auto tw-max-w-[150px] tw-object-contain tw-object-center tw-mb-[0.2rem]"
-                      />
+                      <div className="tw-mb-[0.2rem] tw-flex tw-w-full tw-flex-1 tw-items-end tw-justify-center">
+                        <img
+                          src={src}
+                          alt={logo.alt || ""}
+                          className="tw-block tw-h-auto tw-w-auto tw-max-w-[150px] tw-object-contain tw-object-center"
+                        />
+                      </div>
 
-                      {logo.alt && (
-                        <h5 className="tw-mb-4 tw-text-[16px] tw-font-bold tw-leading-tight tw-text-noct-muted">
-                          {logo.alt}
-                        </h5>
-                      )}
-                      {logo.caption && (
-                        <p className="tw-mb-0 tw-text-[12px] md:tw-text-[14px] tw-font-normal tw-leading-snug tw-text-noct-muted">
-                          {logo.caption}
-                        </p>
-                      )}
+                      <div className="tw-mt-auto">
+                        {logo.alt && (
+                          <h5 className="tw-mb-4 tw-text-[16px] tw-font-bold tw-leading-tight tw-text-noct-muted">
+                            {logo.alt}
+                          </h5>
+                        )}
+                        {logo.caption && (
+                          <p className="tw-mb-0 tw-text-[12px] md:tw-text-[14px] tw-font-normal tw-leading-snug tw-text-noct-muted">
+                            {logo.caption}
+                          </p>
+                        )}
+                      </div>
                     </div>
                   );
                 })}
