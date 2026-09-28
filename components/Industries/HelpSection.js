@@ -111,7 +111,7 @@ export default function HelpSection({ heading, items = [] }) {
   if (!count) return null;
 
   return (
-    <section className="help-section tw-relative tw-bg-noct-dark tw-pt-[60px] md:tw-pt-[120px] tw-text-white">
+    <section className="help-section tw-relative tw-bg-noct-dark tw-text-white">
       <div ref={trackRef} className="help-section__track tw-relative">
         <div
           ref={stickyRef}
@@ -119,7 +119,7 @@ export default function HelpSection({ heading, items = [] }) {
         >
           {/* Mobile: pin content near the top (nav hides on scroll-down).
               Desktop: keep the centered full-viewport pin. */}
-          <div className="container tw-flex tw-w-full tw-flex-col tw-pt-5 tw-pb-0 md:tw-py-[100px]">
+          <div className="container tw-flex tw-w-full tw-flex-col">
             {heading && (
               <h2 className="tw-text-balance tw-text-[24px] tw-mb-6 md:tw-mb-[10vh] md:tw-text-[40px] lg:tw-text-[48px] tw-font-bold tw-leading-[1.15] tw-tracking-[-0.02em] tw-text-white">
                 {heading}
