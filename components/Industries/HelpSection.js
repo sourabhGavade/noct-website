@@ -119,17 +119,16 @@ export default function HelpSection({ heading, items = [] }) {
         >
           {/* Mobile: pin content near the top (nav hides on scroll-down).
               Desktop: keep the centered full-viewport pin. */}
-          <div className="container tw-flex tw-w-full tw-flex-col">
+          <div className="container tw-grid tw-w-full tw-grid-cols-1 tw-items-start lg:tw-grid-cols-2 lg:tw-gap-x-16">
             {heading && (
-              <h2 className="tw-text-balance tw-text-[24px] tw-mb-6 md:tw-mb-[10vh] md:tw-text-[40px] lg:tw-text-[48px] tw-font-bold tw-leading-[1.15] tw-tracking-[-0.02em] tw-text-white">
+              <h2 className="tw-text-balance tw-text-[24px] tw-mb-6 md:tw-mb-[10vh] md:tw-text-[40px] lg:tw-col-start-1 lg:tw-row-start-1 lg:tw-text-[48px] tw-font-bold tw-leading-[1.15] tw-tracking-[-0.02em] tw-text-white">
                 {heading}
               </h2>
             )}
 
-            <div className="tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-gap-6 lg:tw-gap-16 tw-items-center">
-              {/* Image crossfades with the active item */}
-              <div className="help-section__image tw-flex tw-justify-center lg:tw-order-2">
-                <div className="tw-relative tw-w-[200px] tw-h-[184px] md:tw-w-[75vw] md:tw-h-[498px]">
+            {/* Desktop: top-align with the heading (spans both rows) and sit 20% larger. */}
+            <div className="help-section__image tw-mb-6 tw-flex tw-items-start tw-justify-center lg:tw-col-start-2 lg:tw-row-span-2 lg:tw-row-start-1 lg:tw-mb-0 lg:tw-self-start">
+              <div className="tw-relative tw-w-[200px] tw-h-[184px] md:tw-w-[75vw] md:tw-h-[498px] lg:tw-h-[calc(498px*1.2)] lg:tw-w-[calc(75vw*1.2)]">
                   {items.map((item, index) => {
                     const src = item?.image ? urlFor(item.image).url() : null;
                     if (!src) return null;
@@ -152,7 +151,7 @@ export default function HelpSection({ heading, items = [] }) {
 
               {/* Fixed-height window: collapsing items can't shift the page */}
               <div
-                className="help-section__window lg:tw-order-1 tw-overflow-hidden"
+                className="help-section__window tw-overflow-hidden lg:tw-col-start-1 lg:tw-row-start-2"
                 style={listHeight ? { height: listHeight } : undefined}
               >
                 <div
@@ -205,7 +204,6 @@ export default function HelpSection({ heading, items = [] }) {
                   })}
                 </div>
               </div>
-            </div>
           </div>
         </div>
       </div>

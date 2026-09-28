@@ -195,15 +195,14 @@ export default function IndustryPage({ industry }) {
               />
             </div>
           )}
+          {/* Trusted By — auto logo carousel */}
+          {details.showTrustedBySection !== false && (
+            <LogoCarousel
+              heading={details.trustedByHeading}
+              logos={details.trustedBy}
+            />
+          )}
         </div>
-
-        {/* Trusted By — auto logo carousel */}
-        {details.showTrustedBySection !== false && (
-          <LogoCarousel
-            heading={details.trustedByHeading}
-            logos={details.trustedBy}
-          />
-        )}
 
         {/* Selected Work — manual arrow carousel */}
         <SelectedWorkCarousel
