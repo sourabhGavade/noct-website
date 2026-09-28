@@ -149,9 +149,10 @@ export default function HelpSection({ heading, items = [] }) {
               </div>
             </div>
 
-            {/* Fixed-height window: collapsing items can't shift the page */}
+            {/* Fixed-height window: collapsing past items can't shift the page.
+                Remaining points stay vertically centered instead of snapping to the top. */}
             <div
-              className="help-section__window tw-overflow-hidden lg:tw-col-start-1 lg:tw-row-start-2"
+              className="help-section__window tw-flex tw-flex-col tw-justify-center tw-overflow-hidden lg:tw-col-start-1 lg:tw-row-start-2"
               style={listHeight ? { height: listHeight } : undefined}
             >
               <div
