@@ -89,7 +89,7 @@ export default function HelpSection({ heading, items = [] }) {
   if (!count) return null;
 
   return (
-    <section className="help-section tw-relative tw-bg-noct-dark tw-text-white">
+    <section className="help-section tw-relative tw-bg-noct-dark tw-pt-[100px] md:tw-pt-[120px] tw-text-white">
       <div
         ref={trackRef}
         className="help-section__track tw-relative"
@@ -101,7 +101,7 @@ export default function HelpSection({ heading, items = [] }) {
         >
           <div className="container tw-flex tw-w-full tw-flex-col tw-py-[80px] md:tw-py-[100px]">
             {heading && (
-              <h2 className="tw-text-[24px] tw-mb-8 md:tw-mb-[10vh] md:tw-text-[40px] lg:tw-text-[48px] tw-font-bold tw-leading-[1.15] tw-tracking-[-0.02em] tw-text-white">
+              <h2 className="tw-text-balance tw-text-[24px] tw-mb-8 md:tw-mb-[10vh] md:tw-text-[40px] lg:tw-text-[48px] tw-font-bold tw-leading-[1.15] tw-tracking-[-0.02em] tw-text-white">
                 {heading}
               </h2>
             )}

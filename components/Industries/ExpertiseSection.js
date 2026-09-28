@@ -110,9 +110,9 @@ export default function ExpertiseSection({ heading, items = [] }) {
   if (!chunks.length) return null;
 
   return (
-    <section className="expertise-section tw-relative tw-w-full tw-overflow-hidden tw-bg-noct-dark tw-py-[50px]">
+    <section className="expertise-section tw-relative tw-w-full tw-overflow-hidden tw-bg-noct-dark tw-py-[100px] md:tw-py-[120px]">
       {heading && (
-        <h2 className="tw-mb-10 md:tw-mb-14 lg:tw-mb-16 tw-text-center tw-text-[22px] md:tw-text-[40px] lg:tw-text-[48px] tw-font-bold tw-leading-[130%] tw-tracking-[0.27%] tw-text-white">
+        <h2 className="tw-mb-10 md:tw-mb-14 lg:tw-mb-16 tw-text-center tw-text-balance tw-text-[22px] md:tw-text-[40px] lg:tw-text-[48px] tw-font-bold tw-leading-[130%] tw-tracking-[0.27%] tw-text-white">
           {heading}
         </h2>
       )}
