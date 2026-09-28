@@ -89,7 +89,7 @@ export default function HelpSection({ heading, items = [] }) {
   if (!count) return null;
 
   return (
-    <section className="help-section tw-relative tw-bg-noct-dark tw-pt-[100px] md:tw-pt-[120px] tw-text-white">
+    <section className="help-section tw-relative tw-bg-noct-dark tw-pt-[60px] md:tw-pt-[120px] tw-text-white">
       <div
         ref={trackRef}
         className="help-section__track tw-relative"

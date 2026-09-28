@@ -185,7 +185,7 @@ export default function IndustryPage({ industry }) {
 
         {/* Hero Graphic Mobile */}
         {heroGraphicMobileSrc && (
-          <div className="tw-flex tw-justify-center tw-mb-[72px] md:tw-hidden">
+          <div className="tw-flex tw-justify-center tw-mb-[48px] md:tw-hidden">
             <img
               src={heroGraphicMobileSrc}
               alt={details.heroGraphicMobile?.alt || ""}

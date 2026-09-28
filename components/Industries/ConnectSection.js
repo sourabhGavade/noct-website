@@ -25,7 +25,7 @@ export default function ConnectSection({ heading, items = [], image, cta }) {
   );
 
   return (
-    <section className="connect-section tw-bg-noct-dark tw-pt-[100px] md:tw-pt-[120px] tw-pb-10 md:tw-pb-[140px] tw-text-white">
+    <section className="connect-section tw-bg-noct-dark tw-pt-[60px] md:tw-pt-[120px] tw-pb-10 md:tw-pb-[140px] tw-text-white">
       <div className="container">
         <div className="tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-gap-10 lg:tw-gap-0 tw-items-center tw-border tw-border-white/10 tw-bg-[#242424] tw-px-6 tw-py-10 md:tw-px-[80px] md:tw-py-14">
           <div className="tw-flex tw-flex-col tw-items-start">
