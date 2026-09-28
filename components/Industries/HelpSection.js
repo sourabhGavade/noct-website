@@ -129,81 +129,81 @@ export default function HelpSection({ heading, items = [] }) {
             {/* Desktop: top-align with the heading (spans both rows) and sit 20% larger. */}
             <div className="help-section__image tw-mb-6 tw-flex tw-items-start tw-justify-center lg:tw-col-start-2 lg:tw-row-span-2 lg:tw-row-start-1 lg:tw-mb-0 lg:tw-self-start">
               <div className="tw-relative tw-w-[200px] tw-h-[184px] md:tw-w-[75vw] md:tw-h-[498px] lg:tw-h-[calc(498px*1.2)] lg:tw-w-[calc(75vw*1.2)]">
-                  {items.map((item, index) => {
-                    const src = item?.image ? urlFor(item.image).url() : null;
-                    if (!src) return null;
-                    const isActive = index === activeIndex;
-                    return (
-                      <img
-                        key={item._key || `help-img-${index}`}
-                        src={src}
-                        alt={item.image?.alt || item.title || ""}
-                        className={`tw-absolute tw-inset-0 tw-h-full tw-w-full tw-object-center tw-transition-opacity tw-duration-500 tw-ease-out ${
-                          isActive
-                            ? "tw-opacity-100 tw-z-[1]"
-                            : "tw-opacity-0 tw-z-0"
-                        }`}
-                      />
-                    );
-                  })}
-                </div>
+                {items.map((item, index) => {
+                  const src = item?.image ? urlFor(item.image).url() : null;
+                  if (!src) return null;
+                  const isActive = index === activeIndex;
+                  return (
+                    <img
+                      key={item._key || `help-img-${index}`}
+                      src={src}
+                      alt={item.image?.alt || item.title || ""}
+                      className={`tw-absolute tw-inset-0 tw-h-full tw-w-full tw-object-center tw-transition-opacity tw-duration-500 tw-ease-out ${
+                        isActive
+                          ? "tw-opacity-100 tw-z-[1]"
+                          : "tw-opacity-0 tw-z-0"
+                      }`}
+                    />
+                  );
+                })}
               </div>
+            </div>
 
-              {/* Fixed-height window: collapsing items can't shift the page */}
+            {/* Fixed-height window: collapsing items can't shift the page */}
+            <div
+              className="help-section__window tw-overflow-hidden lg:tw-col-start-1 lg:tw-row-start-2"
+              style={listHeight ? { height: listHeight } : undefined}
+            >
               <div
-                className="help-section__window tw-overflow-hidden lg:tw-col-start-1 lg:tw-row-start-2"
-                style={listHeight ? { height: listHeight } : undefined}
+                ref={listRef}
+                className="help-section__list tw-flex tw-flex-col"
               >
-                <div
-                  ref={listRef}
-                  className="help-section__list tw-flex tw-flex-col"
-                >
-                  {items.map((item, index) => {
-                    const isPast = index < activeIndex;
-                    const isActive = index === activeIndex;
-                    const distance = Math.abs(index - activeIndex);
-                    const inactiveOpacity = Math.max(1 - distance * 0.28, 0.25);
+                {items.map((item, index) => {
+                  const isPast = index < activeIndex;
+                  const isActive = index === activeIndex;
+                  const distance = Math.abs(index - activeIndex);
+                  const inactiveOpacity = Math.max(1 - distance * 0.28, 0.25);
 
-                    return (
+                  return (
+                    <div
+                      key={item._key || `help-${index}`}
+                      className={`help-section__item tw-overflow-hidden ${
+                        isPast
+                          ? "tw-max-h-0 tw-opacity-0 tw-mb-0"
+                          : "tw-max-h-[320px] tw-opacity-100 tw-mb-[28px] md:tw-mb-[30px] last:tw-mb-0"
+                      }`}
+                    >
+                      <h3
+                        className={`tw-mb-0 tw-text-[18px] md:tw-text-[24px] lg:tw-text-[32px] tw-font-bold tw-leading-[1.3] tw-transition-colors tw-duration-300 ${
+                          isActive ? "tw-text-white" : "tw-text-noct-muted"
+                        }`}
+                        style={
+                          isActive ? undefined : { opacity: inactiveOpacity }
+                        }
+                      >
+                        {item.title}
+                      </h3>
+
                       <div
-                        key={item._key || `help-${index}`}
-                        className={`help-section__item tw-overflow-hidden ${
-                          isPast
-                            ? "tw-max-h-0 tw-opacity-0 tw-mb-0"
-                            : "tw-max-h-[320px] tw-opacity-100 tw-mb-[28px] md:tw-mb-[30px] last:tw-mb-0"
+                        className={`help-section__desc tw-overflow-hidden ${
+                          isActive
+                            ? "tw-max-h-[240px] tw-opacity-100 tw-mt-2"
+                            : "tw-max-h-0 tw-opacity-0 tw-mt-0"
                         }`}
                       >
-                        <h3
-                          className={`tw-mb-0 tw-text-[18px] md:tw-text-[24px] lg:tw-text-[32px] tw-font-bold tw-leading-[1.3] tw-transition-colors tw-duration-300 ${
-                            isActive ? "tw-text-white" : "tw-text-noct-muted"
-                          }`}
-                          style={
-                            isActive ? undefined : { opacity: inactiveOpacity }
-                          }
-                        >
-                          {item.title}
-                        </h3>
-
-                        <div
-                          className={`help-section__desc tw-overflow-hidden ${
-                            isActive
-                              ? "tw-max-h-[240px] tw-opacity-100 tw-mt-2"
-                              : "tw-max-h-0 tw-opacity-0 tw-mt-0"
+                        <p
+                          className={`tw-mb-0 tw-max-w-[540px] tw-text-[13px] md:tw-text-[18px] tw-font-light tw-leading-[1.5] tw-tracking-[0.02em] tw-text-noct-muted tw-transition-transform tw-duration-500 tw-ease-out ${
+                            isActive ? "tw-translate-y-0" : "tw-translate-y-2"
                           }`}
                         >
-                          <p
-                            className={`tw-mb-0 tw-max-w-[540px] tw-text-[13px] md:tw-text-[18px] tw-font-light tw-leading-[1.5] tw-tracking-[0.02em] tw-text-noct-muted tw-transition-transform tw-duration-500 tw-ease-out ${
-                              isActive ? "tw-translate-y-0" : "tw-translate-y-2"
-                            }`}
-                          >
-                            {item.description}
-                          </p>
-                        </div>
+                          {item.description}
+                        </p>
                       </div>
-                    );
-                  })}
-                </div>
+                    </div>
+                  );
+                })}
               </div>
+            </div>
           </div>
         </div>
       </div>
