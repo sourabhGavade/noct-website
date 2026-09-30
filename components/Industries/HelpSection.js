@@ -115,7 +115,7 @@ export default function HelpSection({ heading, items = [] }) {
       <div ref={trackRef} className="help-section__track tw-relative">
         <div
           ref={stickyRef}
-          className="help-section__sticky tw-sticky tw-top-0 tw-flex tw-items-start tw-overflow-hidden md:tw-min-h-screen md:tw-items-center"
+          className="help-section__sticky tw-sticky tw-top-20 tw-flex tw-items-start tw-overflow-hidden"
         >
           {/* Mobile: pin content near the top (nav hides on scroll-down).
               Desktop: keep the centered full-viewport pin. */}
@@ -128,7 +128,7 @@ export default function HelpSection({ heading, items = [] }) {
 
             {/* Desktop: top-align with the heading (spans both rows) and sit 20% larger. */}
             <div className="help-section__image tw-mb-6 tw-flex tw-items-start tw-justify-center lg:tw-col-start-2 lg:tw-row-span-2 lg:tw-row-start-1 lg:tw-mb-0 lg:tw-self-start">
-              <div className="tw-relative tw-w-[200px] tw-h-[184px] md:tw-w-[75vw] md:tw-h-[498px] lg:tw-h-[calc(498px*1.2)] lg:tw-w-[calc(75vw*1.2)]">
+              <div className="tw-relative tw-w-[200px] tw-aspect-[1/1] md:tw-w-[75vw]">
                 {items.map((item, index) => {
                   const src = item?.image ? urlFor(item.image).url() : null;
                   if (!src) return null;
