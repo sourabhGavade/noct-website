@@ -128,7 +128,7 @@ export default function HelpSection({ heading, items = [] }) {
 
             {/* Desktop: top-align with the heading (spans both rows) and sit 20% larger. */}
             <div className="help-section__image tw-mb-6 tw-flex tw-items-start tw-justify-center lg:tw-col-start-2 lg:tw-row-span-2 lg:tw-row-start-1 lg:tw-mb-0 lg:tw-self-start">
-              <div className="tw-relative tw-w-[200px] tw-aspect-[1/1] md:tw-w-[75vw]">
+              <div className="tw-relative tw-w-[260px] tw-aspect-[1/1] md:tw-w-[75vw]">
                 {items.map((item, index) => {
                   const src = item?.image ? urlFor(item.image).url() : null;
                   if (!src) return null;
