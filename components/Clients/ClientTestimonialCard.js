@@ -22,7 +22,7 @@ export default function ClientTestimonialCard({
               : "tw-flex tw-flex-col tw-justify-center"
           }`}
       >
-        <div className="tw-flex tw-h-full tw-min-h-0 tw-flex-col tw-justify-center tw-gap-5 md:tw-gap-7">
+        <div className="tw-flex tw-h-full tw-min-h-0 tw-flex-col tw-justify-center tw-gap-6 md:tw-gap-7">
           {logoSrc && (
             <img
               src={logoSrc}
@@ -35,11 +35,11 @@ export default function ClientTestimonialCard({
             {item.quote}
           </p>
 
+          <div
+            aria-hidden="true"
+            className=" tw-h-px tw-w-[56px] tw-bg-noct-dark/20"
+          />
           <div>
-            <div
-              aria-hidden="true"
-              className="tw-mb-5 md:tw-mb-[24px] tw-h-px tw-w-[56px] tw-bg-noct-dark/20"
-            />
             <h5 className="tw-mb-1 tw-text-[14px] md:tw-text-[20px] tw-font-bold tw-leading-tight tw-text-noct-dark">
               {item.name}
             </h5>
