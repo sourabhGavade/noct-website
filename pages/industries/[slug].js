@@ -158,7 +158,7 @@ export default function IndustryPage({ industry }) {
         )}
       </Head>
 
-      <div className="tw-flex tw-flex-col tw-gap-[100px] md:tw-gap-[180px] tw-bg-noct-dark tw-pb-[100px] md:tw-pb-[180px] tw-text-white">
+      <div className="tw-flex tw-flex-col tw-gap-[120px] md:tw-gap-[240px] tw-bg-noct-dark tw-pb-[100px] md:tw-pb-[180px] tw-text-white">
         {/* Hero + mobile graphic stay one block so the page gap applies once */}
         <div>
           <section className="tw-flex tw-items-center container md:tw-pt-[120px] tw-pt-[117px]">

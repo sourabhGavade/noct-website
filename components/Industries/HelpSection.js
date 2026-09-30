@@ -175,7 +175,7 @@ export default function HelpSection({ heading, items = [] }) {
                       }`}
                     >
                       <h3
-                        className={`tw-mb-0 tw-text-[18px] md:tw-text-[24px] lg:tw-text-[32px] tw-font-bold tw-leading-[1.3] tw-transition-colors tw-duration-300 ${
+                        className={`tw-mb-0 tw-text-[18px] md:tw-text-[24px] lg:tw-text-[32px] tw-font-bold tw-leading-[1.5] tw-transition-colors tw-duration-300 ${
                           isActive ? "tw-text-white" : "tw-text-noct-muted"
                         }`}
                         style={
