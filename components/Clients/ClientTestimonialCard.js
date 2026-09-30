@@ -31,7 +31,7 @@ export default function ClientTestimonialCard({
             />
           )}
 
-          <p className="tw-text-[14px] md:tw-text-[18px] lg:tw-text-[22px] tw-font-light tw-leading-[1.5] tw-tracking-[0.01em] tw-text-[#1A1A1A]">
+          <p className="tw-text-[16px] md:tw-text-[18px] lg:tw-text-[22px] tw-font-light tw-leading-[1.5] tw-tracking-[0.01em] tw-text-[#1A1A1A]">
             {item.quote}
           </p>
 
