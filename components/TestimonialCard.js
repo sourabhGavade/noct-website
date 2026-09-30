@@ -50,7 +50,7 @@ export default function TestimonialCard({ problem, solution, logo, ctaLink }) {
             </div>
             <div className="t-plus-icon"></div>
           </div>
-          <div className="problem h5">{problem}</div>
+          <div className="problem h5 tw-mb-0">{problem}</div>
         </div>
 
         <div className="testimonial-card__dropdown" ref={dropRef}>

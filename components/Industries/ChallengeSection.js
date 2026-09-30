@@ -27,12 +27,28 @@ export default function ChallengeSection({ heading, items = [] }) {
       <style jsx global>{`
         .challenge-section .testimonial-grid {
           align-items: start;
-          row-gap: 0;
+          row-gap: 64px;
         }
 
         .challenge-section .testimonial-grid .testimonial-card {
+          margin-bottom: 0;
           border-top-color: rgba(255, 255, 255, 0.2);
           color: #fff;
+        }
+
+        .challenge-section .testimonial-card__dropdown {
+          padding-top: 0;
+        }
+
+        .challenge-section .testimonial-card__dropdown p {
+          padding-top: 15px;
+          margin-bottom: 0 !important;
+        }
+
+        @media screen and (max-width: 992px) {
+          .challenge-section .testimonial-grid .testimonial-card:not(:last-child) {
+            margin-bottom: 40px;
+          }
         }
 
         .challenge-section .testimonial-grid .testimonial-card:hover {

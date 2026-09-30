@@ -113,7 +113,7 @@ export default function Clients({ content }) {
                 <LetteringTitle text={content.title} />
               </h1>
               {content.description && (
-                <p className="tw-mx-auto tw-mb-0 tw-max-w-[500px] tw-text-balance tw-text-[14px] md:tw-text-[22px] tw-font-normal tw-leading-relaxed tw-text-noct-muted">
+                <p className="tw-mx-auto tw-mb-0 tw-max-w-[500px] tw-text-[14px] md:tw-text-[22px] tw-font-normal tw-leading-relaxed tw-text-noct-muted">
                   {content.description}
                 </p>
               )}

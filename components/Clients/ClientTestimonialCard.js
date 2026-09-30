@@ -15,13 +15,14 @@ export default function ClientTestimonialCard({
   return (
     <>
       <article
-        className={
-          isFeatured
-            ? "tw-h-full tw-items-center tw-bg-[#F9F9F9] tw-p-6 md:tw-p-8 lg:tw-p-12 md:tw-flex max-md:tw-space-y-[32px]"
-            : "tw-flex tw-h-full tw-flex-col tw-justify-center tw-bg-[#F9F9F9] tw-p-6 md:tw-p-8 lg:tw-p-12"
-        }
+        className={`tw-bg-[#F9F9F9] tw-p-6 md:tw-p-8 lg:tw-p-12 tw-h-full
+          ${
+            isFeatured
+              ? " tw-items-center md:tw-flex max-md:tw-space-y-[32px]"
+              : "tw-flex tw-flex-col tw-justify-center"
+          }`}
       >
-        <div className="tw-flex tw-h-full tw-min-h-0 tw-flex-col tw-justify-center tw-gap-5 md:tw-gap-7">
+        <div className="tw-flex tw-h-full tw-min-h-0 tw-flex-col tw-justify-center tw-gap-6 md:tw-gap-7">
           {logoSrc && (
             <img
               src={logoSrc}
@@ -30,21 +31,15 @@ export default function ClientTestimonialCard({
             />
           )}
 
-          <p
-            className={
-              isFeatured
-                ? "tw-text-[14px] md:tw-text-[18px] lg:tw-text-[22px] tw-font-light tw-leading-[1.45] tw-tracking-[0.01em] tw-text-[#1A1A1A]"
-                : "tw-text-[14px] md:tw-text-[18px] lg:tw-text-[22px] tw-font-light tw-leading-[1.5] tw-tracking-[0.01em] tw-text-[#1A1A1A]"
-            }
-          >
+          <p className="tw-text-[16px] md:tw-text-[18px] lg:tw-text-[22px] tw-font-light tw-leading-[1.5] tw-tracking-[0.01em] tw-text-[#1A1A1A]">
             {item.quote}
           </p>
 
+          <div
+            aria-hidden="true"
+            className=" tw-h-px tw-w-[56px] tw-bg-noct-dark/20"
+          />
           <div>
-            <div
-              aria-hidden="true"
-              className="tw-mb-5 md:tw-mb-[24px] tw-h-px tw-w-[56px] tw-bg-noct-dark/20"
-            />
             <h5 className="tw-mb-1 tw-text-[14px] md:tw-text-[20px] tw-font-bold tw-leading-tight tw-text-noct-dark">
               {item.name}
             </h5>

@@ -97,7 +97,7 @@ function ModelCard({ model }) {
   };
 
   return (
-    <article className="tw-flex tw-h-full tw-flex-col tw-bg-[#F5F5F5] tw-p-[20px] tw-pb-[1.5rem] md:tw-p-8 lg:tw-p-[30px]">
+    <article className="tw-flex tw-h-full tw-flex-col tw-bg-[#F5F5F5] tw-p-[20px] md:tw-p-[30px]">
       {model.title && (
         <h3 className="tw-mb-[10px] tw-text-[20px] tw-font-bold tw-leading-[130%] tw-text-noct-dark md:tw-text-[26px]">
           {model.title}
