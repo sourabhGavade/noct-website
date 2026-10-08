@@ -36,13 +36,6 @@ export default function AiReadableSection({
 
               return (
                 <Fragment key={rowKey}>
-                  {isLastRow && (
-                    <img
-                      src="/illustration1.svg"
-                      alt="One Design.md connecting product areas, skills, accessibility, tone of voice, tokens, components, design patterns, and layout rules"
-                      className="tw-block tw-h-auto tw-w-full tw-pointer-events-none"
-                    />
-                  )}
                   {row.layout === "stacked" ? (
                     <div className="tw-grid tw-grid-cols-1 tw-gap-4 md:tw-grid-cols-2 md:tw-gap-10">
                       {row.cards.map((card, index) => (
@@ -82,10 +75,10 @@ function FeatureCard({ card, flushImage = false }) {
   if (layout === "centered") {
     return (
       <article
-        className="tw-px-6 tw-py-12 md:tw-px-12 md:tw-py-16 lg:tw-px-16 lg:tw-py-[80px]"
+        className="tw-px-6 tw-py-12 md:tw-px-12 md:tw-py-16 lg:tw-px-16 lg:tw-py-[50px]"
         style={{ backgroundColor }}
       >
-        <div className="tw-mx-auto tw-max-w-[720px]">
+        <div className="tw-mx-auto tw-max-w-[720px] tw-text-center">
           {card.title && (
             <h3
               className={`tw-mb-0 tw-text-balance tw-text-[20px] tw-font-bold tw-leading-[130%] md:tw-text-[24px] lg:tw-text-[32px] ${titleColor}`}
@@ -96,7 +89,7 @@ function FeatureCard({ card, flushImage = false }) {
           {paragraphs.map((text, index) => (
             <p
               key={`${card._key}-p-${index}`}
-              className={`tw-mb-0 tw-mt-[8px] tw-text-[14px] tw-font-light tw-leading-[1.6] tw-tracking-[0.38px] md:tw-text-[18px] md:tw-leading-[28px] ${bodyColor}`}
+              className={`tw-mb-0 tw-mt-[8px] tw-text-[14px] tw-text-balance tw-font-light tw-leading-[1.6] tw-tracking-[0.38px] md:tw-text-[18px] md:tw-leading-[28px] ${bodyColor}`}
             >
               {text}
             </p>
@@ -106,7 +99,7 @@ function FeatureCard({ card, flushImage = false }) {
           <img
             src={imageSrc}
             alt={imageAlt}
-            className="tw-mx-auto tw-mt-10 tw-block tw-h-auto tw-w-full tw-max-w-[860px] md:tw-mt-14"
+            className="tw-mx-auto tw-block tw-w-full tw-max-w-[860px]"
           />
         )}
       </article>
