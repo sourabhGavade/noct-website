@@ -75,7 +75,7 @@ function FeatureCard({ card, flushImage = false }) {
   if (layout === "centered") {
     return (
       <article
-        className="tw-px-6 tw-py-12 md:tw-px-12 md:tw-py-16 lg:tw-px-16 lg:tw-py-[50px]"
+        className="tw-px-6 tw-py-12 md:tw-px-12 md:tw-py-16 lg:tw-px-16 lg:tw-py-[80px]"
         style={{ backgroundColor }}
       >
         <div className="tw-mx-auto tw-max-w-[720px] tw-text-center">
