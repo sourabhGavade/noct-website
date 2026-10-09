@@ -66,6 +66,9 @@ function FeatureCard({ card, flushImage = false }) {
   const dark = isDarkColor(backgroundColor);
   const lightSurface = isNearWhite(backgroundColor);
   const imageSrc = card.image?.asset ? urlFor(card.image).url() : null;
+  const mobileImageSrc = card.mobileImage?.asset
+    ? urlFor(card.mobileImage).url()
+    : null;
   const imageAlt = card.image?.alt || card.title || "";
   const paragraphs = splitParagraphs(card.description);
 
@@ -96,11 +99,18 @@ function FeatureCard({ card, flushImage = false }) {
           ))}
         </div>
         {imageSrc && (
-          <img
-            src={imageSrc}
-            alt={imageAlt}
-            className="tw-mx-auto tw-block tw-w-full tw-max-w-[860px]"
-          />
+          <>
+            <img
+              src={imageSrc}
+              alt={imageAlt}
+              className="tw-hidden md:tw-block"
+            />
+            <img
+              src={mobileImageSrc ? mobileImageSrc : imageSrc}
+              alt={imageAlt}
+              className="tw-block md:tw-hidden tw-mt-[30px]"
+            />
+          </>
         )}
       </article>
     );
