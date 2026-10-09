@@ -60,6 +60,11 @@ export async function getStaticProps() {
           alt,
           caption,
           asset
+        },
+        mobileImage{
+          alt,
+          caption,
+          asset
         }
       }
     },

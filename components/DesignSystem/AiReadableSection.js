@@ -66,6 +66,9 @@ function FeatureCard({ card, flushImage = false }) {
   const dark = isDarkColor(backgroundColor);
   const lightSurface = isNearWhite(backgroundColor);
   const imageSrc = card.image?.asset ? urlFor(card.image).url() : null;
+  const mobileImageSrc = card.mobileImage?.asset
+    ? urlFor(card.mobileImage).url()
+    : null;
   const imageAlt = card.image?.alt || card.title || "";
   const paragraphs = splitParagraphs(card.description);
 
@@ -75,13 +78,13 @@ function FeatureCard({ card, flushImage = false }) {
   if (layout === "centered") {
     return (
       <article
-        className="tw-px-6 tw-py-12 md:tw-px-12 md:tw-py-16 lg:tw-px-16 lg:tw-py-[50px]"
+        className="tw-px-6 tw-py-6 md:tw-px-12 md:tw-py-16 lg:tw-px-16 lg:tw-py-[80px]"
         style={{ backgroundColor }}
       >
-        <div className="tw-mx-auto tw-max-w-[720px] tw-text-center">
+        <div className="md:tw-mx-auto md:tw-max-w-[720px] tw-max-w-[240px] md:tw-text-center">
           {card.title && (
             <h3
-              className={`tw-mb-0 tw-text-balance tw-text-[20px] tw-font-bold tw-leading-[130%] md:tw-text-[24px] lg:tw-text-[32px] ${titleColor}`}
+              className={`tw-mb-0 md:tw-text-balance tw-text-[20px] tw-font-bold tw-leading-[130%] md:tw-text-[24px] lg:tw-text-[32px] ${titleColor}`}
             >
               {card.title}
             </h3>
@@ -89,18 +92,25 @@ function FeatureCard({ card, flushImage = false }) {
           {paragraphs.map((text, index) => (
             <p
               key={`${card._key}-p-${index}`}
-              className={`tw-mb-0 tw-mt-[8px] tw-text-[14px] tw-text-balance tw-font-light tw-leading-[1.6] tw-tracking-[0.38px] md:tw-text-[18px] md:tw-leading-[28px] ${bodyColor}`}
+              className={`tw-mb-0 tw-mt-[8px] tw-text-[14px] md:tw-text-balance tw-font-light tw-leading-[1.6] tw-tracking-[0.38px] md:tw-text-[18px] md:tw-leading-[28px] ${bodyColor}`}
             >
               {text}
             </p>
           ))}
         </div>
         {imageSrc && (
-          <img
-            src={imageSrc}
-            alt={imageAlt}
-            className="tw-mx-auto tw-block tw-w-full tw-max-w-[860px]"
-          />
+          <>
+            <img
+              src={imageSrc}
+              alt={imageAlt}
+              className="tw-hidden md:tw-block"
+            />
+            <img
+              src={mobileImageSrc ? mobileImageSrc : imageSrc}
+              alt={imageAlt}
+              className="tw-block md:tw-hidden tw-mt-[30px]"
+            />
+          </>
         )}
       </article>
     );
