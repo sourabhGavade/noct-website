@@ -128,7 +128,7 @@ export default function HeroSection({
 
           <div className="tw-w-full">
             {heroVideo && (
-              <div className="tw-relative tw-aspect-[622/450] tw-w-full tw-overflow-hidden">
+              <div className="hero-video tw-relative tw-aspect-[622/450] tw-w-full tw-overflow-hidden">
                 <video
                   ref={videoRef}
                   autoPlay
@@ -137,7 +137,7 @@ export default function HeroSection({
                   playsInline
                   preload="auto"
                   controls={false}
-                  className="tw-absolute tw-inset-0 tw-block tw-h-full tw-w-full tw-object-cover"
+                  className="tw-absolute tw-inset-0 tw-block tw-h-full tw-w-full tw-origin-center tw-scale-[1.02] tw-border-0 tw-object-cover tw-outline-none"
                 >
                   <source src={heroVideo} type="video/mp4" />
                 </video>
@@ -148,6 +148,15 @@ export default function HeroSection({
       </div>
 
       <style jsx>{`
+        /* Safari composites <video> on its own layer and leaves a 1px
+           seam. Scaling inside the clipped frame hides that edge. */
+        .hero-video :global(video) {
+          border: 0;
+          outline: none;
+          -webkit-mask-image: -webkit-radial-gradient(#fff, #000);
+          mask-image: radial-gradient(#fff, #000);
+        }
+
         .trust-logos {
           -webkit-mask-image: linear-gradient(
             to right,
