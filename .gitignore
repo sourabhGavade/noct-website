@@ -15,6 +15,8 @@
 # sanity cms
 /noctcms
 
+ai-prompt-loop
+
 # production
 /build
 

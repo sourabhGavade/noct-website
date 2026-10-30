@@ -20,7 +20,6 @@ export async function getStaticProps() {
       caption,
       asset
     },
-    heroVideo,
     features[]{
       _key,
       alt,
@@ -135,7 +134,6 @@ export default function DesignSystem({ content }) {
           title={content.title}
           trustDescription={content.trustDescription}
           trustLogos={content.trustLogos}
-          heroVideo={content.heroVideo}
         />
 
         <FeaturesSection features={content.features} />
