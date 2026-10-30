@@ -9,9 +9,7 @@ export default function HeroSection({
   title,
   trustDescription,
   trustLogos = [],
-  heroVideo,
 }) {
-  const videoRef = useRef(null);
   const trackRef = useRef(null);
 
   const logoItems = useMemo(
@@ -76,15 +74,6 @@ export default function HeroSection({
     };
   }, [logoItems, trackItems]);
 
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video || !heroVideo) return;
-
-    video.muted = true;
-    const playPromise = video.play();
-    if (playPromise) playPromise.catch(() => {});
-  }, [heroVideo]);
-
   return (
     <section className="tw-pt-[140px] md:tw-pt-[180px] lg:tw-pt-[152px]">
       <div className="container">
@@ -126,35 +115,29 @@ export default function HeroSection({
             )}
           </div>
 
-          <div className="tw-w-full">
-            {heroVideo && (
-              <div className="hero-video tw-relative tw-aspect-[622/450] tw-w-full tw-overflow-hidden">
-                <video
-                  ref={videoRef}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="auto"
-                  controls={false}
-                  className="tw-absolute tw-inset-0 tw-block tw-h-full tw-w-full tw-origin-center tw-scale-[1.02] tw-border-0 tw-object-cover tw-outline-none"
-                >
-                  <source src={heroVideo} type="video/mp4" />
-                </video>
-              </div>
-            )}
+          <div className="hero-loop tw-w-full">
+            <iframe
+              src="/embeds/ai-prompt-loop.html"
+              title="An AI turning a prompt into a BlueJeans-branded homepage"
+              loading="eager"
+            />
           </div>
         </div>
       </div>
 
       <style jsx>{`
-        /* Safari composites <video> on its own layer and leaves a 1px
-           seam. Scaling inside the clipped frame hides that edge. */
-        .hero-video :global(video) {
+        .hero-loop :global(iframe) {
+          display: block;
+          width: 100%;
           border: 0;
-          outline: none;
-          -webkit-mask-image: -webkit-radial-gradient(#fff, #000);
-          mask-image: radial-gradient(#fff, #000);
+          aspect-ratio: 720 / 676;
+          background: transparent;
+        }
+
+        @media (max-width: 719px) {
+          .hero-loop :global(iframe) {
+            aspect-ratio: 566 / 520;
+          }
         }
 
         .trust-logos {
